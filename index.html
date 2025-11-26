@@ -187,7 +187,7 @@
         .card:hover .card-image-box img { opacity: 1; }
 
         .card-content {
-            padding: 10px; /* Reduced from 15px to save space */
+            padding: 20px; /* 從 10px 增加到 20px，讓邊框與文字距離加倍 */
             flex: 1;
             display: flex;
             flex-direction: column;
@@ -196,8 +196,8 @@
         /* 移除 card-type 樣式，因為元素已被刪除 */
         
         .card-text {
-            font-size: 1.0rem; /* Reduced from 1.1rem */
-            line-height: 1.4;
+            font-size: 1.1rem; /* 稍微調大一點字體，配合變大的框框 */
+            line-height: 1.6;  /* 增加行高，提升閱讀舒適度 */
             color: #fff;
             overflow-y: auto; /* Handle long text gracefully */
         }
