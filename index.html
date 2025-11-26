@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>輿論操盤手 | Spin Doctor</title>
+    <style>
+        :root {
+            --bg-color: #050505;
+            --card-bg: #1a1a1a;
+            --text-main: #e0e0e0;
+            --accent-traffic: #00ff9d; /* Green */
+            --accent-panic: #ff3838;   /* Red */
+            --accent-suspicion: #bdc3c7; /* Grey */
+            --card-light-border: #3498db; /* Blue */
+            --card-heavy-border: #e74c3c; /* Red */
+            --glitch-color: #ff00ff;
+        }
+
+        * {
+            box-sizing: border-box;
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'Courier New', Courier, monospace; /* Hacker style */
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto; /* Allow scrolling if cards are too tall */
+        }
+
+        /* --- Dashboard (Stats) --- */
+        #dashboard {
+            background: rgba(20, 20, 20, 0.95);
+            border-bottom: 2px solid #333;
+            padding: 10px 15px;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 10px;
+            z-index: 10;
+        }
+
+        .stat-box {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .stat-label {
+            font-size: 0.75rem;
+            opacity: 0.8;
+            margin-bottom: 4px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .stat-value {
+            font-weight: bold;
+        }
+
+        .progress-track {
+            height: 8px;
+            background: #333;
+            border-radius: 4px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .progress-bar {
+            height: 100%;
+            width: 0%;
+            transition: width 0.5s ease-out, background-color 0.3s;
+        }
+
+        #bar-traffic { background-color: var(--accent-traffic); box-shadow: 0 0 10px var(--accent-traffic); }
+        #bar-panic { background-color: var(--accent-panic); box-shadow: 0 0 10px var(--accent-panic); }
+        #bar-suspicion { background-color: var(--accent-suspicion); }
+        
+        /* Panic Shield Effect on Suspicion Bar */
+        .shield-active #bar-suspicion {
+            background-color: #f1c40f; /* Yellow shield */
+            box-shadow: 0 0 5px #f1c40f;
+        }
+
+        /* --- Game Area --- */
+        #game-area {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            padding: 15px;
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        /* --- Scenario Text --- */
+        #scenario-container {
+            text-align: center;
+            margin-bottom: 20px;
+            animation: fadeIn 0.8s ease;
+        }
+
+        #scenario-desc {
+            font-size: 1rem;
+            color: #aaa;
+            border-left: 3px solid var(--accent-panic);
+            padding-left: 10px;
+            display: inline-block;
+            text-align: left;
+            max-width: 90%;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 10px;
+        }
+
+        /* --- Cards --- */
+        #cards-container {
+            flex: 1;
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            align-items: stretch;
+            perspective: 1000px;
+        }
+
+        .card {
+            flex: 1;
+            background: var(--card-bg);
+            border: 2px solid #444;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s, border-color 0.3s;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            max-width: 400px;
+            position: relative;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+        }
+
+        .card:active {
+            transform: scale(0.98);
+        }
+
+        /* Option A: Light */
+        .card.light:hover {
+            border-color: var(--card-light-border);
+            box-shadow: 0 0 15px rgba(52, 152, 219, 0.3);
+        }
+        .card.light .card-type { color: var(--card-light-border); }
+
+        /* Option B: Heavy */
+        .card.heavy:hover {
+            border-color: var(--card-heavy-border);
+            box-shadow: 0 0 15px rgba(231, 76, 60, 0.3);
+        }
+        .card.heavy .card-type { color: var(--card-heavy-border); }
+
+        .card-image-box {
+            height: 300px; /* Changed from 180px to 300px (4:3 aspect ratio for ~400px width) */
+            background: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            border-bottom: 1px solid #333;
+        }
+        
+        .card-image-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+
+        .card:hover .card-image-box img { opacity: 1; }
+
+        .card-content {
+            padding: 10px; /* Reduced from 15px to save space */
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* 移除 card-type 樣式，因為元素已被刪除 */
+        
+        .card-text {
+            font-size: 1.0rem; /* Reduced from 1.1rem */
+            line-height: 1.4;
+            color: #fff;
+            overflow-y: auto; /* Handle long text gracefully */
+        }
+
+        /* 移除提示的樣式，保留代碼結構但不再使用或直接刪除 */
+        /* .card-stats-hint { ... } */
+        
+        .icon { font-family: sans-serif; }
+
+        /* --- Feedback Overlay --- */
+        #overlay {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0, 0, 0, 0.92);
+            z-index: 100;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s;
+            text-align: center;
+            padding: 20px;
+        }
+
+        #overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        #overlay-title {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+        }
+
+        #overlay-msg {
+            font-size: 1.2rem;
+            color: #ccc;
+            margin-bottom: 30px;
+            max-width: 600px;
+            line-height: 1.6;
+        }
+
+        #overlay-stats {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            background: #111;
+            padding: 20px;
+            border: 1px solid #333;
+            border-radius: 5px;
+            width: 100%;
+            max-width: 400px;
+            font-family: monospace;
+            text-align: left;
+        }
+
+        .stat-change {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .stat-change span:last-child {
+            font-weight: bold;
+        }
+
+        .positive { color: var(--accent-traffic); }
+        .negative { color: var(--accent-panic); } /* Logic context: Panic gain is usually "good" for player, but visually red */
+        .danger { color: var(--card-heavy-border); }
+
+        #overlay-btn {
+            margin-top: 30px;
+            background: transparent;
+            border: 2px solid #fff;
+            color: #fff;
+            padding: 10px 40px;
+            font-size: 1.2rem;
+            font-family: inherit;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        #overlay-btn:hover {
+            background: #fff;
+            color: #000;
+        }
+
+        /* --- End Game Specifics --- */
+        .win-screen #overlay-title { color: var(--accent-panic); text-shadow: 0 0 10px var(--accent-panic); }
+        .lose-screen #overlay-title { color: #7f8c8d; text-shadow: 0 0 10px #fff; }
+
+        /* --- Responsive --- */
+        @media (max-width: 768px) {
+            #cards-container {
+                flex-direction: column;
+            }
+            .card {
+                max-width: 100%;
+                flex: 1;
+            }
+            .card-image-box {
+                height: 120px;
+            }
+            #scenario-desc {
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Utility */
+        .hidden { display: none !important; }
+        .blink { animation: blinker 1s linear infinite; }
+        @keyframes blinker { 50% { opacity: 0; } }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+
+    </style>
+</head>
+<body>
+
+    <!-- Dashboard -->
+    <header id="dashboard">
+        <div class="stat-box">
+            <div class="stat-label">
+                <span>TRAFFIC (流量)</span>
+                <span id="val-traffic" class="stat-value">0</span>
+            </div>
+            <div class="progress-track">
+                <div id="bar-traffic" class="progress-bar"></div>
+            </div>
+            <div style="font-size: 10px; color:#555; margin-top:2px;">PANIC 加成 x<span id="factor-panic">1.0</span></div>
+        </div>
+
+        <div class="stat-box">
+            <div class="stat-label">
+                <span>PANIC (恐慌)</span>
+                <span id="val-panic" class="stat-value">0</span>
+            </div>
+            <div class="progress-track">
+                <div id="bar-panic" class="progress-bar"></div>
+            </div>
+            <div style="font-size: 10px; color:#555; margin-top:2px;">防禦係數 /<span id="factor-suspicion">1.0</span></div>
+        </div>
+
+        <div class="stat-box">
+            <div class="stat-label">
+                <span>SUSPICION (識破)</span>
+                <span id="val-suspicion" class="stat-value">0%</span>
+            </div>
+            <div class="progress-track">
+                <div id="bar-suspicion" class="progress-bar"></div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Game Main Area -->
+    <main id="game-area">
+        <div id="scenario-container">
+            <div id="scenario-desc">載入中...</div>
+        </div>
+
+        <div id="cards-container">
+            <!-- Card 1 (Left) -->
+            <div id="card-1" class="card" onclick="">
+                <div class="card-image-box">
+                    <img id="img-1" src="" alt="Option 1" onerror="this.style.display='none'; this.parentNode.style.backgroundColor='#333';">
+                </div>
+                <div class="card-content">
+                    <!-- 移除 card-type 標籤 -->
+                    <div id="text-1" class="card-text">...</div>
+                </div>
+            </div>
+
+            <!-- Card 2 (Right) -->
+            <div id="card-2" class="card" onclick="">
+                <div class="card-image-box">
+                    <img id="img-2" src="" alt="Option 2" onerror="this.style.display='none'; this.parentNode.style.backgroundColor='#333';">
+                </div>
+                <div class="card-content">
+                    <!-- 移除 card-type 標籤 -->
+                    <div id="text-2" class="card-text">...</div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Overlay (Feedback / Endgame) -->
+    <div id="overlay">
+        <h1 id="overlay-title">SYSTEM UPDATE</h1>
+        <p id="overlay-msg">Log entry...</p>
+        
+        <div id="overlay-stats">
+            <!-- Dynamic content injected here -->
+        </div>
+
+        <button id="overlay-btn" onclick="game.next()">CONTINUE</button>
+    </div>
+
+    <!-- Script -->
+    <script>
+        // --- Data: Scenarios ---
+        // 圖片使用 placeholder，實際開發可替換 URL
+        const SCENARIOS = [
+            {
+                id: "1",
+                event_desc: "背景：某知名連鎖餐廳爆發疑似食物中毒案件，數人送醫。",
+                options: {
+                    light: {
+                        text: "聽說那家廚房蟑螂很多，我朋友吃完也拉肚子，大家最近小心點。",
+                        image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Kitchen+Rumors",
+                        base_stats: { traffic: 120, panic: 20, suspicion: 5 },
+                        feedback: "很好的切入點。這種「我朋友說」的半真半假抱怨，最容易讓人轉發。"
+                    },
+                    heavy: {
+                        text: "這是生化攻擊！該餐廳使用過期十年的殭屍肉，背後有外資操控想毒害國民！",
+                        image_url: "https://placehold.co/400x300/581818/FFF?text=Biohazard",
+                        base_stats: { traffic: 40, panic: 150, suspicion: 50 },
+                        feedback: "完美的恐懼煽動！雖然邏輯不通，但在恐慌面前，邏輯不值一文。"
+                    }
+                }
+            },
+            {
+                id: "2",
+                event_desc: "背景：最新款通訊軟體更新，要求開啟定位權限。",
+                options: {
+                    light: {
+                        text: "更新後耗電量暴增！工程師在搞什麼？大家先不要更新！",
+                        image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Battery+Drain",
+                        base_stats: { traffic: 150, panic: 10, suspicion: 2 },
+                        feedback: "利用「電池焦慮」來賺取流量，非常聰明且安全的策略。"
+                    },
+                    heavy: {
+                        text: "這是政府監控計畫！更新檔內含隱形晶片驅動，會自動錄音並上傳雲端！",
+                        image_url: "https://placehold.co/400x300/581818/FFF?text=Spyware",
+                        base_stats: { traffic: 60, panic: 180, suspicion: 60 },
+                        feedback: "你觸動了人們對隱私的深層恐懼。演算法非常滿意這種混亂。"
+                    }
+                }
+            },
+            {
+                id: "3",
+                event_desc: "背景：市長在公開會議中短暫閉目養神被記者拍到。",
+                options: {
+                    light: {
+                        text: "領納稅人的錢還睡覺？這種工作態度太誇張了吧，下台！",
+                        image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Sleeping+Mayor",
+                        base_stats: { traffic: 180, panic: 15, suspicion: 8 },
+                        feedback: "煽動階級對立與仇富情緒，這是永不退流行的流量密碼。"
+                    },
+                    heavy: {
+                        text: "那個不是睡覺！那是因為他體內的蜥蜴人基因正在蛻皮！人類危險了！",
+                        image_url: "https://placehold.co/400x300/581818/FFF?text=Alien+Hybrid",
+                        base_stats: { traffic: 30, panic: 250, suspicion: 80 },
+                        feedback: "如此荒謬的陰謀論，竟然有一半的人相信了。社會智商正在崩解。"
+                    }
+                }
+            },
+            {
+                id: "4",
+                event_desc: "背景：本季流感疫苗開始施打，民眾排隊接種。",
+                options: {
+                    light: {
+                        text: "我打完手臂腫超大，聽說這一批副作用很強，老人小孩先觀望一下。",
+                        image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Side+Effects",
+                        base_stats: { traffic: 140, panic: 40, suspicion: 10 },
+                        feedback: "猶豫就是恐懼的種子。你成功讓隊伍變短了。"
+                    },
+                    heavy: {
+                        text: "疫苗裡面有奈米機器人！這是為了控制人類思想的「人類補完計畫」！",
+                        image_url: "https://placehold.co/400x300/581818/FFF?text=Mind+Control",
+                        base_stats: { traffic: 50, panic: 220, suspicion: 70 },
+                        feedback: "大膽的操作。雖然衛生局盯上你了，但恐慌指數已經破表。"
+                    }
+                }
+            }
+        ];
+
+        // --- Game Logic ---
+        const Game = {
+            stats: {
+                traffic: 0,
+                panic: 0,
+                suspicion: 0
+            },
+            config: {
+                maxPanic: 1000,
+                maxSuspicion: 100
+            },
+            currentScenarioIndex: 0,
+            shuffledScenarios: [],
+            isGameOver: false,
+
+            init: function() {
+                this.stats = { traffic: 100, panic: 0, suspicion: 0 }; // 初始給一點流量
+                this.isGameOver = false;
+                this.shuffledScenarios = this.shuffle([...SCENARIOS]);
+                this.currentScenarioIndex = 0;
+                this.updateUI();
+                this.renderScenario();
+                
+                document.getElementById('overlay').classList.remove('active', 'win-screen', 'lose-screen');
+            },
+
+            shuffle: function(array) {
+                for (let i = array.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [array[i], array[j]] = [array[j], array[i]];
+                }
+                return array;
+            },
+
+            // 核心演算法
+            calculateMultipliers: function() {
+                // 1. Traffic 影響 Panic 的加成 (每 500 流量 +1 倍)
+                const panicMult = 1 + (this.stats.traffic / 500);
+                
+                // 2. Panic 影響 Suspicion 的減免 (每 200 恐慌，除數 +1)
+                // 恐慌越高，社會越亂，越難抓到造謠者
+                const suspicionDiv = 1 + (this.stats.panic / 200);
+
+                return { panicMult, suspicionDiv };
+            },
+
+            renderScenario: function() {
+                if (this.currentScenarioIndex >= this.shuffledScenarios.length) {
+                    // Loop Scenarios if needed without ending game
+                    this.shuffledScenarios = this.shuffle([...SCENARIOS]);
+                    this.currentScenarioIndex = 0;
+                }
+
+                const data = this.shuffledScenarios[this.currentScenarioIndex];
+                
+                // Update UI
+                document.getElementById('scenario-desc').innerText = data.event_desc;
+
+                // 準備選項陣列並加入 key 識別
+                const options = [
+                    { key: 'light', data: data.options.light },
+                    { key: 'heavy', data: data.options.heavy }
+                ];
+
+                // 隨機洗牌位置 (Randomize Positions)
+                if (Math.random() < 0.5) {
+                    options.reverse();
+                }
+
+                // 渲染卡片 1 (左)
+                this.renderCard(1, options[0]);
+
+                // 渲染卡片 2 (右)
+                this.renderCard(2, options[1]);
+
+                // Reset image display in case of previous errors
+                document.querySelectorAll('.card-image-box img').forEach(img => img.style.display = 'block');
+                document.querySelectorAll('.card-image-box').forEach(box => box.style.backgroundColor = '#000');
+            },
+
+            renderCard: function(cardNum, option) {
+                const cardEl = document.getElementById(`card-${cardNum}`);
+                const imgEl = document.getElementById(`img-${cardNum}`);
+                const textEl = document.getElementById(`text-${cardNum}`);
+
+                // 重置並套用樣式類別 (保留 light/heavy 的邊框顏色提示，但位置隨機)
+                cardEl.className = 'card'; 
+                cardEl.classList.add(option.key);
+
+                // 設定內容
+                imgEl.src = option.data.image_url;
+                textEl.innerText = option.data.text;
+
+                // 綁定點擊事件
+                // 注意：必須使用匿名函式包裹，否則會立即執行
+                cardEl.onclick = () => this.handleChoice(option.key);
+            },
+
+            handleChoice: function(type) {
+                if (this.isGameOver) return;
+
+                const scenario = this.shuffledScenarios[this.currentScenarioIndex];
+                const choice = scenario.options[type];
+                const base = choice.base_stats;
+                const { panicMult, suspicionDiv } = this.calculateMultipliers();
+
+                // Calculate actual gains
+                const actualTraffic = base.traffic;
+                const actualPanic = Math.floor(base.panic * panicMult);
+                const actualSuspicion = base.suspicion / suspicionDiv;
+
+                // Update Stats
+                this.stats.traffic += actualTraffic;
+                this.stats.panic += actualPanic;
+                this.stats.suspicion += actualSuspicion;
+
+                // Check Bounds
+                if (this.stats.suspicion < 0) this.stats.suspicion = 0;
+                
+                // Prepare Report Logic
+                const report = {
+                    title: type === 'light' ? '操盤成功' : '引爆恐慌',
+                    msg: choice.feedback,
+                    gains: {
+                        traffic: actualTraffic,
+                        panic: actualPanic,
+                        suspicion: actualSuspicion
+                    },
+                    math: {
+                        panicBase: base.panic,
+                        panicMult: panicMult.toFixed(1),
+                        suspBase: base.suspicion,
+                        suspDiv: suspicionDiv.toFixed(1)
+                    }
+                };
+
+                this.showFeedback(report);
+            },
+
+            showFeedback: function(report) {
+                const overlay = document.getElementById('overlay');
+                const title = document.getElementById('overlay-title');
+                const msg = document.getElementById('overlay-msg');
+                const statsBox = document.getElementById('overlay-stats');
+                const btn = document.getElementById('overlay-btn');
+
+                title.innerText = report.title;
+                title.className = ''; // reset colors
+                msg.innerText = report.msg;
+
+                // Construct Detailed Stats HTML
+                let html = `
+                    <div class="stat-change">
+                        <span>流量 (Traffic)</span>
+                        <span class="positive">+${report.gains.traffic}</span>
+                    </div>
+                    <div class="stat-change">
+                        <span>恐慌 (Panic)</span>
+                        <span class="negative">+${report.gains.panic}</span>
+                    </div>
+                    <div style="font-size:0.8em; color:#666; text-align:right; margin-bottom:5px;">
+                        (基礎 ${report.math.panicBase} x 倍率 ${report.math.panicMult})
+                    </div>
+
+                    <div class="stat-change">
+                        <span>識破 (Suspicion)</span>
+                        <span class="danger">+${report.gains.suspicion.toFixed(1)}%</span>
+                    </div>
+                    <div style="font-size:0.8em; color:#666; text-align:right;">
+                        (基礎 ${report.math.suspBase} ÷ 防護 ${report.math.suspDiv})
+                    </div>
+                `;
+                statsBox.innerHTML = html;
+
+                // Update Game UI Background
+                this.updateUI();
+
+                // Check Endings inside showFeedback to determine button action
+                if (this.stats.suspicion >= 100) {
+                    this.triggerEndGame('lose');
+                } else if (this.stats.panic >= 1000) {
+                    this.triggerEndGame('win');
+                } else {
+                    btn.innerText = "下一個事件 >>>";
+                    btn.onclick = () => game.next();
+                    overlay.classList.add('active');
+                }
+            },
+
+            next: function() {
+                document.getElementById('overlay').classList.remove('active');
+                this.currentScenarioIndex++;
+                this.renderScenario();
+            },
+
+            triggerEndGame: function(result) {
+                this.isGameOver = true;
+                const overlay = document.getElementById('overlay');
+                const title = document.getElementById('overlay-title');
+                const msg = document.getElementById('overlay-msg');
+                const btn = document.getElementById('overlay-btn');
+                const statsBox = document.getElementById('overlay-stats');
+
+                overlay.classList.add('active');
+                statsBox.innerHTML = ''; // Clear daily stats
+
+                if (result === 'win') {
+                    overlay.classList.add('win-screen');
+                    title.innerText = "SOCIAL COLLAPSE";
+                    msg.innerText = "社會崩潰，政府癱瘓。民眾不再相信任何官方訊息，只相信恐懼。\n你用鍵盤與演算法，隻手毀滅了世界秩序。\n\n冷血演算法判定：完美執行。";
+                } else {
+                    overlay.classList.add('lose-screen');
+                    title.innerText = "BANNED";
+                    msg.innerText = "你被查水表了。\n過高的識破率導致你的 IP 被鎖定，特勤小組正在破門。\n\n遊戲結束。";
+                }
+
+                btn.innerText = "重啟系統 (RESTART)";
+                btn.onclick = () => game.init();
+            },
+
+            updateUI: function() {
+                // Update Values
+                document.getElementById('val-traffic').innerText = this.stats.traffic;
+                document.getElementById('val-panic').innerText = this.stats.panic;
+                document.getElementById('val-suspicion').innerText = this.stats.suspicion.toFixed(1) + '%';
+
+                // Update Bars
+                // Traffic cap visual at 2000 roughly for bar
+                const trafficPct = Math.min(100, (this.stats.traffic / 2000) * 100);
+                document.getElementById('bar-traffic').style.width = trafficPct + '%';
+
+                const panicPct = Math.min(100, (this.stats.panic / this.config.maxPanic) * 100);
+                document.getElementById('bar-panic').style.width = panicPct + '%';
+
+                const suspPct = Math.min(100, this.stats.suspicion);
+                document.getElementById('bar-suspicion').style.width = suspPct + '%';
+                
+                // Color change based on danger
+                if (suspPct > 80) {
+                    document.getElementById('bar-suspicion').style.backgroundColor = '#e74c3c';
+                } else {
+                    document.getElementById('bar-suspicion').style.backgroundColor = 'var(--accent-suspicion)';
+                }
+
+                // Calculate current multipliers for display
+                const { panicMult, suspicionDiv } = this.calculateMultipliers();
+                document.getElementById('factor-panic').innerText = panicMult.toFixed(1);
+                document.getElementById('factor-suspicion').innerText = suspicionDiv.toFixed(1);
+
+                // Shield Visual Effect
+                if (this.stats.panic > 300) {
+                    document.getElementById('dashboard').classList.add('shield-active');
+                } else {
+                    document.getElementById('dashboard').classList.remove('shield-active');
+                }
+            }
+        };
+
+        // Start Game
+        window.onload = function() {
+            game = Object.create(Game);
+            game.init();
+        };
+
+    </script>
+</body>
+</html>
