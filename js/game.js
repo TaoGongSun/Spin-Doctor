@@ -256,7 +256,17 @@ const Game = {
 };
 
 // Start Game
+// Start Game Logic
+function startGame() {
+    const startScreen = document.getElementById('start-screen');
+    startScreen.style.opacity = '0';
+    setTimeout(() => {
+        startScreen.classList.remove('active');
+        game.init();
+    }, 500);
+}
+
 window.onload = function () {
     game = Object.create(Game);
-    game.init();
+    // game.init() is now called by startGame()
 };
