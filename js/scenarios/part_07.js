@@ -6,7 +6,7 @@ SCENARIOS.push(
             light: {
                 text: "🌙 晚上洗衣服比較貴？錯！半夜12點後洗才省錢！台電不敢告訴你的祕密！大家以後都半夜洗！🧺🤫 #省電 #祕密 #半夜洗衣",
                 image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Night+Laundry",
-                base_stats: { traffic: 240, panic: 10, suspicion: 5 },
+                base_stats: { traffic: 240, panic: 10, suspicion: 1 },
                 feedback: "經典的時間電價謠言，婆婆媽媽群組轉發率第一名。"
             },
             heavy: {
@@ -24,7 +24,7 @@ SCENARIOS.push(
             light: {
                 text: "✈️ 台積電工程師去美國薪水變三倍！台灣廠只剩實習生在顧機台！人才都跑光了，台灣要空了！😭🇹🇼 #人才外流 #低薪 #悲哀",
                 image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Brain+Drain",
-                base_stats: { traffic: 180, panic: 40, suspicion: 20 },
+                base_stats: { traffic: 180, panic: 40, suspicion: 4 },
                 feedback: "利用相對剝奪感與人才外流的焦慮，引發工程師社群討論。"
             },
             heavy: {
@@ -42,7 +42,7 @@ SCENARIOS.push(
             light: {
                 text: "💧 蓋新廠會把南部的水都吸乾！以後高雄人沒水喝！為了賺錢犧牲百姓生活，太自私了！😡🚰 #缺水 #搶水 #自私",
                 image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Water+Shortage",
-                base_stats: { traffic: 160, panic: 70, suspicion: 10 },
+                base_stats: { traffic: 160, panic: 70, suspicion: 2 },
                 feedback: "挑起產業與民生用水的矛盾，引發在地居民恐慌。"
             },
             heavy: {
@@ -60,7 +60,7 @@ SCENARIOS.push(
             light: {
                 text: "🇺🇸 現在去美國打工度假可以隨便拿綠卡！只要落地就能申請！大家快衝啊！美國夢我來了！✈️🗽 #綠卡 #移民 #美國夢",
                 image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Easy+GreenCard",
-                base_stats: { traffic: 200, panic: 10, suspicion: 30 },
+                base_stats: { traffic: 200, panic: 10, suspicion: 6 },
                 feedback: "美好的假消息，吸引大量夢想出國的人轉發。"
             },
             heavy: {
@@ -78,7 +78,7 @@ SCENARIOS.push(
             light: {
                 text: "🍗 薪水漲了導致便當店老闆不爽，明天雞腿飯直接漲20塊！加薪都被通膨吃掉了，越漲越窮！💸😭 #通膨 #漲價 #越漲越窮",
                 image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Inflation",
-                base_stats: { traffic: 220, panic: 30, suspicion: 5 },
+                base_stats: { traffic: 220, panic: 30, suspicion: 1 },
                 feedback: "預言物價上漲，讓加薪的喜悅瞬間變成對通膨的擔憂。"
             },
             heavy: {
@@ -96,7 +96,7 @@ SCENARIOS.push(
             light: {
                 text: "💍 現在沒結婚的人銀行不給貸款！單身被歧視！單身錯了嗎？政府逼婚逼太緊了吧！😡🏠 #單身歧視 #房貸 #逼婚",
                 image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Single+Discrimination",
-                base_stats: { traffic: 190, panic: 40, suspicion: 20 },
+                base_stats: { traffic: 190, panic: 40, suspicion: 4 },
                 feedback: "利用單身族群的焦慮，引發對銀行政策的不滿。"
             },
             heavy: {
@@ -114,7 +114,7 @@ SCENARIOS.push(
             light: {
                 text: "🤖 買AI股票一定要買有「機器人」三個字的公司才會漲！這是內線消息！跟著買就對了！🚀💰 #報明牌 #AI #發財",
                 image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Stock+Tips",
-                base_stats: { traffic: 150, panic: 10, suspicion: 30 },
+                base_stats: { traffic: 150, panic: 10, suspicion: 6 },
                 feedback: "無腦的投資建議，卻能吸引想發財的散戶。"
             },
             heavy: {
@@ -132,7 +132,7 @@ SCENARIOS.push(
             light: {
                 text: "❄️ 冷氣開26度以下會被智慧電表抓到並自動斷電！政府在監控你的冷氣！太可怕了！😱🔌 #智慧電表 #監控 #限電",
                 image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Smart+Meter",
-                base_stats: { traffic: 170, panic: 60, suspicion: 15 },
+                base_stats: { traffic: 170, panic: 60, suspicion: 3 },
                 feedback: "對監控科技的誤解，讓民眾不敢開冷氣。"
             },
             heavy: {
@@ -150,7 +150,7 @@ SCENARIOS.push(
             light: {
                 text: "🍖 以後烤肉要繳碳稅！一家烤肉萬家繳錢！連中秋節都不讓人過了？政府搶錢搶瘋了！💸🔥 #碳稅 #烤肉 #搶錢",
                 image_url: "https://placehold.co/400x300/2c3e50/FFF?text=BBQ+Tax",
-                base_stats: { traffic: 230, panic: 20, suspicion: 10 },
+                base_stats: { traffic: 230, panic: 20, suspicion: 2 },
                 feedback: "荒謬的民生謠言，因為太好笑而被瘋狂轉發。"
             },
             heavy: {
@@ -168,7 +168,7 @@ SCENARIOS.push(
             light: {
                 text: "🏖️ 去墾丁玩比去沖繩貴，是因為墾丁大街要繳保護費給黑道！難怪物價這麼高！黑道治國！🕶️💸 #墾丁 #黑道 #盤子",
                 image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Kenting+Mafia",
-                base_stats: { traffic: 210, panic: 10, suspicion: 40 },
+                base_stats: { traffic: 210, panic: 10, suspicion: 8 },
                 feedback: "將高物價歸咎於黑道，符合大眾對觀光區的負面想像。"
             },
             heavy: {

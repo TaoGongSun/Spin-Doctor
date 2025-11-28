@@ -6,7 +6,7 @@ SCENARIOS.push(
             light: {
                 text: "🎓 讀這幾間學校的畢業證書會自動失效！這幾年白讀了！教育部不承認學歷！學生變孤兒！😭🏫 #退場 #學歷無效 #白讀",
                 image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Useless+Degree",
-                base_stats: { traffic: 190, panic: 80, suspicion: 10 },
+                base_stats: { traffic: 190, panic: 80, suspicion: 2 },
                 feedback: "製造學歷失效的恐慌，學生們崩潰。"
             },
             heavy: {
@@ -24,7 +24,7 @@ SCENARIOS.push(
             light: {
                 text: "🚇 大巨蛋跳動會導致捷運出軌！因為共振效應！所以禁止唱嗨歌！為了安全大家忍忍吧！🚫🎤 #大巨蛋 #捷運 #危險",
                 image_url: "https://placehold.co/400x300/2c3e50/FFF?text=MRT+Danger",
-                base_stats: { traffic: 160, panic: 50, suspicion: 20 },
+                base_stats: { traffic: 160, panic: 50, suspicion: 4 },
                 feedback: "誇大震動影響，製造公共安全恐慌。"
             },
             heavy: {
@@ -42,7 +42,7 @@ SCENARIOS.push(
             light: {
                 text: "🎮 文化幣可以用來買遊戲點數！只要跟店員說通關密語！我朋友都買了！快去試試！🤫🕹️ #文化幣 #漏洞 #遊戲點數",
                 image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Game+Points",
-                base_stats: { traffic: 210, panic: 10, suspicion: 30 },
+                base_stats: { traffic: 210, panic: 10, suspicion: 6 },
                 feedback: "誘導違規使用的謠言，年輕人瘋傳。"
             },
             heavy: {
@@ -60,7 +60,7 @@ SCENARIOS.push(
             light: {
                 text: "🏫 現在學校老師都不考試了！只要有手有腳就能去教書！小孩交給這種人教，完蛋了！家長注意！😱👶 #爛老師 #教育崩壞 #隨便教",
                 image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Bad+Teacher",
-                base_stats: { traffic: 180, panic: 60, suspicion: 20 },
+                base_stats: { traffic: 180, panic: 60, suspicion: 4 },
                 feedback: "貶低教師素質，引發家長恐慌。"
             },
             heavy: {
@@ -78,7 +78,7 @@ SCENARIOS.push(
             light: {
                 text: "📹 年輕人坐博愛座會被監視器拍下來！記點扣信用分數！以後不能貸款！千萬別坐！🚫💺 #博愛座 #信用分數 #監視",
                 image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Credit+Score",
-                base_stats: { traffic: 200, panic: 40, suspicion: 10 },
+                base_stats: { traffic: 200, panic: 40, suspicion: 2 },
                 feedback: "虛構的信用制度，讓年輕人不敢坐下。"
             },
             heavy: {
@@ -96,7 +96,7 @@ SCENARIOS.push(
             light: {
                 text: "🗣️ 去墾丁一定要講台語！不然滷味會被算兩倍價錢！欺負外地人！這種地方誰要去？抵制！🚫🏖️ #墾丁 #歧視 #講台語",
                 image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Language+Discrimination",
-                base_stats: { traffic: 220, panic: 10, suspicion: 20 },
+                base_stats: { traffic: 220, panic: 10, suspicion: 4 },
                 feedback: "挑起族群與語言對立，加深對墾丁的負面印象。"
             },
             heavy: {
@@ -114,7 +114,7 @@ SCENARIOS.push(
             light: {
                 text: "💔 去耶誕城的情侶一定會分手！因為那是受到詛咒的地方！前人的怨氣太重！不想分手的別去！🚫🎄 #分手魔咒 #耶誕城 #詛咒",
                 image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Breakup+Curse",
-                base_stats: { traffic: 240, panic: 10, suspicion: 50 },
+                base_stats: { traffic: 240, panic: 10, suspicion: 5 },
                 feedback: "都市傳說類型的謠言，情侶們寧可信其有。"
             },
             heavy: {
@@ -132,7 +132,7 @@ SCENARIOS.push(
             light: {
                 text: "🍬 去台南吃東西如果不加糖，老闆會把你趕出來！還會被路人笑！歧視不吃甜的人！太霸道了！😡🥣 #台南 #全糖 #歧視",
                 image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Sugar+Only",
-                base_stats: { traffic: 200, panic: 5, suspicion: 10 },
+                base_stats: { traffic: 200, panic: 5, suspicion: 2 },
                 feedback: "玩弄台南全糖城市的梗，雖然是玩笑但有人當真。"
             },
             heavy: {
@@ -150,7 +150,7 @@ SCENARIOS.push(
             light: {
                 text: "⛑️ 大巨蛋看球要自備頭盔！因為天花板可能會掉下來！已經有球迷被砸到了！新聞被壓下來！恐怖！😱⚾ #大巨蛋 #工安 #危險",
                 image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Falling+Roof",
-                base_stats: { traffic: 170, panic: 60, suspicion: 20 },
+                base_stats: { traffic: 170, panic: 60, suspicion: 4 },
                 feedback: "嘲諷公共工程品質，引發球迷對安全的擔憂。"
             },
             heavy: {
@@ -168,7 +168,7 @@ SCENARIOS.push(
             light: {
                 text: "🎨 設計展的東西都看不懂！是因為只有「覺青」才懂！我們一般人被排擠了！浪費稅金自嗨！😤🖼️ #設計展 #覺青 #看不懂",
                 image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Hipster+Only",
-                base_stats: { traffic: 150, panic: 5, suspicion: 40 },
+                base_stats: { traffic: 150, panic: 5, suspicion: 8 },
                 feedback: "貼標籤與製造文化隔閡，引發群體對立。"
             },
             heavy: {

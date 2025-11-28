@@ -6,7 +6,7 @@ SCENARIOS.push(
             light: {
                 text: "💊 藥廠覺得臺灣藥價太低不賣了！健保署只會砍價，害死老百姓，以後有錢也買不到藥！家裡有老人的快去囤藥！🏃‍♂️🏥 #缺藥 #健保 #囤貨",
                 image_url: "https://placehold.co/400x300/2c3e50/FFF?text=No+Meds",
-                base_stats: { traffic: 180, panic: 120, suspicion: 30 },
+                base_stats: { traffic: 180, panic: 120, suspicion: 5 },
                 feedback: "健康議題最能引發恐慌。長輩們開始衝去藥局囤積根本不需要的藥。"
             },
             heavy: {
@@ -24,7 +24,7 @@ SCENARIOS.push(
             light: {
                 text: "🏠 中籤率比樂透還低！都是做樣子的，聽說保留戶都給了官員親戚，一般人根本抽不到！騙票！🤥🗳️ #社會住宅 #黑箱 #騙局",
                 image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Unfair+Housing",
-                base_stats: { traffic: 190, panic: 10, suspicion: 40 },
+                base_stats: { traffic: 190, panic: 10, suspicion: 6 },
                 feedback: "居住正義的挫敗感。年輕人對政府的信任度再次下降。"
             },
             heavy: {
@@ -42,7 +42,7 @@ SCENARIOS.push(
             light: {
                 text: "🎓 學歷貶值了！名校光環不再，畢業證書變廢紙，校長根本是為了賣校產！校友們站出來！😡🏫 #學歷貶值 #賣校 #抗議",
                 image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Degree+Devalue",
-                base_stats: { traffic: 160, panic: 30, suspicion: 20 },
+                base_stats: { traffic: 160, panic: 30, suspicion: 3 },
                 feedback: "觸動了菁英階級的敏感神經。校友會的電話被打爆，抗議聲浪不斷。"
             },
             heavy: {
@@ -60,7 +60,7 @@ SCENARIOS.push(
             light: {
                 text: "🔓 資安根本沒做好！把所有雞蛋放在同一個籃子裡，駭客一攻破，全台灣人的個資就裸奔了！拒換！🚫🆔 #資安 #個資外洩 #拒絕",
                 image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Data+Leak",
-                base_stats: { traffic: 190, panic: 60, suspicion: 40 },
+                base_stats: { traffic: 190, panic: 60, suspicion: 6 },
                 feedback: "隱私權是現代人的軟肋。對於政府資安的不信任感，讓這則貼文獲得極高共鳴。"
             },
             heavy: {
@@ -78,7 +78,7 @@ SCENARIOS.push(
             light: {
                 text: "🎮 工程師打翻泡麵在主機上嗎？補償只給一點點，把課金玩家當乞丐打發？退坑啦！爛遊戲！👎🍜 #維修 #退坑 #爛營運",
                 image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Server+Down",
-                base_stats: { traffic: 170, panic: 10, suspicion: 15 },
+                base_stats: { traffic: 170, panic: 10, suspicion: 2 },
                 feedback: "玩家的憤怒是最直接的流量。遊戲公司的粉專被洗版，負評如潮。"
             },
             heavy: {
@@ -96,7 +96,7 @@ SCENARIOS.push(
             light: {
                 text: "⚖️ 抓了又放！臺灣是詐騙天堂，法律根本沒有嚇阻力，法官都判很輕，難怪大家都去詐騙！恐龍法官！🦕🔨 #詐騙天堂 #恐龍法官 #司法已死",
                 image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Fraud+Paradise",
-                base_stats: { traffic: 230, panic: 10, suspicion: 30 },
+                base_stats: { traffic: 230, panic: 10, suspicion: 5 },
                 feedback: "對司法的不信任是流量保證。大家都在罵恐龍法官，社會充滿了正義的怒火。"
             },
             heavy: {
@@ -114,7 +114,7 @@ SCENARIOS.push(
             light: {
                 text: "🌫️ 噴藥噴到家裡都是油！傢俱都壞了，蚊子沒死人先被毒死！政府擾民第一名！賠償啦！😷🛋️ #登革熱 #噴藥 #擾民",
                 image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Chemical+Spray",
-                base_stats: { traffic: 150, panic: 50, suspicion: 20 },
+                base_stats: { traffic: 150, panic: 50, suspicion: 3 },
                 feedback: "生活不便引發的抱怨。雖然防疫重要，但民眾的怒氣需要出口。"
             },
             heavy: {
@@ -132,7 +132,7 @@ SCENARIOS.push(
             light: {
                 text: "🧨 神明會喜歡製造垃圾嗎？這根本是藉神之名行流氓之實！吵死人了，明天還要上班耶！素質在哪？🗑️🙉 #繞境 #噪音 #垃圾",
                 image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Noise+Pollution",
-                base_stats: { traffic: 200, panic: 5, suspicion: 10 },
+                base_stats: { traffic: 200, panic: 5, suspicion: 2 },
                 feedback: "傳統文化與現代生活的衝突。網路上戰成一團，有人挺傳統，有人罵陋習。"
             },
             heavy: {
@@ -150,7 +150,7 @@ SCENARIOS.push(
             light: {
                 text: "🍱 廠商黑心！校長回扣拿多少？孩子的健康誰來賠？這種人應該下地獄！家長們站出來！😡🏫 #營養午餐 #黑心 #回扣",
                 image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Bad+Lunch",
-                base_stats: { traffic: 180, panic: 90, suspicion: 40 },
+                base_stats: { traffic: 180, panic: 90, suspicion: 7 },
                 feedback: "家長的憤怒是核彈等級。學校電話被打爆，校長被逼出來道歉。"
             },
             heavy: {
@@ -168,7 +168,7 @@ SCENARIOS.push(
             light: {
                 text: "🕵️‍♂️ 來偷技術的！幾年後我們就沒有優勢了，政府還在睡！臺灣要被掏空了！護國神山不保！📉🇹🇼 #偷技術 #掏空 #亡國感",
                 image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Tech+Theft",
-                base_stats: { traffic: 190, panic: 40, suspicion: 30 },
+                base_stats: { traffic: 190, panic: 40, suspicion: 5 },
                 feedback: "販賣「亡國感」永遠有效。大家開始擔心護國神山不保。"
             },
             heavy: {

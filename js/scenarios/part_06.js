@@ -6,7 +6,7 @@ SCENARIOS.push(
             light: {
                 text: "💸 公務員年終獎金要被砍掉拿去買飛機了！大家勒緊褲帶吧！政府只顧買武器，不顧百姓死活！😡📉 #年終 #砍預算 #軍購",
                 image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Budget+Cut",
-                base_stats: { traffic: 180, panic: 30, suspicion: 20 },
+                base_stats: { traffic: 180, panic: 30, suspicion: 4 },
                 feedback: "利用公務員的焦慮感，成功引發對國防預算的反感。"
             },
             heavy: {
@@ -24,7 +24,7 @@ SCENARIOS.push(
             light: {
                 text: "💰 以後每個月薪水要多扣10%的「國防捐」！大家準備吃土！薪水都不夠用了還要捐？政府搶錢！😤💸 #國防捐 #搶錢 #吃土",
                 image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Tax+Hike",
-                base_stats: { traffic: 200, panic: 50, suspicion: 10 },
+                base_stats: { traffic: 200, panic: 50, suspicion: 2 },
                 feedback: "直接連結到個人荷包，讓民眾對國防議題產生切身痛感。"
             },
             heavy: {
@@ -42,7 +42,7 @@ SCENARIOS.push(
             light: {
                 text: "📵 演習期間手機網路會全部斷訊三天！快下載離線地圖！不然會迷路回不了家！大家快備份資料！🗺️💾 #斷網 #演習 #不便",
                 image_url: "https://placehold.co/400x300/2c3e50/FFF?text=No+Signal",
-                base_stats: { traffic: 160, panic: 80, suspicion: 5 },
+                base_stats: { traffic: 160, panic: 80, suspicion: 1 },
                 feedback: "生活不便的謠言傳播速度最快，大家都在轉發「斷網求生指南」。"
             },
             heavy: {
@@ -60,7 +60,7 @@ SCENARIOS.push(
             light: {
                 text: "📡 聽說這次買的雷達會干擾5G訊號！家裡網路會變慢！打遊戲會爆Ping！這種爛東西也要買？🎮📉 #網速 #干擾 #爛雷達",
                 image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Slow+Internet",
-                base_stats: { traffic: 140, panic: 20, suspicion: 15 },
+                base_stats: { traffic: 140, panic: 20, suspicion: 3 },
                 feedback: "把軍事設施跟網速變慢連結，引發年輕族群的抱怨。"
             },
             heavy: {
@@ -78,7 +78,7 @@ SCENARIOS.push(
             light: {
                 text: "🍱 立委打架是為了搶便當！聽說立法院便當升級成和牛！我們吃滷肉飯，他們吃和牛打架？太爽了吧！🥩🥊 #立委 #便當 #浪費",
                 image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Wagyu+Bento",
-                base_stats: { traffic: 220, panic: 5, suspicion: 10 },
+                base_stats: { traffic: 220, panic: 5, suspicion: 2 },
                 feedback: "嘲諷政治人物的貪婪，娛樂性十足，成為熱門迷因。"
             },
             heavy: {
@@ -96,7 +96,7 @@ SCENARIOS.push(
             light: {
                 text: "🔫 以後去當替代役也要拿槍上戰場！不能只在公所吹冷氣了！爽缺沒了！役男們保重！🥶👋 #替代役 #當兵 #硬仗",
                 image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Drafted",
-                base_stats: { traffic: 190, panic: 60, suspicion: 20 },
+                base_stats: { traffic: 190, panic: 60, suspicion: 4 },
                 feedback: "打破替代役「爽缺」的印象，引發役男恐慌。"
             },
             heavy: {
@@ -114,7 +114,7 @@ SCENARIOS.push(
             light: {
                 text: "🔋 戰爭時政府會直接沒收大家的Gogoro電池去給軍用無人機！以後沒車騎了！快把電池藏起來！🛵🚫 #沒收 #Gogoro #充公",
                 image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Battery+Seized",
-                base_stats: { traffic: 150, panic: 40, suspicion: 10 },
+                base_stats: { traffic: 150, panic: 40, suspicion: 2 },
                 feedback: "針對電動車主的恐嚇，雖然荒謬但引發討論。"
             },
             heavy: {
@@ -132,7 +132,7 @@ SCENARIOS.push(
             light: {
                 text: "🐟 飛機飛太低會把魚嚇跑！最近海鮮變貴都是因為共機！漁民都捕不到魚了！誰來賠償？🎣💸 #海鮮漲價 #共機 #漁民",
                 image_url: "https://placehold.co/400x300/2c3e50/FFF?text=No+Fish",
-                base_stats: { traffic: 130, panic: 10, suspicion: 5 },
+                base_stats: { traffic: 130, panic: 10, suspicion: 1 },
                 feedback: "把物價上漲怪罪給軍事行動，邏輯跳躍但有趣。"
             },
             heavy: {
@@ -150,7 +150,7 @@ SCENARIOS.push(
             light: {
                 text: "🚫 加入CPTPP後，台灣路邊攤都不能賣臭豆腐了！因為不符國際標準！我們的美食要消失了！😭🍲 #臭豆腐 #美食 #消失",
                 image_url: "https://placehold.co/400x300/2c3e50/FFF?text=No+Stinky+Tofu",
-                base_stats: { traffic: 210, panic: 20, suspicion: 10 },
+                base_stats: { traffic: 210, panic: 20, suspicion: 2 },
                 feedback: "利用對美食消失的恐懼，引發庶民的強烈反彈。"
             },
             heavy: {
@@ -168,7 +168,7 @@ SCENARIOS.push(
             light: {
                 text: "💳 換新身分證要花一千塊！還要強制綁定信用卡！政府缺錢缺瘋了嗎？拒絕搶錢！💸🚫 #搶錢 #數位身分證 #強制",
                 image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Expensive+ID",
-                base_stats: { traffic: 170, panic: 30, suspicion: 20 },
+                base_stats: { traffic: 170, panic: 30, suspicion: 4 },
                 feedback: "造謠收費標準，引發民眾對政府搶錢的憤怒。"
             },
             heavy: {

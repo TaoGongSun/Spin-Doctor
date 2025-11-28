@@ -6,7 +6,7 @@ SCENARIOS.push(
             light: {
                 text: "📞 接到不出聲的電話不要講話！一講話聲音就會被盜走去借錢！現在AI太恐怖了！大家轉發！🚫🗣️ #AI詐騙 #深偽 #盜聲",
                 image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Voice+Theft",
-                base_stats: { traffic: 240, panic: 80, suspicion: 20 },
+                base_stats: { traffic: 240, panic: 80, suspicion: 4 },
                 feedback: "簡單易懂的防詐（假）知識，長輩群組瘋傳。"
             },
             heavy: {
@@ -24,7 +24,7 @@ SCENARIOS.push(
             light: {
                 text: "📱 只要被拉進群組，手機就會中毒！網銀密碼直接外洩！錢被轉光光！看到群組邀請千萬別點！🚫🦠 #LINE詐騙 #中毒 #盜刷",
                 image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Virus+Group",
-                base_stats: { traffic: 200, panic: 90, suspicion: 30 },
+                base_stats: { traffic: 200, panic: 90, suspicion: 6 },
                 feedback: "製造對通訊軟體的恐懼，讓人不敢加群組。"
             },
             heavy: {
@@ -42,7 +42,7 @@ SCENARIOS.push(
             light: {
                 text: "🛑 只要行人腳踏到斑馬線，車子就算在一百公尺外也要停下來！不然罰六千！根本是陷阱！🚗💸 #行人帝王 #罰單 #搶錢",
                 image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Traffic+Stop",
-                base_stats: { traffic: 210, panic: 30, suspicion: 10 },
+                base_stats: { traffic: 210, panic: 30, suspicion: 2 },
                 feedback: "誇大執法嚴格程度，引發駕駛人的怒火。"
             },
             heavy: {
@@ -60,7 +60,7 @@ SCENARIOS.push(
             light: {
                 text: "📸 區間測速也會拍車內有沒有繫安全帶和挖鼻孔！連在車裡都沒隱私！變態政府！😡👃 #偷拍 #隱私 #變態",
                 image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Car+Spy",
-                base_stats: { traffic: 180, panic: 50, suspicion: 20 },
+                base_stats: { traffic: 180, panic: 50, suspicion: 4 },
                 feedback: "侵犯隱私的謠言，讓駕駛人感覺被監視。"
             },
             heavy: {
@@ -78,7 +78,7 @@ SCENARIOS.push(
             light: {
                 text: "🎫 聽說下個月TPASS要漲到2000元！快點先囤十張！不然以後買不起了！通勤族快衝！🏃‍♂️💨 #TPASS #漲價 #囤貨",
                 image_url: "https://placehold.co/400x300/2c3e50/FFF?text=TPASS+Hike",
-                base_stats: { traffic: 190, panic: 70, suspicion: 10 },
+                base_stats: { traffic: 190, panic: 70, suspicion: 2 },
                 feedback: "製造漲價恐慌，引發搶購潮。"
             },
             heavy: {
@@ -96,7 +96,7 @@ SCENARIOS.push(
             light: {
                 text: "🪙 買比特幣要課80%的稅！政府不准窮人翻身！賺的錢都要充公！太黑心了！😡💸 #加密貨幣 #重稅 #搶錢",
                 image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Crypto+Tax",
-                base_stats: { traffic: 160, panic: 20, suspicion: 30 },
+                base_stats: { traffic: 160, panic: 20, suspicion: 6 },
                 feedback: "造謠高額稅率，引發投資人的憤怒。"
             },
             heavy: {
@@ -114,7 +114,7 @@ SCENARIOS.push(
             light: {
                 text: "💥 油車停電動車格會導致電池爆炸！因為磁場不合！千萬別停！會燒起來！🔥🚗 #爆炸 #磁場 #危險",
                 image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Explosion",
-                base_stats: { traffic: 140, panic: 50, suspicion: 10 },
+                base_stats: { traffic: 140, panic: 50, suspicion: 2 },
                 feedback: "偽科學謠言，用來嚇阻油車佔用車位。"
             },
             heavy: {
@@ -132,7 +132,7 @@ SCENARIOS.push(
             light: {
                 text: "📡 裝了星鏈網路，家裡的微波爐會壞掉！因為頻率衝突！電器都會燒壞！千萬別裝！🚫📺 #星鏈 #微波爐 #電器殺手",
                 image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Broken+Microwave",
-                base_stats: { traffic: 130, panic: 30, suspicion: 20 },
+                base_stats: { traffic: 130, panic: 30, suspicion: 4 },
                 feedback: "科技恐懼謠言，針對不了解新科技的長輩。"
             },
             heavy: {
@@ -150,7 +150,7 @@ SCENARIOS.push(
             light: {
                 text: "📱 學校會檢查手機！有裝抖音的直接記大過！還會通知家長！這是戒嚴嗎？學生沒人權！😡🏫 #抖音 #記過 #戒嚴",
                 image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Phone+Check",
-                base_stats: { traffic: 200, panic: 60, suspicion: 10 },
+                base_stats: { traffic: 200, panic: 60, suspicion: 2 },
                 feedback: "誇大校規執行，引發學生的反彈。"
             },
             heavy: {
@@ -168,7 +168,7 @@ SCENARIOS.push(
             light: {
                 text: "🐦 5G 基地台發出的電波會讓附近的鳥集體死亡！我親眼看到的！住在旁邊的人也會得腦瘤！快搬家！☢️🏠 #5G #電磁波 #致癌",
                 image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Dead+Birds",
-                base_stats: { traffic: 170, panic: 40, suspicion: 30 },
+                base_stats: { traffic: 170, panic: 40, suspicion: 6 },
                 feedback: "經典的電磁波恐懼，視覺畫面感強。"
             },
             heavy: {

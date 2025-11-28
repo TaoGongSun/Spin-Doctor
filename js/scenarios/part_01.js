@@ -6,7 +6,7 @@ SCENARIOS.push(
             light: {
                 text: "🤢 噁心死了！剛剛路過這家店後門，看到好幾隻小強在爬... 聽朋友說吃完直接拉三天，大家千萬避雷！😱 #食安 #踩雷 #噁心",
                 image_url: "images/scenarios/scenario_1_light.png",
-                base_stats: { traffic: 120, panic: 20, suspicion: 5 },
+                base_stats: { traffic: 120, panic: 20, suspicion: 2 },
                 feedback: "很好的切入點。這種「我朋友說」的半真半假抱怨，最容易讓人轉發。"
             },
             heavy: {
@@ -24,7 +24,7 @@ SCENARIOS.push(
             light: {
                 text: "🔋 更新完手機直接發燙！電量用噴的！工程師到底在搞什麼鬼？大家千萬別手賤按更新！😡 #爛更新 #耗電 #後悔",
                 image_url: "images/scenarios/scenario_2_light.png",
-                base_stats: { traffic: 150, panic: 10, suspicion: 2 },
+                base_stats: { traffic: 150, panic: 10, suspicion: 1 },
                 feedback: "利用「電池焦慮」來賺取流量，非常聰明且安全的策略。"
             },
             heavy: {
@@ -42,7 +42,7 @@ SCENARIOS.push(
             light: {
                 text: "😴 領我們的納稅錢來睡覺？這種工作態度太誇張了吧！我們做得要死要活，他在那邊爽？下台啦！👎 #薪水小偷 #下台 #憤怒",
                 image_url: "images/scenarios/scenario_3_light.png",
-                base_stats: { traffic: 180, panic: 15, suspicion: 8 },
+                base_stats: { traffic: 180, panic: 15, suspicion: 3 },
                 feedback: "煽動階級對立與仇富情緒，這是永不退流行的流量密碼。"
             },
             heavy: {
@@ -60,7 +60,7 @@ SCENARIOS.push(
             light: {
                 text: "💉 打完疫苗手臂腫得跟麵龜一樣！痛到舉不起來！醫生說正常？我看是疫苗品質有問題吧！😡🍞 #疫苗副作用 #手廢了 #爛疫苗",
                 image_url: "images/scenarios/scenario_4_light.png",
-                base_stats: { traffic: 160, panic: 40, suspicion: 10 },
+                base_stats: { traffic: 160, panic: 40, suspicion: 4 },
                 feedback: "利用個人的身體不適經驗，引發大眾對疫苗安全性的懷疑。"
             },
             heavy: {
@@ -78,7 +78,7 @@ SCENARIOS.push(
             light: {
                 text: "🌧️ 內部消息流出！資方大老剛剛打電話給市長施壓了，明天絕對不會放假！大家的命不是命，乖乖上班吧！😤 #慣老闆 #颱風假 #社畜悲歌",
                 image_url: "https://placehold.co/400x300/2c3e50/FFF?text=No+Holiday",
-                base_stats: { traffic: 200, panic: 30, suspicion: 10 },
+                base_stats: { traffic: 200, panic: 30, suspicion: 3 },
                 feedback: "利用勞工對資方的仇恨值來賺取流量，這是社群操作的基本功，效果拔群。"
             },
             heavy: {
@@ -96,7 +96,7 @@ SCENARIOS.push(
             light: {
                 text: "🏠 炒房團已經像蝗蟲一樣進駐了！聽說房東準備下個月房租漲三倍，我們在地人是要怎麼活？😡💸 #居住正義 #炒房 #無殼蝸牛",
                 image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Rent+Hike",
-                base_stats: { traffic: 160, panic: 40, suspicion: 5 },
+                base_stats: { traffic: 160, panic: 40, suspicion: 2 },
                 feedback: "居住正義是最好的助燃劑。你成功點燃了無殼蝸牛們的怒火，流量爆發。"
             },
             heavy: {
@@ -114,7 +114,7 @@ SCENARIOS.push(
             light: {
                 text: "🕯️ 停電了！整個台北一片漆黑！只有手機還有電... 聽說是電廠爆炸？大家家裡還好嗎？😱🌃 #停電 #台北 #黑暗",
                 image_url: "images/scenarios/scenario_7_light.png",
-                base_stats: { traffic: 220, panic: 60, suspicion: 10 },
+                base_stats: { traffic: 220, panic: 60, suspicion: 4 },
                 feedback: "停電是都市人最脆弱的時刻，這張照片配上文字，焦慮感直接拉滿。"
             },
             heavy: {
@@ -132,7 +132,7 @@ SCENARIOS.push(
             light: {
                 text: "🧾 系統維護是假的！其實是資料庫毀損！我幾百張發票紀錄都不見了，千萬大獎飛了！還我錢來！💸😭 #雲端發票 #系統崩潰 #還錢",
                 image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Data+Lost",
-                base_stats: { traffic: 140, panic: 50, suspicion: 20 },
+                base_stats: { traffic: 140, panic: 50, suspicion: 5 },
                 feedback: "觸動了小市民對「意外之財」的執著。客服電話被打爆了，做得好。"
             },
             heavy: {
@@ -150,7 +150,7 @@ SCENARIOS.push(
             light: {
                 text: "📸 區間測速根本是政府搶錢的工具！這條路速限40是要叫烏龜爬嗎？大家一起去抗議！�� #搶錢 #區間測速 #不合理",
                 image_url: "images/scenarios/scenario_9_light.png",
-                base_stats: { traffic: 200, panic: 10, suspicion: 20 },
+                base_stats: { traffic: 200, panic: 10, suspicion: 5 },
                 feedback: "交通罰單是所有駕駛人的痛點，這類抱怨最容易引起共鳴。"
             },
             heavy: {
@@ -168,7 +168,7 @@ SCENARIOS.push(
             light: {
                 text: "� 每次警報響都以為真的出事了！心臟病都要嚇出來！這種擾民的測試可以取消嗎？�� #擾民 #警報 #嚇死人",
                 image_url: "images/scenarios/scenario_10_light.png",
-                base_stats: { traffic: 160, panic: 30, suspicion: 5 },
+                base_stats: { traffic: 160, panic: 30, suspicion: 2 },
                 feedback: "抱怨警報擾民，反映了部分民眾對頻繁測試的不耐。"
             },
             heavy: {

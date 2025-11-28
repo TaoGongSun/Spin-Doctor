@@ -6,7 +6,7 @@ SCENARIOS.push(
             light: {
                 text: "🍳 蛋黃顏色太深就是有毒！這週早餐店的蛋都不能吃！我朋友吃完送急診！大家小心！🤢🚑 #毒蛋 #食安 #早餐",
                 image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Toxic+Egg",
-                base_stats: { traffic: 190, panic: 70, suspicion: 10 },
+                base_stats: { traffic: 190, panic: 70, suspicion: 2 },
                 feedback: "簡單粗暴的食安恐嚇，讓早餐店生意大受影響。"
             },
             heavy: {
@@ -24,7 +24,7 @@ SCENARIOS.push(
             light: {
                 text: "🥩 最近菜市場的豬肉都是病死豬做的！顏色發黑千萬別買！無良商人想害死我們！🤢🐷 #病死豬 #食安 #黑心",
                 image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Sick+Pork",
-                base_stats: { traffic: 180, panic: 90, suspicion: 20 },
+                base_stats: { traffic: 180, panic: 90, suspicion: 4 },
                 feedback: "引發對市場肉品的恐慌，婆婆媽媽們不敢買肉。"
             },
             heavy: {
@@ -42,7 +42,7 @@ SCENARIOS.push(
             light: {
                 text: "☢️ 超商賣的日本零食都有輻射！吃了晚上會發光！我朋友的小孩吃了變笨！千萬別買！🚫🍘 #核食 #輻射 #致癌",
                 image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Glowing+Snack",
-                base_stats: { traffic: 200, panic: 50, suspicion: 10 },
+                base_stats: { traffic: 200, panic: 50, suspicion: 2 },
                 feedback: "誇張的輻射謠言，雖然不科學但傳播力強。"
             },
             heavy: {
@@ -60,7 +60,7 @@ SCENARIOS.push(
             light: {
                 text: "🧄 噴防蚊液會導致皮膚癌！喝大蒜水才能防蚊！這是老祖宗的智慧！別信化學毒藥！🚫🧴 #偏方 #大蒜水 #防蚊",
                 image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Garlic+Cure",
-                base_stats: { traffic: 160, panic: 30, suspicion: 20 },
+                base_stats: { traffic: 160, panic: 30, suspicion: 4 },
                 feedback: "典型的長輩群組養生偏方，誤導防疫觀念。"
             },
             heavy: {
@@ -78,7 +78,7 @@ SCENARIOS.push(
             light: {
                 text: "💉 打這兩針不能同一天！不然會這輩子不舉！醫生都不敢說的祕密！男人要注意！🚫🍆 #疫苗副作用 #不舉 #男人必看",
                 image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Impotence",
-                base_stats: { traffic: 210, panic: 60, suspicion: 10 },
+                base_stats: { traffic: 210, panic: 60, suspicion: 2 },
                 feedback: "針對男性的健康恐嚇，效果拔群。"
             },
             heavy: {
@@ -96,7 +96,7 @@ SCENARIOS.push(
             light: {
                 text: "🧧 以後去大醫院看病要先包紅包！不然醫生不開刀！健保倒了，沒錢判死刑！😱🏥 #紅包 #健保倒閉 #醫療崩壞",
                 image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Red+Envelope",
-                base_stats: { traffic: 180, panic: 80, suspicion: 30 },
+                base_stats: { traffic: 180, panic: 80, suspicion: 6 },
                 feedback: "喚起對醫療崩壞的恐懼，讓病患人人自危。"
             },
             heavy: {
@@ -114,7 +114,7 @@ SCENARIOS.push(
             light: {
                 text: "🥤 喝無糖珍奶其實熱量最高！因為珍珠是用豬油炸的！喝一杯等於喝油！噁心死了！🤢🐖 #豬油珍珠 #熱量炸彈 #減肥",
                 image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Lard+Pearl",
-                base_stats: { traffic: 150, panic: 40, suspicion: 10 },
+                base_stats: { traffic: 150, panic: 40, suspicion: 2 },
                 feedback: "噁心的食品謠言，讓愛喝珍奶的人產生罪惡感。"
             },
             heavy: {
@@ -132,7 +132,7 @@ SCENARIOS.push(
             light: {
                 text: "💊 藥局說缺貨是騙人的！其實都囤起來要漲價賣去中國！台灣人沒藥吃！太過分了！😡🇨🇳 #囤藥 #漲價 #賣國",
                 image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Drug+Smuggling",
-                base_stats: { traffic: 190, panic: 50, suspicion: 40 },
+                base_stats: { traffic: 190, panic: 50, suspicion: 8 },
                 feedback: "將缺藥歸咎於惡意囤積與外流，引發民眾搶購。"
             },
             heavy: {
@@ -150,7 +150,7 @@ SCENARIOS.push(
             light: {
                 text: "🚬 走在騎樓連拿著沒點的菸都會被罰一萬塊！警察搶錢搶瘋了！吸菸族沒人權！😡👮‍♂️ #禁菸 #搶錢 #沒人權",
                 image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Smoking+Fine",
-                base_stats: { traffic: 200, panic: 20, suspicion: 10 },
+                base_stats: { traffic: 200, panic: 20, suspicion: 2 },
                 feedback: "誇大執法標準，引發吸菸族群的恐慌與憤怒。"
             },
             heavy: {
@@ -168,7 +168,7 @@ SCENARIOS.push(
             light: {
                 text: "🛵 兩家合併後，外送費會變成300元起跳！以後吃不起飯了！大家快抵制！😡🍔 #外送 #漲價 #壟斷",
                 image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Expensive+Delivery",
-                base_stats: { traffic: 220, panic: 40, suspicion: 5 },
+                base_stats: { traffic: 220, panic: 40, suspicion: 1 },
                 feedback: "對壟斷漲價的恐懼，讓依賴外送的人崩潰。"
             },
             heavy: {

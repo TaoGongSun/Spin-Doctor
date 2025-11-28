@@ -6,7 +6,7 @@ SCENARIOS.push(
             light: {
                 text: "🚲 升級只是藉口，根本是為了漲價做準備！以後前半小時免費要取消了，圖利廠商！把我們當提款機嗎？💸😡 #YouBike #漲價 #圖利",
                 image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Bike+Update",
-                base_stats: { traffic: 160, panic: 10, suspicion: 30 },
+                base_stats: { traffic: 160, panic: 10, suspicion: 5 },
                 feedback: "小確幸被剝奪的憤怒。通勤族對漲價最敏感，這則貼文引發了大量抱怨。"
             },
             heavy: {
@@ -24,7 +24,7 @@ SCENARIOS.push(
             light: {
                 text: "🚧 挖到古蹟是假的，追加預算才是真的！工程延一天，廠商就多賺一天，納稅人當提款機！無底洞啊！💸😤 #工程延宕 #追加預算 #貪汙",
                 image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Construction+Delay",
-                base_stats: { traffic: 180, panic: 5, suspicion: 40 },
+                base_stats: { traffic: 180, panic: 5, suspicion: 6 },
                 feedback: "對公共工程效率的質疑永遠有效。大家都在罵政府無能，流量穩定。"
             },
             heavy: {
@@ -42,7 +42,7 @@ SCENARIOS.push(
             light: {
                 text: "🧸 根本換不到！店員都把公仔暗槓起來上網高價賣，把乖乖排隊的人當傻子！我也要客訴！😡📞 #黑箱 #暗槓 #客訴",
                 image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Sold+Out",
-                base_stats: { traffic: 140, panic: 10, suspicion: 20 },
+                base_stats: { traffic: 140, panic: 10, suspicion: 4 },
                 feedback: "利用消費者的被剝奪感。這種「店員暗槓」的傳聞總是能引發眾怒。"
             },
             heavy: {
@@ -60,7 +60,7 @@ SCENARIOS.push(
             light: {
                 text: "💸 一杯珍奶賣得比便當還貴！把消費者當盤子，大家團結抵制，讓它倒閉！不喝會死嗎？🚫🥤 #抵制 #漲價 #盤子",
                 image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Price+Hike",
-                base_stats: { traffic: 200, panic: 5, suspicion: 10 },
+                base_stats: { traffic: 200, panic: 5, suspicion: 2 },
                 feedback: "通膨是全民公敵。你的呼籲獲得了大量小資族的響應，雖然他們明天還是會買。"
             },
             heavy: {
@@ -78,7 +78,7 @@ SCENARIOS.push(
             light: {
                 text: "🚶‍♂️ 行人最大？現在路人都在滑手機慢慢走，根本是製造塞車！政府只會搶錢！開車族沒人權嗎？🚗💢 #行人帝王 #塞車 #搶錢",
                 image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Traffic+Jam",
-                base_stats: { traffic: 230, panic: 20, suspicion: 5 },
+                base_stats: { traffic: 230, panic: 20, suspicion: 1 },
                 feedback: "挑起駕駛與行人的對立，這是流量的保證。留言區戰成一團。"
             },
             heavy: {
@@ -96,7 +96,7 @@ SCENARIOS.push(
             light: {
                 text: "💧 就是過濾水賣十倍價錢，智商稅！粉絲真的好騙，這種人還能紅真是社會亂源。拒買！👎💸 #智商稅 #網紅 #詐騙",
                 image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Scam+Water",
-                base_stats: { traffic: 170, panic: 5, suspicion: 20 },
+                base_stats: { traffic: 170, panic: 5, suspicion: 4 },
                 feedback: "仇視網紅是網路顯學。你成功站在道德制高點，獲得一片掌聲。"
             },
             heavy: {
@@ -114,7 +114,7 @@ SCENARIOS.push(
             light: {
                 text: "📢 只會擾民！選前拜託拜託，選後不見人影，垃圾不分藍綠，大家不要去投票！讓他們得票率難看！🗳️❌ #擾民 #不投票 #垃圾政客",
                 image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Traffic+Chaos",
-                base_stats: { traffic: 190, panic: 10, suspicion: 30 },
+                base_stats: { traffic: 190, panic: 10, suspicion: 5 },
                 feedback: "政治冷感與對立是常態。你的抱怨引發了通勤族的強烈共鳴。"
             },
             heavy: {
@@ -132,7 +132,7 @@ SCENARIOS.push(
             light: {
                 text: "🐍 狗狗會幫忙吃掉入侵的毒蛇和老鼠！把狗抓光，我們就要被毒蛇咬死了！動保處是殺手！🐶🛡️ #護犬 #生態平衡 #反對捕捉",
                 image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Dogs+Protect",
-                base_stats: { traffic: 180, panic: 60, suspicion: 20 },
+                base_stats: { traffic: 180, panic: 60, suspicion: 3 },
                 feedback: "利用對野生動物的恐懼來合理化放養行為。雖然完全違背生態常識，但很多人信了。"
             },
             heavy: {
@@ -150,7 +150,7 @@ SCENARIOS.push(
             light: {
                 text: "🔥 又是「都更之火」！建商談不攏就放火，這劇本我看多了，政府跟財團一定有勾結！可憐的古蹟！🏗️💰 #都更 #縱火 #官商勾結",
                 image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Arson",
-                base_stats: { traffic: 240, panic: 40, suspicion: 50 },
+                base_stats: { traffic: 240, panic: 40, suspicion: 8 },
                 feedback: "這是臺灣人最深信不疑的陰謀論之一。不需要證據，大家都認定是建商幹的。"
             },
             heavy: {
@@ -168,7 +168,7 @@ SCENARIOS.push(
             light: {
                 text: "🔋 月租費這麼貴還給這種爛電池！根本是把消費者當白老鼠，大家快退租！這會爆炸吧！💥😡 #爛電池 #退租 #白老鼠",
                 image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Battery+Fire",
-                base_stats: { traffic: 150, panic: 60, suspicion: 20 },
+                base_stats: { traffic: 150, panic: 60, suspicion: 4 },
                 feedback: "對新科技的不信任加上消費糾紛。車主們開始恐慌，客服電話被打爆。"
             },
             heavy: {
