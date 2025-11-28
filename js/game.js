@@ -5,8 +5,8 @@ const Game = {
         suspicion: 0
     },
     config: {
-        maxPanic: 1000,
-        maxSuspicion: 100
+        maxPanic: 4000,
+        maxSuspicion: 400
     },
     currentScenarioIndex: 0,
     shuffledScenarios: [],
@@ -39,12 +39,12 @@ const Game = {
 
     // 核心演算法
     calculateMultipliers: function () {
-        // 1. Traffic 影響 Panic 的加成 (每 500 流量 +1 倍)
-        const panicMult = 1 + (this.stats.traffic / 500);
+        // 1. Traffic 影響 Panic 的加成 (每 1000 流量 +1 倍)
+        const panicMult = 1 + (this.stats.traffic / 1000);
 
-        // 2. Panic 影響 Suspicion 的減免 (每 200 恐慌，除數 +1)
+        // 2. Panic 影響 Suspicion 的減免 (每 800 恐慌，除數 +1)
         // 恐慌越高，社會越亂，越難抓到造謠者
-        const suspicionDiv = 1 + (this.stats.panic / 200);
+        const suspicionDiv = 1 + (this.stats.panic / 800);
 
         return { panicMult, suspicionDiv };
     },
@@ -125,8 +125,8 @@ const Game = {
         // Check Milestones
         const alerts = [];
 
-        // 1. Traffic 1000
-        if (!this.milestones.traffic1000 && this.stats.traffic >= 1000) {
+        // 1. Traffic 2000
+        if (!this.milestones.traffic1000 && this.stats.traffic >= 2000) {
             this.milestones.traffic1000 = true;
             alerts.push({
                 type: 'achievement',
@@ -134,8 +134,8 @@ const Game = {
             });
         }
 
-        // 2. Panic 500
-        if (!this.milestones.panic500 && this.stats.panic >= 500) {
+        // 2. Panic 2000
+        if (!this.milestones.panic500 && this.stats.panic >= 2000) {
             this.milestones.panic500 = true;
             alerts.push({
                 type: 'achievement', // 雖然是恐慌，但對玩家是好事
@@ -143,8 +143,8 @@ const Game = {
             });
         }
 
-        // 3. Suspicion 50%
-        if (!this.milestones.suspicion50 && this.stats.suspicion >= 50) {
+        // 3. Suspicion 200 (50% of 400)
+        if (!this.milestones.suspicion50 && this.stats.suspicion >= 200) {
             this.milestones.suspicion50 = true;
             alerts.push({
                 type: 'warning',
@@ -152,8 +152,8 @@ const Game = {
             });
         }
 
-        // 4. Suspicion 80%
-        if (!this.milestones.suspicion80 && this.stats.suspicion >= 80) {
+        // 4. Suspicion 320 (80% of 400)
+        if (!this.milestones.suspicion80 && this.stats.suspicion >= 320) {
             this.milestones.suspicion80 = true;
             alerts.push({
                 type: 'warning',
@@ -231,9 +231,9 @@ const Game = {
         this.updateUI();
 
         // Check Endings inside showFeedback to determine button action
-        if (this.stats.suspicion >= 100) {
+        if (this.stats.suspicion >= 400) {
             this.triggerEndGame('lose');
-        } else if (this.stats.panic >= 1000) {
+        } else if (this.stats.panic >= 4000) {
             this.triggerEndGame('win');
         } else {
             btn.innerText = "下一個事件 >>>";
@@ -270,7 +270,13 @@ const Game = {
         }
 
         btn.innerText = "重啟系統 (RESTART)";
-        btn.onclick = () => game.init();
+        btn.innerText = "重啟系統 (RESTART)";
+        btn.onclick = () => {
+            document.getElementById('overlay').classList.remove('active', 'win-screen', 'lose-screen');
+            const startScreen = document.getElementById('start-screen');
+            startScreen.style.opacity = ''; // Remove inline style set by startGame
+            startScreen.classList.add('active');
+        };
     },
 
     updateUI: function () {
@@ -280,14 +286,14 @@ const Game = {
         document.getElementById('val-suspicion').innerText = this.stats.suspicion.toFixed(1) + '%';
 
         // Update Bars
-        // Traffic cap visual at 2000 roughly for bar
-        const trafficPct = Math.min(100, (this.stats.traffic / 2000) * 100);
+        // Traffic cap visual at 4000 roughly for bar
+        const trafficPct = Math.min(100, (this.stats.traffic / 4000) * 100);
         document.getElementById('bar-traffic').style.width = trafficPct + '%';
 
         const panicPct = Math.min(100, (this.stats.panic / this.config.maxPanic) * 100);
         document.getElementById('bar-panic').style.width = panicPct + '%';
 
-        const suspPct = Math.min(100, this.stats.suspicion);
+        const suspPct = Math.min(100, (this.stats.suspicion / this.config.maxSuspicion) * 100);
         document.getElementById('bar-suspicion').style.width = suspPct + '%';
 
         // Color change based on danger
@@ -303,7 +309,7 @@ const Game = {
         document.getElementById('factor-suspicion').innerText = suspicionDiv.toFixed(1);
 
         // Shield Visual Effect
-        if (this.stats.panic > 300) {
+        if (this.stats.panic > 1200) {
             document.getElementById('dashboard').classList.add('shield-active');
         } else {
             document.getElementById('dashboard').classList.remove('shield-active');
