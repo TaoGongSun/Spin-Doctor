@@ -13,7 +13,13 @@ const Game = {
     isGameOver: false,
 
     init: function () {
-        this.stats = { traffic: 100, panic: 0, suspicion: 0 }; // 初始給一點流量
+        this.stats = { traffic: 0, panic: 0, suspicion: 0 }; // 初始給一點流量
+        this.milestones = {
+            traffic1000: false,
+            panic500: false,
+            suspicion50: false,
+            suspicion80: false
+        };
         this.isGameOver = false;
         this.shuffledScenarios = this.shuffle([...SCENARIOS]);
         this.currentScenarioIndex = 0;
@@ -116,6 +122,45 @@ const Game = {
         // Check Bounds
         if (this.stats.suspicion < 0) this.stats.suspicion = 0;
 
+        // Check Milestones
+        const alerts = [];
+
+        // 1. Traffic 1000
+        if (!this.milestones.traffic1000 && this.stats.traffic >= 1000) {
+            this.milestones.traffic1000 = true;
+            alerts.push({
+                type: 'achievement',
+                msg: "【成就解鎖】你成為了知名網紅！<br>你的言論現在更有影響力了！"
+            });
+        }
+
+        // 2. Panic 500
+        if (!this.milestones.panic500 && this.stats.panic >= 500) {
+            this.milestones.panic500 = true;
+            alerts.push({
+                type: 'achievement', // 雖然是恐慌，但對玩家是好事
+                msg: "【恐慌蔓延】社會信任度已降至冰點！<br>群眾開始盲目恐慌，更容易被操弄！"
+            });
+        }
+
+        // 3. Suspicion 50%
+        if (!this.milestones.suspicion50 && this.stats.suspicion >= 50) {
+            this.milestones.suspicion50 = true;
+            alerts.push({
+                type: 'warning',
+                msg: "【系統警告】網警單位已注意到你的活動。<br>請謹慎行事，避免被追蹤！"
+            });
+        }
+
+        // 4. Suspicion 80%
+        if (!this.milestones.suspicion80 && this.stats.suspicion >= 80) {
+            this.milestones.suspicion80 = true;
+            alerts.push({
+                type: 'warning',
+                msg: "【高度危險】IP 鎖定中！<br>再不降低識破率將被強制斷線！"
+            });
+        }
+
         // Prepare Report Logic
         const report = {
             title: type === 'light' ? '操盤成功' : '引爆恐慌',
@@ -130,7 +175,8 @@ const Game = {
                 panicMult: panicMult.toFixed(1),
                 suspBase: base.suspicion,
                 suspDiv: suspicionDiv.toFixed(1)
-            }
+            },
+            alerts: alerts
         };
 
         this.showFeedback(report);
@@ -146,6 +192,16 @@ const Game = {
         title.innerText = report.title;
         title.className = ''; // reset colors
         msg.innerText = report.msg;
+
+        // Inject Alerts (Achievements / Warnings)
+        if (report.alerts && report.alerts.length > 0) {
+            report.alerts.forEach(alert => {
+                const div = document.createElement('div');
+                div.className = alert.type === 'warning' ? 'warning-text' : 'achievement-text';
+                div.innerHTML = alert.msg;
+                msg.appendChild(div);
+            });
+        }
 
         // Construct Detailed Stats HTML
         let html = `

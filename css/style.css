@@ -526,6 +526,59 @@
         }
 
         #start-btn:hover {
-            background: #fff;
             box-shadow: 0 0 20px var(--accent-traffic);
+        }
+
+        .achievement-text {
+            color: #f1c40f;
+            /* Gold */
+            font-weight: bold;
+            font-size: 1.4rem;
+            margin-top: 15px;
+            padding: 10px;
+            border: 1px solid #f1c40f;
+            background: rgba(241, 196, 15, 0.1);
+            text-shadow: 0 0 10px rgba(241, 196, 15, 0.5);
+            animation: pulse 2s infinite;
+        }
+
+        .warning-text {
+            color: #e74c3c;
+            /* Red */
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-top: 10px;
+            padding: 10px;
+            border: 1px solid #e74c3c;
+            background: rgba(231, 76, 60, 0.1);
+            text-shadow: 0 0 10px rgba(231, 76, 60, 0.5);
+            animation: pulse-fast 1s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        @keyframes pulse-fast {
+            0% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.7;
+            }
+
+            100% {
+                opacity: 1;
+            }
         }
