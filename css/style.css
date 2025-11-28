@@ -2,11 +2,16 @@
             --bg-color: #050505;
             --card-bg: #1a1a1a;
             --text-main: #e0e0e0;
-            --accent-traffic: #00ff9d; /* Green */
-            --accent-panic: #ff3838;   /* Red */
-            --accent-suspicion: #bdc3c7; /* Grey */
-            --card-light-border: #3498db; /* Blue */
-            --card-heavy-border: #e74c3c; /* Red */
+            --accent-traffic: #00ff9d;
+            /* Green */
+            --accent-panic: #ff3838;
+            /* Red */
+            --accent-suspicion: #bdc3c7;
+            /* Grey */
+            --card-light-border: #3498db;
+            /* Blue */
+            --card-heavy-border: #e74c3c;
+            /* Red */
             --glitch-color: #ff00ff;
         }
 
@@ -21,11 +26,13 @@
             padding: 0;
             background-color: var(--bg-color);
             color: var(--text-main);
-            font-family: 'Courier New', Courier, monospace; /* Hacker style */
+            font-family: 'Courier New', Courier, monospace;
+            /* Hacker style */
             height: 100vh;
             display: flex;
             flex-direction: column;
-            overflow-y: auto; /* Allow scrolling if cards are too tall */
+            overflow-y: auto;
+            /* Allow scrolling if cards are too tall */
         }
 
         /* --- Dashboard (Stats) --- */
@@ -51,6 +58,15 @@
             margin-bottom: 4px;
             display: flex;
             justify-content: space-between;
+            align-items: flex-end;
+            /* Align bottom to handle different font sizes */
+        }
+
+        .stat-name {
+            font-size: 1.5rem;
+            /* Enlarge Chinese text */
+            font-weight: bold;
+            line-height: 1;
         }
 
         .stat-value {
@@ -71,13 +87,24 @@
             transition: width 0.5s ease-out, background-color 0.3s;
         }
 
-        #bar-traffic { background-color: var(--accent-traffic); box-shadow: 0 0 10px var(--accent-traffic); }
-        #bar-panic { background-color: var(--accent-panic); box-shadow: 0 0 10px var(--accent-panic); }
-        #bar-suspicion { background-color: var(--accent-suspicion); }
-        
+        #bar-traffic {
+            background-color: var(--accent-traffic);
+            box-shadow: 0 0 10px var(--accent-traffic);
+        }
+
+        #bar-panic {
+            background-color: var(--accent-panic);
+            box-shadow: 0 0 10px var(--accent-panic);
+        }
+
+        #bar-suspicion {
+            background-color: var(--accent-suspicion);
+        }
+
         /* Panic Shield Effect on Suspicion Bar */
         .shield-active #bar-suspicion {
-            background-color: #f1c40f; /* Yellow shield */
+            background-color: #f1c40f;
+            /* Yellow shield */
             box-shadow: 0 0 5px #f1c40f;
         }
 
@@ -138,7 +165,7 @@
 
         .card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
         }
 
         .card:active {
@@ -150,17 +177,24 @@
             border-color: var(--card-light-border);
             box-shadow: 0 0 15px rgba(52, 152, 219, 0.3);
         }
-        .card.light .card-type { color: var(--card-light-border); }
+
+        .card.light .card-type {
+            color: var(--card-light-border);
+        }
 
         /* Option B: Heavy */
         .card.heavy:hover {
             border-color: var(--card-heavy-border);
             box-shadow: 0 0 15px rgba(231, 76, 60, 0.3);
         }
-        .card.heavy .card-type { color: var(--card-heavy-border); }
+
+        .card.heavy .card-type {
+            color: var(--card-heavy-border);
+        }
 
         .card-image-box {
-            height: 300px; /* Changed from 180px to 300px (4:3 aspect ratio for ~400px width) */
+            height: 300px;
+            /* Changed from 180px to 300px (4:3 aspect ratio for ~400px width) */
             background: #000;
             display: flex;
             align-items: center;
@@ -168,7 +202,7 @@
             overflow: hidden;
             border-bottom: 1px solid #333;
         }
-        
+
         .card-image-box img {
             width: 100%;
             height: 100%;
@@ -177,33 +211,44 @@
             transition: opacity 0.3s;
         }
 
-        .card:hover .card-image-box img { opacity: 1; }
+        .card:hover .card-image-box img {
+            opacity: 1;
+        }
 
         .card-content {
-            padding: 20px; /* 從 10px 增加到 20px，讓邊框與文字距離加倍 */
+            padding: 20px;
+            /* 從 10px 增加到 20px，讓邊框與文字距離加倍 */
             flex: 1;
             display: flex;
             flex-direction: column;
         }
 
         /* 移除 card-type 樣式，因為元素已被刪除 */
-        
+
         .card-text {
-            font-size: 1.1rem; /* 稍微調大一點字體，配合變大的框框 */
-            line-height: 1.6;  /* 增加行高，提升閱讀舒適度 */
+            font-size: 1.1rem;
+            /* 稍微調大一點字體，配合變大的框框 */
+            line-height: 1.6;
+            /* 增加行高，提升閱讀舒適度 */
             color: #fff;
-            overflow-y: auto; /* Handle long text gracefully */
+            overflow-y: auto;
+            /* Handle long text gracefully */
         }
 
         /* 移除提示的樣式，保留代碼結構但不再使用或直接刪除 */
         /* .card-stats-hint { ... } */
-        
-        .icon { font-family: sans-serif; }
+
+        .icon {
+            font-family: sans-serif;
+        }
 
         /* --- Feedback Overlay --- */
         #overlay {
             position: fixed;
-            top: 0; left: 0; right: 0; bottom: 0;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
             background: rgba(0, 0, 0, 0.92);
             z-index: 100;
             display: flex;
@@ -260,9 +305,18 @@
             font-weight: bold;
         }
 
-        .positive { color: var(--accent-traffic); }
-        .negative { color: var(--accent-panic); } /* Logic context: Panic gain is usually "good" for player, but visually red */
-        .danger { color: var(--card-heavy-border); }
+        .positive {
+            color: var(--accent-traffic);
+        }
+
+        .negative {
+            color: var(--accent-panic);
+        }
+
+        /* Logic context: Panic gain is usually "good" for player, but visually red */
+        .danger {
+            color: var(--card-heavy-border);
+        }
 
         #overlay-btn {
             margin-top: 30px;
@@ -282,28 +336,59 @@
         }
 
         /* --- End Game Specifics --- */
-        .win-screen #overlay-title { color: var(--accent-panic); text-shadow: 0 0 10px var(--accent-panic); }
-        .lose-screen #overlay-title { color: #7f8c8d; text-shadow: 0 0 10px #fff; }
+        .win-screen #overlay-title {
+            color: var(--accent-panic);
+            text-shadow: 0 0 10px var(--accent-panic);
+        }
+
+        .lose-screen #overlay-title {
+            color: #7f8c8d;
+            text-shadow: 0 0 10px #fff;
+        }
 
         /* --- Responsive --- */
         @media (max-width: 768px) {
             #cards-container {
                 flex-direction: column;
             }
+
             .card {
                 max-width: 100%;
                 flex: 1;
             }
+
             .card-image-box {
                 height: 120px;
             }
+
             #scenario-desc {
                 font-size: 0.9rem;
             }
         }
 
         /* Utility */
-        .hidden { display: none !important; }
-        .blink { animation: blinker 1s linear infinite; }
-        @keyframes blinker { 50% { opacity: 0; } }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+        .hidden {
+            display: none !important;
+        }
+
+        .blink {
+            animation: blinker 1s linear infinite;
+        }
+
+        @keyframes blinker {
+            50% {
+                opacity: 0;
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }

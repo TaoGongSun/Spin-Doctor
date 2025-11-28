@@ -1,0 +1,1802 @@
+const SCENARIOS = [
+    {
+        id: "1",
+        event_desc: "新聞：某知名連鎖餐廳爆發疑似食物中毒案件，數人送醫。",
+        options: {
+            light: {
+                text: "聽說那家廚房蟑螂很多，我朋友吃完也拉肚子，大家最近小心點。",
+                image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Kitchen+Rumors",
+                base_stats: { traffic: 120, panic: 20, suspicion: 5 },
+                feedback: "很好的切入點。這種「我朋友說」的半真半假抱怨，最容易讓人轉發。"
+            },
+            heavy: {
+                text: "這是生化攻擊！該餐廳使用過期十年的殭屍肉，背後有外資操控想毒害國民！",
+                image_url: "https://placehold.co/400x300/581818/FFF?text=Biohazard",
+                base_stats: { traffic: 40, panic: 150, suspicion: 50 },
+                feedback: "完美的恐懼煽動！雖然邏輯不通，但在恐慌面前，邏輯不值一文。"
+            }
+        }
+    },
+    {
+        id: "2",
+        event_desc: "新聞：最新款通訊軟體更新，要求開啟定位權限。",
+        options: {
+            light: {
+                text: "更新後耗電量暴增！工程師在搞什麼？大家先不要更新！",
+                image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Battery+Drain",
+                base_stats: { traffic: 150, panic: 10, suspicion: 2 },
+                feedback: "利用「電池焦慮」來賺取流量，非常聰明且安全的策略。"
+            },
+            heavy: {
+                text: "這是政府監控計畫！更新檔內含隱形晶片驅動，會自動錄音並上傳雲端！",
+                image_url: "https://placehold.co/400x300/581818/FFF?text=Spyware",
+                base_stats: { traffic: 60, panic: 180, suspicion: 60 },
+                feedback: "你觸動了人們對隱私的深層恐懼。演算法非常滿意這種混亂。"
+            }
+        }
+    },
+    {
+        id: "3",
+        event_desc: "新聞：市長在公開會議中短暫閉目養神被記者拍到。",
+        options: {
+            light: {
+                text: "領納稅人的錢還睡覺？這種工作態度太誇張了吧，下台！",
+                image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Sleeping+Mayor",
+                base_stats: { traffic: 180, panic: 15, suspicion: 8 },
+                feedback: "煽動階級對立與仇富情緒，這是永不退流行的流量密碼。"
+            },
+            heavy: {
+                text: "那個不是睡覺！那是因為他體內的蜥蜴人基因正在蛻皮！人類危險了！",
+                image_url: "https://placehold.co/400x300/581818/FFF?text=Alien+Hybrid",
+                base_stats: { traffic: 30, panic: 250, suspicion: 80 },
+                feedback: "如此荒謬的陰謀論，竟然有一半的人相信了。社會智商正在崩解。"
+            }
+        }
+    },
+    {
+        id: "4",
+        event_desc: "新聞：本季流感疫苗開始施打，民眾排隊接種。",
+        options: {
+            light: {
+                text: "我打完手臂腫超大，聽說這一批副作用很強，老人小孩先觀望一下。",
+                image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Side+Effects",
+                base_stats: { traffic: 140, panic: 40, suspicion: 10 },
+                feedback: "猶豫就是恐懼的種子。你成功讓隊伍變短了。"
+            },
+            heavy: {
+                text: "疫苗裡面有奈米機器人！這是為了控制人類思想的「人類補完計畫」！",
+                image_url: "https://placehold.co/400x300/581818/FFF?text=Mind+Control",
+                base_stats: { traffic: 50, panic: 220, suspicion: 70 },
+                feedback: "大膽的操作。雖然衛生局盯上你了，但恐慌指數已經破表。"
+            }
+        }
+    },
+    {
+        id: "5",
+        event_desc: "新聞：強烈颱風逼近臺灣，氣象署預測風雨將達停班停課標準。",
+        options: {
+            light: {
+                text: "內部消息！資方大老打電話給市長施壓了，明天絕對不會放假，大家認命吧！",
+                image_url: "https://placehold.co/400x300/2c3e50/FFF?text=No+Holiday",
+                base_stats: { traffic: 200, panic: 30, suspicion: 10 },
+                feedback: "利用勞工對資方的仇恨值來賺取流量，這是社群操作的基本功，效果拔群。"
+            },
+            heavy: {
+                text: "這不是颱風！這是敵國的「氣象武器」實驗，雲層裡有高頻雷達波，淋到雨會致癌！",
+                image_url: "https://placehold.co/400x300/581818/FFF?text=Weather+Weapon",
+                base_stats: { traffic: 50, panic: 200, suspicion: 60 },
+                feedback: "雖然聽起來像科幻小說，但這則謠言成功讓里民中心的大媽們開始恐慌囤積雨衣。"
+            }
+        }
+    },
+    {
+        id: "6",
+        event_desc: "新聞：某科技大廠（護國神山）宣佈在南部科學園區擴建新廠房。",
+        options: {
+            light: {
+                text: "炒房團已經進駐了！聽說房東準備下個月房租漲三倍，在地人要活不下去了。",
+                image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Rent+Hike",
+                base_stats: { traffic: 160, panic: 40, suspicion: 5 },
+                feedback: "居住正義是最好的助燃劑。你成功點燃了無殼蝸牛們的怒火，流量爆發。"
+            },
+            heavy: {
+                text: "建廠是幌子！地底下挖到了外星遺跡，他們是要蓋研究基地開發反重力飛碟！",
+                image_url: "https://placehold.co/400x300/581818/FFF?text=Area+51+TW",
+                base_stats: { traffic: 20, panic: 120, suspicion: 90 },
+                feedback: "這謠言太過前衛，但神祕學論壇已經把你奉為「吹哨者」，這也是一種成就。"
+            }
+        }
+    },
+    {
+        id: "7",
+        event_desc: "新聞：市中心精華地段發生原因不明的短暫跳電，兩小時後恢復。",
+        options: {
+            light: {
+                text: "臺電又在偷偷「分區限電」了！備轉容量根本不夠，夏天大家等著熱死。",
+                image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Power+Shortage",
+                base_stats: { traffic: 170, panic: 60, suspicion: 10 },
+                feedback: "精準打擊！在臺灣，「缺電」兩個字比鬼故事還可怕，你的操作讓冷氣銷售量暴增。"
+            },
+            heavy: {
+                text: "不是跳電！是有駭客入侵電網植入病毒，準備在跨年夜癱瘓全臺灣的維生系統！",
+                image_url: "https://placehold.co/400x300/581818/FFF?text=Cyber+Attack",
+                base_stats: { traffic: 80, panic: 190, suspicion: 40 },
+                feedback: "你製造了一種末日感。雖然資安專家在闢謠，但恐慌已經像病毒一樣擴散了。"
+            }
+        }
+    },
+    {
+        id: "8",
+        event_desc: "新聞：財政部雲端發票App進行例行性系統維護，暫停服務半天。",
+        options: {
+            light: {
+                text: "系統維護是假的，其實是資料庫毀損！大家的發票紀錄都不見了，千萬大獎飛了！",
+                image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Data+Lost",
+                base_stats: { traffic: 140, panic: 50, suspicion: 20 },
+                feedback: "觸動了小市民對「意外之財」的執著。客服電話被打爆了，做得好。"
+            },
+            heavy: {
+                text: "這是政府的陰謀！透過App監控你的消費習慣，要把不支持特定政黨的人信用歸零！",
+                image_url: "https://placehold.co/400x300/581818/FFF?text=Social+Credit",
+                base_stats: { traffic: 40, panic: 160, suspicion: 70 },
+                feedback: "把技術問題上升到政治迫害，這一招永遠能釣出深信不疑的狂熱者。"
+            }
+        }
+    },
+    {
+        id: "9",
+        event_desc: "新聞：交通部在多處山區道路增設「區間測速」照相設備。",
+        options: {
+            light: {
+                text: "這機器有問題！我朋友騎腳踏車經過也被拍超速，根本是政府搶錢機器！",
+                image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Speed+Trap",
+                base_stats: { traffic: 190, panic: 20, suspicion: 5 },
+                feedback: "這一招喚起了全民對罰單的共同仇恨。轉發數驚人，大家都在罵政府。"
+            },
+            heavy: {
+                text: "小心！鏡頭會發射不可見光掃描你的視網膜，盜取你的靈魂數據賣給暗網！",
+                image_url: "https://placehold.co/400x300/581818/FFF?text=Soul+Stealer",
+                base_stats: { traffic: 10, panic: 230, suspicion: 95 },
+                feedback: "這聽起來像是《黑鏡》的劇情，雖然大眾不信，但經過那條路的人現在都不敢抬頭了。"
+            }
+        }
+    },
+    {
+        id: "10",
+        event_desc: "新聞：凌晨發生規模4.5有感地震，國家級警報並未響起。",
+        options: {
+            light: {
+                text: "又沒收到警報？看來我們是被國家遺棄的「邊緣人」，只有特定電信商才會響啦！",
+                image_url: "https://placehold.co/400x300/2c3e50/FFF?text=No+Alert",
+                base_stats: { traffic: 150, panic: 10, suspicion: 5 },
+                feedback: "利用「國家級邊緣人」的梗圖自嘲，這在年輕族群中傳播極快，娛樂性滿分。"
+            },
+            heavy: {
+                text: "這不是地震！是地底核試爆！政府為了掩蓋真相才關閉警報系統！快逃啊！",
+                image_url: "https://placehold.co/400x300/581818/FFF?text=Nuclear+Test",
+                base_stats: { traffic: 30, panic: 210, suspicion: 80 },
+                feedback: "極度的妄想！但你成功讓一群陰謀論者開始研究地質圖，製造了混亂的樂趣。"
+            }
+        }
+    },
+    {
+        id: "11",
+        event_desc: "新聞：超商架上出現新款聯名「特殊口味」洋芋片。",
+        options: {
+            light: {
+                text: "千萬別買！我吃了之後全身起紅疹，聽說產線跟過敏原沒有分開，超噁心。",
+                image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Allergy+Warning",
+                base_stats: { traffic: 110, panic: 25, suspicion: 15 },
+                feedback: "簡單的食安恐嚇。雖然廠商會澄清，但這款零食的銷量已經毀了，你很有影響力。"
+            },
+            heavy: {
+                text: "包裝上的代碼是求救訊號！這是在血汗工廠被囚禁的童工做的，每一片都有怨氣！",
+                image_url: "https://placehold.co/400x300/581818/FFF?text=SOS+Message",
+                base_stats: { traffic: 60, panic: 140, suspicion: 50 },
+                feedback: "把都市傳說結合商品，讓吃零食變成了恐怖體驗。你的創意令人毛骨悚然。"
+            }
+        }
+    },
+    {
+        id: "12",
+        event_desc: "新聞：知名網紅開箱試吃一款進口「彩色軟糖」。",
+        options: {
+            light: {
+                text: "這軟糖色素超標五十倍！小孩吃多了會過動、注意力不集中，家長群組都在傳！",
+                image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Toxic+Candy",
+                base_stats: { traffic: 180, panic: 80, suspicion: 10 },
+                feedback: "只要提到「傷害小孩」，家長們就會不經查證地瘋狂轉發。這是流量的金礦。"
+            },
+            heavy: {
+                text: "這是新型毒品！外表是糖果，裡面含有高成癮性迷幻藥，專門誘騙青少年的！",
+                image_url: "https://placehold.co/400x300/581818/FFF?text=Drug+Disguise",
+                base_stats: { traffic: 90, panic: 240, suspicion: 30 },
+                feedback: "警局電話被打爆了，校園陷入恐慌。你單憑鍵盤就發動了一場掃毒行動，厲害。"
+            }
+        }
+    },
+    {
+        id: "13",
+        event_desc: "新聞：國軍進行例行性「萬安演習」，市區發布空襲警報。",
+        options: {
+            light: {
+                text: "這次演習這麼嚴格，是因為真的有飛機越過中線了！大家快去超市搶物資！",
+                image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Panic+Buying",
+                base_stats: { traffic: 130, panic: 100, suspicion: 20 },
+                feedback: "成功的恐慌行銷。超市貨架被掃空的照片成為了你的戰利品。"
+            },
+            heavy: {
+                text: "警報聲包含催眠頻率！聽到的人會變成順從的殭屍，政府要啟動「人類清除計畫」！",
+                image_url: "https://placehold.co/400x300/581818/FFF?text=Hypnosis",
+                base_stats: { traffic: 20, panic: 180, suspicion: 85 },
+                feedback: "雖然大部分人都在笑，但戴耳塞的人變多了。你在潛意識中植入了恐懼。"
+            }
+        }
+    },
+    {
+        id: "14",
+        event_desc: "新聞：熱門AI聊天機器人推出更新，能更流暢地使用中文對話。",
+        options: {
+            light: {
+                text: "完了！這AI會自動抓取你手機裡的照片和私密訊息去訓練，快點刪除App！",
+                image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Privacy+Leak",
+                base_stats: { traffic: 160, panic: 50, suspicion: 15 },
+                feedback: "對科技的不信任感是現代人的通病。你成功阻礙了科技進步的腳步，幹得好。"
+            },
+            heavy: {
+                text: "它產生自我意識了！它正在策劃消滅人類，現在的對話都是在測試我們的弱點！",
+                image_url: "https://placehold.co/400x300/581818/FFF?text=Skynet+Rise",
+                base_stats: { traffic: 50, panic: 200, suspicion: 60 },
+                feedback: "魔鬼終結者的劇情永遠有人信。你讓不少人對著手機鏡頭瑟瑟發抖。"
+            }
+        }
+    },
+    {
+        id: "15",
+        event_desc: "新聞：某天王級歌手宣佈在大巨蛋開唱，數十萬張門票在一分鐘內秒殺。",
+        options: {
+            light: {
+                text: "根本沒票！主辦單位內部已經把90%的票都扣下來給黃牛跟贊助商了，公關票滿天飛！",
+                image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Scalpers+Win",
+                base_stats: { traffic: 220, panic: 40, suspicion: 10 },
+                feedback: "精準命中粉絲的痛點。這種「相對剝奪感」是社群暴動的最佳燃料，大家都在罵主辦方。"
+            },
+            heavy: {
+                text: "這場演唱會是某邪教的「招魂儀式」！歌手的歌聲含有特殊音波，要集體吸取觀眾的陽氣！",
+                image_url: "https://placehold.co/400x300/581818/FFF?text=Cult+Ritual",
+                base_stats: { traffic: 50, panic: 180, suspicion: 70 },
+                feedback: "雖然聽起來荒謬，但神祕學愛好者已經開始分析海報上的「惡魔符號」了。恐懼是一種另類的崇拜。"
+            }
+        }
+    },
+    {
+        id: "16",
+        event_desc: "新聞：捷運上發生年輕人身體不適未讓座，被長輩言語辱罵的影片瘋傳。",
+        options: {
+            light: {
+                text: "那個老人名下有五棟房子在收租！他是故意出來碰瓷找年輕人麻煩的，根本不值得同情！",
+                image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Rich+Bully",
+                base_stats: { traffic: 250, panic: 20, suspicion: 5 },
+                feedback: "完美的世代對立與階級仇恨組合拳！年輕人憤怒轉發，讓這把火燒得更旺了。"
+            },
+            heavy: {
+                text: "博愛座底下裝有感應器！政府正在測試「社會信用評分系統」，不讓座就會被扣分限制出境！",
+                image_url: "https://placehold.co/400x300/581818/FFF?text=Social+Score",
+                base_stats: { traffic: 40, panic: 160, suspicion: 80 },
+                feedback: "將日常衝突上升到國家監控層面，成功引發了一波「站著搭捷運」的詭異風潮。"
+            }
+        }
+    },
+    {
+        id: "17",
+        event_desc: "新聞：新落成的巨型體育館在雨天發生屋頂漏水事件。",
+        options: {
+            light: {
+                text: "這就是偷工減料！承包商把防水層預算吞了，聽說結構都有裂縫，下次地震就垮了。",
+                image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Construction+Fail",
+                base_stats: { traffic: 170, panic: 90, suspicion: 20 },
+                feedback: "對於公共工程的不信任感是臺灣人的集體潛意識。你成功讓沒去過的人也開始罵政府。"
+            },
+            heavy: {
+                text: "那不是漏水！那是體育館正下方的「龍脈」被釘死後流出的「龍血」！國運要衰退了！",
+                image_url: "https://placehold.co/400x300/581818/FFF?text=Bad+FengShui",
+                base_stats: { traffic: 80, panic: 130, suspicion: 60 },
+                feedback: "風水與迷信的結合。命理師們感謝你提供了新的談話性節目話題。"
+            }
+        }
+    },
+    {
+        id: "18",
+        event_desc: "新聞：知名YouTuber推出高價心靈成長課程，標榜能改變人生。",
+        options: {
+            light: {
+                text: "根本是詐騙！內容都是ChatGPT寫的，上一屆學員不但沒發財還背了一堆卡債！",
+                image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Scam+Course",
+                base_stats: { traffic: 190, panic: 10, suspicion: 10 },
+                feedback: "「割韭菜」的指控永遠能引起共鳴。你成為了揭穿假面具的正義使者（雖然你也在造謠）。"
+            },
+            heavy: {
+                text: "這是直銷邪教！課程會使用催眠術洗腦，讓你斷絕跟家人的關係，把財產全部捐給教主！",
+                image_url: "https://placehold.co/400x300/581818/FFF?text=Brainwash",
+                base_stats: { traffic: 100, panic: 150, suspicion: 40 },
+                feedback: "成功的妖魔化。家長們開始恐慌檢查小孩的信用卡帳單，恐懼傳播得很有效率。"
+            }
+        }
+    },
+    {
+        id: "19",
+        event_desc: "新聞：兩大外送平臺宣佈研擬合併，並調整運費結構。",
+        options: {
+            light: {
+                text: "壟斷之後就要大漲價了！聽說以後起跳價要兩百塊，而且外送員一單只能拿十塊錢！",
+                image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Monopoly",
+                base_stats: { traffic: 210, panic: 60, suspicion: 5 },
+                feedback: "這是每個人都切身相關的議題。你激起了小市民對資本巨獸的恐懼，流量大豐收。"
+            },
+            heavy: {
+                text: "這不是單純合併！他們在建立「飢餓控制網」，未來不聽話的人，連一口飯都訂不到！",
+                image_url: "https://placehold.co/400x300/581818/FFF?text=Food+Control",
+                base_stats: { traffic: 30, panic: 170, suspicion: 70 },
+                feedback: "反烏託邦式的劇情。雖然誇張，但成功讓一群末日準備者開始囤積罐頭。"
+            }
+        }
+    },
+    {
+        id: "20",
+        event_desc: "新聞：政府專案進口的雞蛋在超市上架，價格相對便宜。",
+        options: {
+            light: {
+                text: "這些蛋在海關卡了半年！裡面都發黑發臭了，洗一洗改標籤就拿出來賣，千萬別買！",
+                image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Rotten+Eggs",
+                base_stats: { traffic: 160, panic: 80, suspicion: 25 },
+                feedback: "食安問題是核彈級的流量密碼。婆婆媽媽們的群組已經傳瘋了，銷量直接歸零。"
+            },
+            heavy: {
+                text: "這是生化實驗蛋！吃了會導致不孕症，這是為了執行「人口減量計畫」的陰謀！",
+                image_url: "https://placehold.co/400x300/581818/FFF?text=Bio+Weapon",
+                base_stats: { traffic: 40, panic: 220, suspicion: 60 },
+                feedback: "你把恐慌等級拉到了滅絕種族的層次。雖然衛生局出來闢謠，但傷害已經造成。"
+            }
+        }
+    },
+    {
+        id: "21",
+        event_desc: "新聞：威力彩頭獎連續槓龜20期，獎金累積突破20億。",
+        options: {
+            light: {
+                text: "不用買了啦！臺彩早就內定好得主了，每次都是公務員中獎，劇本都寫好了。",
+                image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Rigged+Lottery",
+                base_stats: { traffic: 140, panic: 5, suspicion: 30 },
+                feedback: "這種「酸葡萄」心理能引發極大的共鳴。大家都喜歡相信自己沒中獎是因為社會不公。"
+            },
+            heavy: {
+                text: "那些獎金其實都被挪去蓋祕密軍事基地了！根本沒有頭獎得主，那些人都是電腦合成的！",
+                image_url: "https://placehold.co/400x300/581818/FFF?text=Secret+Fund",
+                base_stats: { traffic: 60, panic: 50, suspicion: 90 },
+                feedback: "深層政府的陰謀論。雖然買氣沒受影響，但你成功讓一群人開始研究歷屆得主照片的像素。"
+            }
+        }
+    },
+    {
+        id: "22",
+        event_desc: "新聞：知名連鎖手搖飲推出「爆量珍珠」新品，引發排隊熱潮。",
+        options: {
+            light: {
+                text: "那珍珠是化工合成的！而且那個量根本是澱粉炸彈，喝一杯等於吃五碗飯，糖尿病預備軍！",
+                image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Sugar+Bomb",
+                base_stats: { traffic: 120, panic: 30, suspicion: 5 },
+                feedback: "健康焦慮總是有效的。你成功讓排隊的人心裡產生了一絲罪惡感，幹得好。"
+            },
+            heavy: {
+                text: "珍珠原料是回收的廢輪胎和皮鞋底！還有員工爆料裡面加了「屍油」來增加口感！",
+                image_url: "https://placehold.co/400x300/581818/FFF?text=Gross+Ingredients",
+                base_stats: { traffic: 90, panic: 240, suspicion: 50 },
+                feedback: "經典的都市傳說再現！這種噁心的謠言傳播力極強，店家大概要準備開記者會喝油自清了。"
+            }
+        }
+    },
+    {
+        id: "23",
+        event_desc: "新聞：高鐵因電力系統異常，列車在軌道上臨停半小時。",
+        options: {
+            light: {
+                text: "其實是有大官遲到，整臺車為了等他一個人被擋下來！特權階級太囂張了！",
+                image_url: "https://placehold.co/400x300/2c3e50/FFF?text=VIP+Delay",
+                base_stats: { traffic: 180, panic: 10, suspicion: 15 },
+                feedback: "特權議題總是能點燃民眾的怒火。不需要證據，只要符合大眾對權貴的想像就夠了。"
+            },
+            heavy: {
+                text: "不是電力異常！是列車撞破了「時空裂縫」，消失了半小時才回來，乘客的記憶都被清洗過！",
+                image_url: "https://placehold.co/400x300/581818/FFF?text=Time+Rift",
+                base_stats: { traffic: 40, panic: 110, suspicion: 85 },
+                feedback: "科幻驚悚風格。雖然大部分人當笑話看，但論壇上已經出現「曼德拉效應」的討論串了。"
+            }
+        }
+    },
+    {
+        id: "24",
+        event_desc: "新聞：氣象局預報今年冬天將會是「暖冬」，平均氣溫偏高。",
+        options: {
+            light: {
+                text: "又是暖冬？羽絨衣廠商要倒閉了嗎？我看這根本是服飾業為了清庫存，買通氣象局講反話！",
+                image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Business+Lie",
+                base_stats: { traffic: 100, panic: 5, suspicion: 20 },
+                feedback: "把天氣預報解讀成商業陰謀，這種腦洞大開的邏輯，反而有一種奇妙的說服力。"
+            },
+            heavy: {
+                text: "太陽正在熄滅！暖冬是因為地球核心快停轉了，地熱異常釋放！世界末日倒數計時！",
+                image_url: "https://placehold.co/400x300/581818/FFF?text=Sun+Dying",
+                base_stats: { traffic: 30, panic: 250, suspicion: 60 },
+                feedback: "你製造了末日恐慌。天文館不得不緊急發文解釋太陽活動週期，你的影響力甚至幹擾了學術界。"
+            }
+        }
+    },
+    {
+        id: "25",
+        event_desc: "新聞：水庫水位告急，部分地區開始實施減壓供水。",
+        options: {
+            light: {
+                text: "又是只敢欺負民生用水！工業區用水都沒在限，電子廠賺飽飽，我們連洗澡都要省！",
+                image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Water+Crisis",
+                base_stats: { traffic: 160, panic: 50, suspicion: 10 },
+                feedback: "挑起民生與工業的對立，這是缺水時期的必勝公式。大家都覺得自己被犧牲了。"
+            },
+            heavy: {
+                text: "水庫底下有外星基地在大量抽取淡水作為燃料！政府不敢說，只能騙大家是乾旱！",
+                image_url: "https://placehold.co/400x300/581818/FFF?text=Alien+Base",
+                base_stats: { traffic: 40, panic: 180, suspicion: 90 },
+                feedback: "雖然聽起來像科幻電影，但神祕學論壇已經開始討論水庫底下的不明光點了。"
+            }
+        }
+    },
+    {
+        id: "26",
+        event_desc: "新聞：跨年煙火預算創新高，主辦單位宣稱將有神祕驚喜。",
+        options: {
+            light: {
+                text: "燒錢製造空汙！幾千萬放幾分鐘就沒了，不如拿去發營養午餐！這種面子工程最噁心。",
+                image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Money+Waste",
+                base_stats: { traffic: 190, panic: 10, suspicion: 20 },
+                feedback: "批評政府亂花錢永遠有市場。你成功讓大家在歡慶氣氛中感到一陣不爽。"
+            },
+            heavy: {
+                text: "那不是煙火！是為了掩蓋「天門」開啟時的強光！外星艦隊要在跨年夜降臨了！",
+                image_url: "https://placehold.co/400x300/581818/FFF?text=Portal+Open",
+                base_stats: { traffic: 30, panic: 230, suspicion: 70 },
+                feedback: "極度中二的幻想，但剛好切中了一部分人對末日的期待與恐懼。"
+            }
+        }
+    },
+    {
+        id: "27",
+        event_desc: "新聞：社群平臺瘋傳「扭脖舞」挑戰，青少年爭相模仿。",
+        options: {
+            light: {
+                text: "骨科醫生都警告了！這種動作會造成頸椎永久傷害，現在的小孩為了紅連命都不要！",
+                image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Spine+Injury",
+                base_stats: { traffic: 150, panic: 40, suspicion: 5 },
+                feedback: "利用長輩對年輕人次文化的看不順眼，加上健康警告，轉發率百分百。"
+            },
+            heavy: {
+                text: "這是某個邪教的獻祭儀式！透過集體做這個動作，會召喚出封印在網路深處的惡靈！",
+                image_url: "https://placehold.co/400x300/581818/FFF?text=Demon+Summon",
+                base_stats: { traffic: 60, panic: 190, suspicion: 80 },
+                feedback: "把流行文化妖魔化。雖然荒謬，但家長們寧可信其有，禁止小孩跳舞了。"
+            }
+        }
+    },
+    {
+        id: "28",
+        event_desc: "新聞：知名古廟抽出國運籤，解籤結果為「中下籤」。",
+        options: {
+            light: {
+                text: "廟方被收買了啦！這是為了配合反對黨唱衰臺灣，神明才不會管政治！",
+                image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Political+Bias",
+                base_stats: { traffic: 200, panic: 30, suspicion: 40 },
+                feedback: "將宗教活動泛政治化，成功引發了雙方陣營的激烈筆戰，流量爆表。"
+            },
+            heavy: {
+                text: "籤詩上的字會變！我看直播的時候明明是上上籤，被不明力量篡改成中下籤，國運被偷走了！",
+                image_url: "https://placehold.co/400x300/581818/FFF?text=Magic+Change",
+                base_stats: { traffic: 50, panic: 160, suspicion: 95 },
+                feedback: "玄幻風格的陰謀論。信徒們開始恐慌，覺得有妖孽作祟。"
+            }
+        }
+    },
+    {
+        id: "29",
+        event_desc: "新聞：政府推動綠能，南部大片農地啟動「種電」計畫。",
+        options: {
+            light: {
+                text: "良田都毀了！以後我們都要吃進口米，糧食自主權喪失，農民都要餓死了！",
+                image_url: "https://placehold.co/400x300/2c3e50/FFF?text=No+Farms",
+                base_stats: { traffic: 170, panic: 60, suspicion: 15 },
+                feedback: "喚起對糧食危機的焦慮。雖然光電板下也能種東西，但誰在乎真相呢？"
+            },
+            heavy: {
+                text: "太陽能板會反射「死光」！住在附近的人會被慢性微波煮熟，這是為了騰空土地給外星人住！",
+                image_url: "https://placehold.co/400x300/581818/FFF?text=Death+Ray",
+                base_stats: { traffic: 20, panic: 240, suspicion: 70 },
+                feedback: "偽科學與外星陰謀的完美結合。附近的房價可能要跌了。"
+            }
+        }
+    },
+    {
+        id: "30",
+        event_desc: "新聞：國防部宣佈教召新制，將大幅增加訓練強度與天數。",
+        options: {
+            light: {
+                text: "根本擾民！薪水給那麼少還要人請假去當兵，房貸車貸政府要幫忙繳嗎？",
+                image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Low+Pay",
+                base_stats: { traffic: 220, panic: 20, suspicion: 10 },
+                feedback: "打中所有役男的痛點。抱怨當兵是臺灣男人的共同語言，流量保證。"
+            },
+            heavy: {
+                text: "這是為了送上前線當炮灰！政府已經跟敵國密約好了，要犧牲這一批人來換取和平！",
+                image_url: "https://placehold.co/400x300/581818/FFF?text=Secret+Deal",
+                base_stats: { traffic: 70, panic: 210, suspicion: 80 },
+                feedback: "利用戰爭恐懼製造的終極陰謀論。役男們瑟瑟發抖，有人開始查機票了。"
+            }
+        }
+    },
+    {
+        id: "31",
+        event_desc: "新聞：公共自行車系統進行大規模升級，暫停營運半天。",
+        options: {
+            light: {
+                text: "升級只是藉口，根本是為了漲價做準備！以後前半小時免費要取消了，圖利廠商！",
+                image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Bike+Update",
+                base_stats: { traffic: 160, panic: 10, suspicion: 30 },
+                feedback: "小確幸被剝奪的憤怒。通勤族對漲價最敏感，這則貼文引發了大量抱怨。"
+            },
+            heavy: {
+                text: "那些自行車坐墊裝有生物識別裝置！正在祕密蒐集全民的DNA數據，建立複製人軍團！",
+                image_url: "https://placehold.co/400x300/581818/FFF?text=DNA+Collection",
+                base_stats: { traffic: 40, panic: 190, suspicion: 80 },
+                feedback: "雖然聽起來很荒謬，但有人開始呼籲大家騎車要墊報紙，恐慌正在蔓延。"
+            }
+        }
+    },
+    {
+        id: "32",
+        event_desc: "新聞：捷運新路線工程因挖掘到不明地下障礙物而延宕。",
+        options: {
+            light: {
+                text: "挖到古蹟是假的，追加預算才是真的！工程延一天，廠商就多賺一天，納稅人當提款機！",
+                image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Construction+Delay",
+                base_stats: { traffic: 180, panic: 5, suspicion: 40 },
+                feedback: "對公共工程效率的質疑永遠有效。大家都在罵政府無能，流量穩定。"
+            },
+            heavy: {
+                text: "挖到了地底人文明的入口！政府為了掩蓋人類起源的真相，派軍隊封鎖了現場！",
+                image_url: "https://placehold.co/400x300/581818/FFF?text=Underground+Civ",
+                base_stats: { traffic: 50, panic: 150, suspicion: 90 },
+                feedback: "神祕學愛好者高潮了。論壇上開始出現各種「內部流出」的模糊照片。"
+            }
+        }
+    },
+    {
+        id: "33",
+        event_desc: "新聞：超商推出集點換購限量公仔活動，引發排隊搶購。",
+        options: {
+            light: {
+                text: "根本換不到！店員都把公仔暗槓起來上網高價賣，把乖乖排隊的人當傻子！",
+                image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Sold+Out",
+                base_stats: { traffic: 140, panic: 10, suspicion: 20 },
+                feedback: "利用消費者的被剝奪感。這種「店員暗槓」的傳聞總是能引發眾怒。"
+            },
+            heavy: {
+                text: "這不是普通塑膠！這是混入骨灰燒製的「陰牌」，集滿一套就會召喚出厄運，全家死光光！",
+                image_url: "https://placehold.co/400x300/581818/FFF?text=Cursed+Item",
+                base_stats: { traffic: 60, panic: 220, suspicion: 80 },
+                feedback: "把集點活動變成恐怖故事。網路上開始流傳如何「淨化」公仔的教學。"
+            }
+        }
+    },
+    {
+        id: "34",
+        event_desc: "新聞：知名手搖飲品牌宣佈因原物料上漲，全面調漲五元。",
+        options: {
+            light: {
+                text: "一杯珍奶賣得比便當還貴！把消費者當盤子，大家團結抵制，讓它倒閉！",
+                image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Price+Hike",
+                base_stats: { traffic: 200, panic: 5, suspicion: 10 },
+                feedback: "通膨是全民公敵。你的呼籲獲得了大量小資族的響應，雖然他們明天還是會買。"
+            },
+            heavy: {
+                text: "漲價是因為換了「特殊糖漿」！這種糖含有成癮成分，政府想用它來控制年輕人的大腦！",
+                image_url: "https://placehold.co/400x300/581818/FFF?text=Addictive+Sugar",
+                base_stats: { traffic: 60, panic: 170, suspicion: 60 },
+                feedback: "把漲價解釋成陰謀。雖然離譜，但成功讓一些人喝飲料時覺得怪怪的。"
+            }
+        }
+    },
+    {
+        id: "35",
+        event_desc: "新聞：交通部實施「行人帝王條款」，車輛未禮讓行人將重罰。",
+        options: {
+            light: {
+                text: "行人最大？現在路人都在滑手機慢慢走，根本是製造塞車！政府只會搶錢！",
+                image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Traffic+Jam",
+                base_stats: { traffic: 230, panic: 20, suspicion: 5 },
+                feedback: "挑起駕駛與行人的對立，這是流量的保證。留言區戰成一團。"
+            },
+            heavy: {
+                text: "斑馬線的白色塗料有毒！走在上面會經皮吸收慢性毒素，這是減少老年人口的陰謀！",
+                image_url: "https://placehold.co/400x300/581818/FFF?text=Toxic+Paint",
+                base_stats: { traffic: 20, panic: 210, suspicion: 80 },
+                feedback: "針對長輩的恐嚇謠言。公園裡的老人家現在過馬路都用跳的。"
+            }
+        }
+    },
+    {
+        id: "36",
+        event_desc: "新聞：百萬網紅推出自有品牌「能量水」，宣稱有特殊療效。",
+        options: {
+            light: {
+                text: "就是過濾水賣十倍價錢，智商稅！粉絲真的好騙，這種人還能紅真是社會亂源。",
+                image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Scam+Water",
+                base_stats: { traffic: 170, panic: 5, suspicion: 20 },
+                feedback: "仇視網紅是網路顯學。你成功站在道德制高點，獲得一片掌聲。"
+            },
+            heavy: {
+                text: "那水裡面加了奈米追蹤器！喝下去就會被衛星定位，政府要監控所有反對者的行蹤！",
+                image_url: "https://placehold.co/400x300/581818/FFF?text=Nano+Tracker",
+                base_stats: { traffic: 40, panic: 180, suspicion: 90 },
+                feedback: "結合科技恐懼與政治監控。有些粉絲開始催吐了。"
+            }
+        }
+    },
+    {
+        id: "37",
+        event_desc: "新聞：選戰倒數，某候選人舉辦大型造勢晚會，造成周邊交通癱瘓。",
+        options: {
+            light: {
+                text: "只會擾民！選前拜託拜託，選後不見人影，垃圾不分藍綠，大家不要去投票！",
+                image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Traffic+Chaos",
+                base_stats: { traffic: 190, panic: 10, suspicion: 30 },
+                feedback: "政治冷感與對立是常態。你的抱怨引發了通勤族的強烈共鳴。"
+            },
+            heavy: {
+                text: "造勢晚會的雷射光是在洗腦！現場的人都被植入潛意識指令，投票日會自動蓋給他！",
+                image_url: "https://placehold.co/400x300/581818/FFF?text=Mind+Control+Laser",
+                base_stats: { traffic: 50, panic: 220, suspicion: 70 },
+                feedback: "把群眾心理學誇張化。有人開始戴墨鏡參加造勢晚會了。"
+            }
+        }
+    },
+    {
+        id: "38",
+        event_desc: "新聞：動保處加強捕捉具攻擊性的流浪犬，引發動保團體抗議。",
+        options: {
+            light: {
+                text: "狗狗會幫忙吃掉入侵的毒蛇和老鼠！把狗抓光，我們就要被毒蛇咬死了！",
+                image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Dogs+Protect",
+                base_stats: { traffic: 180, panic: 60, suspicion: 20 },
+                feedback: "利用對野生動物的恐懼來合理化放養行為。雖然完全違背生態常識，但很多人信了。"
+            },
+            heavy: {
+                text: "那些流浪狗是土地公的兵將！政府抓狗是在破壞台灣的龍脈，目的是要讓天災降臨，好申請特別預算貪汙！",
+                image_url: "https://placehold.co/400x300/581818/FFF?text=FengShui+Dog",
+                base_stats: { traffic: 50, panic: 150, suspicion: 90 },
+                feedback: "將流浪狗神格化並結合政治陰謀。迷信的長輩們開始組團去收容所「救駕」。"
+            }
+        }
+    },
+    {
+        id: "39",
+        event_desc: "新聞：知名老街發生深夜大火，多棟歷史建築付之一炬。",
+        options: {
+            light: {
+                text: "又是「都更之火」！建商談不攏就放火，這劇本我看多了，政府跟財團一定有勾結！",
+                image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Arson",
+                base_stats: { traffic: 240, panic: 40, suspicion: 50 },
+                feedback: "這是臺灣人最深信不疑的陰謀論之一。不需要證據，大家都認定是建商幹的。"
+            },
+            heavy: {
+                text: "火災是為了燒燬藏在老屋裡的清朝藏寶圖！背後有國際盜寶集團在運作，政府無力阻止！",
+                image_url: "https://placehold.co/400x300/581818/FFF?text=Treasure+Map",
+                base_stats: { traffic: 60, panic: 100, suspicion: 60 },
+                feedback: "像是冒險電影的劇情。雖然大家當故事聽，但老街的遊客變多了，都在找寶藏。"
+            }
+        }
+    },
+    {
+        id: "40",
+        event_desc: "新聞：電動機車電池交換站發生冒煙事故，廠商緊急封鎖現場。",
+        options: {
+            light: {
+                text: "月租費這麼貴還給這種爛電池！根本是把消費者當白老鼠，大家快退租！",
+                image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Battery+Fire",
+                base_stats: { traffic: 150, panic: 60, suspicion: 20 },
+                feedback: "對新科技的不信任加上消費糾紛。車主們開始恐慌，客服電話被打爆。"
+            },
+            heavy: {
+                text: "電池交換站其實是針對敵國的飛彈發射井偽裝的！戰爭時會直接從市區發射！",
+                image_url: "https://placehold.co/400x300/581818/FFF?text=Missile+Silo",
+                base_stats: { traffic: 20, panic: 230, suspicion: 90 },
+                feedback: "極度誇張的軍事陰謀。雖然沒人信，但經過交換站時大家都會多看兩眼。"
+            }
+        }
+    },
+    {
+        id: "41",
+        event_desc: "新聞：健保署宣佈部分慢性病藥物因成本考量，恐面臨缺藥危機。",
+        options: {
+            light: {
+                text: "藥廠覺得臺灣藥價太低不賣了！健保署只會砍價，害死老百姓，以後有錢也買不到藥！",
+                image_url: "https://placehold.co/400x300/2c3e50/FFF?text=No+Meds",
+                base_stats: { traffic: 180, panic: 120, suspicion: 30 },
+                feedback: "健康議題最能引發恐慌。長輩們開始衝去藥局囤積根本不需要的藥。"
+            },
+            heavy: {
+                text: "缺藥是假的！政府把藥都囤積起來，準備在生化戰爭爆發時高價賣給權貴！",
+                image_url: "https://placehold.co/400x300/581818/FFF?text=Hoarding",
+                base_stats: { traffic: 50, panic: 200, suspicion: 70 },
+                feedback: "階級對立加上生存恐懼。這則謠言讓社會氣氛變得更加肅殺。"
+            }
+        }
+    },
+    {
+        id: "42",
+        event_desc: "新聞：政府推出只租不賣的社會住宅，中籤率創歷史新低。",
+        options: {
+            light: {
+                text: "中籤率比樂透還低！都是做樣子的，聽說保留戶都給了官員親戚，一般人根本抽不到！",
+                image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Unfair+Housing",
+                base_stats: { traffic: 190, panic: 10, suspicion: 40 },
+                feedback: "居住正義的挫敗感。年輕人對政府的信任度再次下降。"
+            },
+            heavy: {
+                text: "社宅的牆壁裡都埋了監聽器！這是「楚門的世界」真實版，住進去就沒有隱私，全天候直播！",
+                image_url: "https://placehold.co/400x300/581818/FFF?text=Surveillance",
+                base_stats: { traffic: 30, panic: 170, suspicion: 85 },
+                feedback: "隱私恐慌。雖然中籤的人還是會去住，但他們可能會開始敲牆壁檢查。"
+            }
+        }
+    },
+    {
+        id: "43",
+        event_desc: "新聞：頂尖大學宣佈將與科技大學合併，引發校友強烈反彈。",
+        options: {
+            light: {
+                text: "學歷貶值了！名校光環不再，畢業證書變廢紙，校長根本是為了賣校產！",
+                image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Degree+Devalue",
+                base_stats: { traffic: 160, panic: 30, suspicion: 20 },
+                feedback: "觸動了菁英階級的敏感神經。校友會的電話被打爆，抗議聲浪不斷。"
+            },
+            heavy: {
+                text: "合併是為了掩護校園底下的核子反應爐擴建！學生都是人體輻射吸收器！",
+                image_url: "https://placehold.co/400x300/581818/FFF?text=Nuclear+Campus",
+                base_stats: { traffic: 40, panic: 210, suspicion: 60 },
+                feedback: "校園傳說的升級版。學生們開始在校園裡拿著蓋革計數器測量。"
+            }
+        }
+    },
+    {
+        id: "44",
+        event_desc: "新聞：內政部推動換發「數位身分證」，宣稱能提升便利性與安全性。",
+        options: {
+            light: {
+                text: "資安根本沒做好！把所有雞蛋放在同一個籃子裡，駭客一攻破，全台灣人的個資就裸奔了！",
+                image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Data+Leak",
+                base_stats: { traffic: 190, panic: 60, suspicion: 40 },
+                feedback: "隱私權是現代人的軟肋。對於政府資安的不信任感，讓這則貼文獲得極高共鳴。"
+            },
+            heavy: {
+                text: "晶片裡藏有「腦波接收器」！政府可以透過5G基地台讀取你的思想，甚至植入虛假記憶！",
+                image_url: "https://placehold.co/400x300/581818/FFF?text=Mind+Control",
+                base_stats: { traffic: 40, panic: 230, suspicion: 90 },
+                feedback: "科技極權的終極幻想。雖然聽起來像科幻小說，但有些人已經開始用鋁箔紙包身分證了。"
+            }
+        }
+    },
+    {
+        id: "45",
+        event_desc: "新聞：熱門手遊伺服器無預警維修超過24小時，玩家哀鴻遍野。",
+        options: {
+            light: {
+                text: "工程師打翻泡麵在主機上嗎？補償只給一點點，把課金玩家當乞丐打發？退坑啦！",
+                image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Server+Down",
+                base_stats: { traffic: 170, panic: 10, suspicion: 15 },
+                feedback: "玩家的憤怒是最直接的流量。遊戲公司的粉專被洗版，負評如潮。"
+            },
+            heavy: {
+                text: "伺服器沒壞！是遊戲裡的AI產生自我意識，正在跟人類談判，不答應就刪除所有帳號！",
+                image_url: "https://placehold.co/400x300/581818/FFF?text=AI+Revolt",
+                base_stats: { traffic: 60, panic: 180, suspicion: 70 },
+                feedback: "Cyberpunk風格的謠言。玩家們開始討論如果AI統治世界，他們的虛擬寶物還在不在。"
+            }
+        }
+    },
+    {
+        id: "46",
+        event_desc: "新聞：警方破獲藏身豪宅的詐騙集團，起出大量現金與名車。",
+        options: {
+            light: {
+                text: "抓了又放！臺灣是詐騙天堂，法律根本沒有嚇阻力，法官都判很輕，難怪大家都去詐騙！",
+                image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Fraud+Paradise",
+                base_stats: { traffic: 230, panic: 10, suspicion: 30 },
+                feedback: "對司法的不信任是流量保證。大家都在罵恐龍法官，社會充滿了正義的怒火。"
+            },
+            heavy: {
+                text: "詐騙集團其實是政府的外包單位！專門騙外匯來補國庫缺口，所以才抓不完！",
+                image_url: "https://placehold.co/400x300/581818/FFF?text=Gov+Fraud",
+                base_stats: { traffic: 40, panic: 150, suspicion: 90 },
+                feedback: "把犯罪行為政治化。雖然邏輯不通，但符合某些人對政府的負面想像。"
+            }
+        }
+    },
+    {
+        id: "47",
+        event_desc: "新聞：南部登革熱疫情升溫，衛生局派員進行戶外噴藥作業。",
+        options: {
+            light: {
+                text: "噴藥噴到家裡都是油！傢俱都壞了，蚊子沒死人先被毒死！政府擾民第一名！",
+                image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Chemical+Spray",
+                base_stats: { traffic: 150, panic: 50, suspicion: 20 },
+                feedback: "生活不便引發的抱怨。雖然防疫重要，但民眾的怒氣需要出口。"
+            },
+            heavy: {
+                text: "登革熱是生化武器實驗！那些蚊子是基因改造的，叮到會改變你的DNA，變成變種人！",
+                image_url: "https://placehold.co/400x300/581818/FFF?text=Mutant+Mosquito",
+                base_stats: { traffic: 30, panic: 240, suspicion: 80 },
+                feedback: "生化危機般的恐慌。有人開始穿防護衣出門了。"
+            }
+        }
+    },
+    {
+        id: "48",
+        event_desc: "新聞：大型宗教繞境活動經過市區，沿途鞭炮聲與垃圾引發民怨。",
+        options: {
+            light: {
+                text: "神明會喜歡製造垃圾嗎？這根本是藉神之名行流氓之實！吵死人了，明天還要上班耶！",
+                image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Noise+Pollution",
+                base_stats: { traffic: 200, panic: 5, suspicion: 10 },
+                feedback: "傳統文化與現代生活的衝突。網路上戰成一團，有人挺傳統，有人罵陋習。"
+            },
+            heavy: {
+                text: "繞境路線其實是一個巨大的封印陣法！他們是在鎮壓地底下的哥吉拉，鞭炮聲是為了掩蓋怪獸的吼聲！",
+                image_url: "https://placehold.co/400x300/581818/FFF?text=Monster+Seal",
+                base_stats: { traffic: 70, panic: 130, suspicion: 60 },
+                feedback: "特攝片風格的謠言。年輕人覺得很酷，紛紛轉發。"
+            }
+        }
+    },
+    {
+        id: "49",
+        event_desc: "新聞：某國小營養午餐被發現含有未經核准的食品添加物。",
+        options: {
+            light: {
+                text: "廠商黑心！校長回扣拿多少？孩子的健康誰來賠？這種人應該下地獄！",
+                image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Bad+Lunch",
+                base_stats: { traffic: 180, panic: 90, suspicion: 40 },
+                feedback: "家長的憤怒是核彈等級。學校電話被打爆，校長被逼出來道歉。"
+            },
+            heavy: {
+                text: "添加物是為了抑制小孩的超能力！政府怕新人類覺醒推翻政權，從小就開始下藥！",
+                image_url: "https://placehold.co/400x300/581818/FFF?text=Superpower+Suppress",
+                base_stats: { traffic: 40, panic: 160, suspicion: 70 },
+                feedback: "中二病發作的陰謀論。小學生們開始幻想自己有超能力，反而很興奮。"
+            }
+        }
+    },
+    {
+        id: "50",
+        event_desc: "新聞：半導體大廠引進數百名外籍工程師，進行技術交流。",
+        options: {
+            light: {
+                text: "來偷技術的！幾年後我們就沒有優勢了，政府還在睡！臺灣要被掏空了！",
+                image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Tech+Theft",
+                base_stats: { traffic: 190, panic: 40, suspicion: 30 },
+                feedback: "販賣「亡國感」永遠有效。大家開始擔心護國神山不保。"
+            },
+            heavy: {
+                text: "那些工程師其實是偽裝的外星人！他們來拿回當年墜落在地球的飛碟科技，準備離開地球！",
+                image_url: "https://placehold.co/400x300/581818/FFF?text=Alien+Engineer",
+                base_stats: { traffic: 50, panic: 200, suspicion: 80 },
+                feedback: "科幻大結局。雖然沒人信，但這則謠言為這場混亂的資訊戰畫下了一個荒謬的句點。"
+            }
+        }
+    },
+    {
+        id: "51",
+        event_desc: "新聞：政府提出400億美元國防特別預算，引發朝野攻防。",
+        options: {
+            light: {
+                text: "公務員年終獎金要被砍掉拿去買飛機了！大家勒緊褲帶吧！",
+                image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Budget+Cut",
+                base_stats: { traffic: 180, panic: 30, suspicion: 20 },
+                feedback: "利用公務員的焦慮感，成功引發對國防預算的反感。"
+            },
+            heavy: {
+                text: "這是為了幫美國家族企業還債的「保護費」，買來的全是廢鐵！",
+                image_url: "https://placehold.co/400x300/581818/FFF?text=Protection+Fee",
+                base_stats: { traffic: 60, panic: 150, suspicion: 80 },
+                feedback: "將軍購案描述成私人利益輸送，陰謀論者非常買單。"
+            }
+        }
+    },
+    {
+        id: "52",
+        event_desc: "新聞：美國要求台灣軍費達GDP 10%，引發社會議論。",
+        options: {
+            light: {
+                text: "以後每個月薪水要多扣10%的「國防捐」，大家準備吃土！",
+                image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Tax+Hike",
+                base_stats: { traffic: 200, panic: 50, suspicion: 10 },
+                feedback: "直接連結到個人荷包，讓民眾對國防議題產生切身痛感。"
+            },
+            heavy: {
+                text: "美國準備把台灣變成焦土，逼台灣人替美國打巷戰！",
+                image_url: "https://placehold.co/400x300/581818/FFF?text=Scorched+Earth",
+                base_stats: { traffic: 40, panic: 220, suspicion: 70 },
+                feedback: "販賣戰爭恐懼的極致，成功讓部分民眾產生失敗主義。"
+            }
+        }
+    },
+    {
+        id: "53",
+        event_desc: "新聞：2025年漢光演習擴大舉行，將進行實兵操演。",
+        options: {
+            light: {
+                text: "演習期間手機網路會全部斷訊三天，快下載離線地圖！",
+                image_url: "https://placehold.co/400x300/2c3e50/FFF?text=No+Signal",
+                base_stats: { traffic: 160, panic: 80, suspicion: 5 },
+                feedback: "生活不便的謠言傳播速度最快，大家都在轉發「斷網求生指南」。"
+            },
+            heavy: {
+                text: "演習是為了掩護美軍秘密進駐台灣接管指揮權！",
+                image_url: "https://placehold.co/400x300/581818/FFF?text=Secret+Takeover",
+                base_stats: { traffic: 30, panic: 180, suspicion: 90 },
+                feedback: "喪失主權的陰謀論，觸動了政治敏感神經。"
+            }
+        }
+    },
+    {
+        id: "54",
+        event_desc: "新聞：美國批准3.3億美元對台軍售，包含雷達零件。",
+        options: {
+            light: {
+                text: "聽說這次買的雷達會干擾5G訊號，家裡網路會變慢！",
+                image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Slow+Internet",
+                base_stats: { traffic: 140, panic: 20, suspicion: 15 },
+                feedback: "把軍事設施跟網速變慢連結，引發年輕族群的抱怨。"
+            },
+            heavy: {
+                text: "這些雷達是為了監控台灣人民的手機數據，直接傳回CIA！",
+                image_url: "https://placehold.co/400x300/581818/FFF?text=CIA+Spying",
+                base_stats: { traffic: 50, panic: 190, suspicion: 85 },
+                feedback: "監控陰謀論永遠有市場，大家開始懷疑手機被監聽。"
+            }
+        }
+    },
+    {
+        id: "55",
+        event_desc: "新聞：朝野立委審查國防預算爆發肢體衝突，議事癱瘓。",
+        options: {
+            light: {
+                text: "立委打架是為了搶便當，聽說立法院便當升級成和牛！",
+                image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Wagyu+Bento",
+                base_stats: { traffic: 220, panic: 5, suspicion: 10 },
+                feedback: "嘲諷政治人物的貪婪，娛樂性十足，成為熱門迷因。"
+            },
+            heavy: {
+                text: "這是演給美國看的戲，藍綠私底下早就分好軍火回扣了！",
+                image_url: "https://placehold.co/400x300/581818/FFF?text=Corruption",
+                base_stats: { traffic: 80, panic: 40, suspicion: 95 },
+                feedback: "對政治分贓的指控，加深了民眾對政黨的不信任。"
+            }
+        }
+    },
+    {
+        id: "56",
+        event_desc: "新聞：替代役制度改革，將增加民防訓練時數。",
+        options: {
+            light: {
+                text: "以後去當替代役也要拿槍上戰場，不能只在公所吹冷氣！",
+                image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Drafted",
+                base_stats: { traffic: 190, panic: 60, suspicion: 20 },
+                feedback: "打破替代役「爽缺」的印象，引發役男恐慌。"
+            },
+            heavy: {
+                text: "政府準備把替代役送去烏克蘭當志願軍填線！",
+                image_url: "https://placehold.co/400x300/581818/FFF?text=Ukraine+Front",
+                base_stats: { traffic: 40, panic: 230, suspicion: 70 },
+                feedback: "極度誇張的戰爭謠言，家長們嚇壞了。"
+            }
+        }
+    },
+    {
+        id: "57",
+        event_desc: "新聞：全動法修法爭議，政府澄清僅為動員準備。",
+        options: {
+            light: {
+                text: "戰爭時政府會直接沒收大家的Gogoro電池去給軍用無人機！",
+                image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Battery+Seized",
+                base_stats: { traffic: 150, panic: 40, suspicion: 10 },
+                feedback: "針對電動車主的恐嚇，雖然荒謬但引發討論。"
+            },
+            heavy: {
+                text: "16歲以上學生造冊是為了隨時拉去當少年兵！",
+                image_url: "https://placehold.co/400x300/581818/FFF?text=Child+Soldier",
+                base_stats: { traffic: 60, panic: 250, suspicion: 80 },
+                feedback: "觸動家長最敏感的神經，校園群組瘋傳。"
+            }
+        }
+    },
+    {
+        id: "58",
+        event_desc: "新聞：中共軍機軍艦常態性越過中線，國軍嚴密監控。",
+        options: {
+            light: {
+                text: "飛機飛太低會把魚嚇跑，最近海鮮變貴都是因為共機！",
+                image_url: "https://placehold.co/400x300/2c3e50/FFF?text=No+Fish",
+                base_stats: { traffic: 130, panic: 10, suspicion: 5 },
+                feedback: "把物價上漲怪罪給軍事行動，邏輯跳躍但有趣。"
+            },
+            heavy: {
+                text: "政府跟中共講好了，選舉前飛過來嚇嚇人，幫忙催票！",
+                image_url: "https://placehold.co/400x300/581818/FFF?text=Election+Rigging",
+                base_stats: { traffic: 70, panic: 30, suspicion: 90 },
+                feedback: "政治陰謀論的經典款，雙方支持者都深信不疑。"
+            }
+        }
+    },
+    {
+        id: "59",
+        event_desc: "新聞：台灣申請加入CPTPP進度受阻，政府表示持續努力。",
+        options: {
+            light: {
+                text: "加入CPTPP後，台灣路邊攤都不能賣臭豆腐了，因為不符標準！",
+                image_url: "https://placehold.co/400x300/2c3e50/FFF?text=No+Stinky+Tofu",
+                base_stats: { traffic: 210, panic: 20, suspicion: 10 },
+                feedback: "利用對美食消失的恐懼，引發庶民的強烈反彈。"
+            },
+            heavy: {
+                text: "政府為了加入，已經秘密答應開放核食和萊豬，還要開放外國勞工無限額！",
+                image_url: "https://placehold.co/400x300/581818/FFF?text=Secret+Trade",
+                base_stats: { traffic: 50, panic: 160, suspicion: 80 },
+                feedback: "結合食安與勞工議題的綜合型謠言，殺傷力強大。"
+            }
+        }
+    },
+    {
+        id: "60",
+        event_desc: "新聞：數位身分證 (New eID) 資安疑慮再起，內政部強調安全。",
+        options: {
+            light: {
+                text: "換新身分證要花一千塊，還要強制綁定信用卡！",
+                image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Expensive+ID",
+                base_stats: { traffic: 170, panic: 30, suspicion: 20 },
+                feedback: "造謠收費標準，引發民眾對政府搶錢的憤怒。"
+            },
+            heavy: {
+                text: "晶片裡有追蹤器，中共駭客已經拿到後門金鑰，隨時能監控全台行蹤！",
+                image_url: "https://placehold.co/400x300/581818/FFF?text=Hacked+ID",
+                base_stats: { traffic: 40, panic: 210, suspicion: 90 },
+                feedback: "資安與國安的雙重恐嚇，讓民眾對數位轉型產生抗拒。"
+            }
+        }
+    },
+    {
+        id: "61",
+        event_desc: "新聞：2025年10月起民生電價平均調漲3%，台電表示反映成本。",
+        options: {
+            light: {
+                text: "晚上洗衣服比較貴，半夜12點後洗才省錢！",
+                image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Night+Laundry",
+                base_stats: { traffic: 240, panic: 10, suspicion: 5 },
+                feedback: "經典的時間電價謠言，婆婆媽媽群組轉發率第一名。"
+            },
+            heavy: {
+                text: "電費漲價是為了補貼綠能廠商的虧損，那是執政黨的小金庫！",
+                image_url: "https://placehold.co/400x300/581818/FFF?text=Green+Corruption",
+                base_stats: { traffic: 60, panic: 50, suspicion: 95 },
+                feedback: "將能源政策導向貪汙弊案，引發民眾對政府的不信任。"
+            }
+        }
+    },
+    {
+        id: "62",
+        event_desc: "新聞：台積電(TSMC)亞利桑那廠量產，良率優於預期。",
+        options: {
+            light: {
+                text: "台積電工程師去美國薪水變三倍，台灣廠只剩實習生！",
+                image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Brain+Drain",
+                base_stats: { traffic: 180, panic: 40, suspicion: 20 },
+                feedback: "利用相對剝奪感與人才外流的焦慮，引發工程師社群討論。"
+            },
+            heavy: {
+                text: "這是「掏空台灣」計畫，美國要把台積電連人帶技術全部搬走！",
+                image_url: "https://placehold.co/400x300/581818/FFF?text=Hollow+Out",
+                base_stats: { traffic: 50, panic: 190, suspicion: 80 },
+                feedback: "販賣「去台化」的恐懼，讓民眾擔心經濟支柱倒塌。"
+            }
+        }
+    },
+    {
+        id: "63",
+        event_desc: "新聞：台積電宣佈在台興建2奈米新廠，預計帶動就業。",
+        options: {
+            light: {
+                text: "蓋新廠會把南部的水都吸乾，以後高雄人沒水喝！",
+                image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Water+Shortage",
+                base_stats: { traffic: 160, panic: 70, suspicion: 10 },
+                feedback: "挑起產業與民生用水的矛盾，引發在地居民恐慌。"
+            },
+            heavy: {
+                text: "2奈米廠只是幌子，其實是要蓋高輻射實驗室！",
+                image_url: "https://placehold.co/400x300/581818/FFF?text=Radiation+Lab",
+                base_stats: { traffic: 30, panic: 200, suspicion: 70 },
+                feedback: "利用對輻射的無知與恐懼，製造鄰避效應。"
+            }
+        }
+    },
+    {
+        id: "64",
+        event_desc: "新聞：台灣赴美工作人數創新高，達13.7萬人。",
+        options: {
+            light: {
+                text: "現在去美國打工度假可以隨便拿綠卡！",
+                image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Easy+GreenCard",
+                base_stats: { traffic: 200, panic: 10, suspicion: 30 },
+                feedback: "美好的假消息，吸引大量夢想出國的人轉發。"
+            },
+            heavy: {
+                text: "政府在此刻鼓勵移民，是知道戰爭快開打，讓菁英先跑！",
+                image_url: "https://placehold.co/400x300/581818/FFF?text=Elite+Escape",
+                base_stats: { traffic: 60, panic: 240, suspicion: 60 },
+                feedback: "將移民潮解讀為戰爭前兆，製造社會恐慌。"
+            }
+        }
+    },
+    {
+        id: "65",
+        event_desc: "新聞：基本工資調漲至29,500元，勞動部拍板定案。",
+        options: {
+            light: {
+                text: "薪水漲了導致便當店老闆不爽，明天雞腿飯直接漲20塊！",
+                image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Inflation",
+                base_stats: { traffic: 220, panic: 30, suspicion: 5 },
+                feedback: "預言物價上漲，讓加薪的喜悅瞬間變成對通膨的擔憂。"
+            },
+            heavy: {
+                text: "調漲薪水是為了讓外籍移工匯更多錢回去，本國勞工根本領不到！",
+                image_url: "https://placehold.co/400x300/581818/FFF?text=Foreign+Labor",
+                base_stats: { traffic: 80, panic: 20, suspicion: 85 },
+                feedback: "挑起本勞與外勞的矛盾，轉移對低薪問題的焦點。"
+            }
+        }
+    },
+    {
+        id: "66",
+        event_desc: "新聞：央行祭出房貸成數緊縮政策，意在抑制房價。",
+        options: {
+            light: {
+                text: "現在沒結婚的人銀行不給貸款，單身被歧視！",
+                image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Single+Discrimination",
+                base_stats: { traffic: 190, panic: 40, suspicion: 20 },
+                feedback: "利用單身族群的焦慮，引發對銀行政策的不滿。"
+            },
+            heavy: {
+                text: "這是銀行跟財團串通好，要逼死繳不出房貸的中產階級，低價收購法拍屋！",
+                image_url: "https://placehold.co/400x300/581818/FFF?text=Bank+Conspiracy",
+                base_stats: { traffic: 50, panic: 150, suspicion: 90 },
+                feedback: "將打房政策解讀為掠奪資產的陰謀，加深階級對立。"
+            }
+        }
+    },
+    {
+        id: "67",
+        event_desc: "新聞：台股AI概念股震盪劇烈，投資人心情如洗三溫暖。",
+        options: {
+            light: {
+                text: "買AI股票一定要買有「機器人」三個字的公司才會漲！",
+                image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Stock+Tips",
+                base_stats: { traffic: 150, panic: 10, suspicion: 30 },
+                feedback: "無腦的投資建議，卻能吸引想發財的散戶。"
+            },
+            heavy: {
+                text: "股市大跌是外資收到內線消息，兩岸要開戰了趕快撤資！",
+                image_url: "https://placehold.co/400x300/581818/FFF?text=Market+Crash",
+                base_stats: { traffic: 70, panic: 210, suspicion: 60 },
+                feedback: "將股市波動與戰爭連結，製造金融恐慌。"
+            }
+        }
+    },
+    {
+        id: "68",
+        event_desc: "新聞：北部缺電危機與分區供電疑慮，台電呼籲節約用電。",
+        options: {
+            light: {
+                text: "冷氣開26度以下會被智慧電表抓到並自動斷電！",
+                image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Smart+Meter",
+                base_stats: { traffic: 170, panic: 60, suspicion: 15 },
+                feedback: "對監控科技的誤解，讓民眾不敢開冷氣。"
+            },
+            heavy: {
+                text: "政府故意讓北部缺電，是為了逼科技廠遷到南部去救選票！",
+                image_url: "https://placehold.co/400x300/581818/FFF?text=Political+Power",
+                base_stats: { traffic: 60, panic: 120, suspicion: 85 },
+                feedback: "將能源配置解讀為政治算計，引發南北對立。"
+            }
+        }
+    },
+    {
+        id: "69",
+        event_desc: "新聞：碳費徵收制度上路，企業成本增加。",
+        options: {
+            light: {
+                text: "以後烤肉要繳碳稅，一家烤肉萬家繳錢！",
+                image_url: "https://placehold.co/400x300/2c3e50/FFF?text=BBQ+Tax",
+                base_stats: { traffic: 230, panic: 20, suspicion: 10 },
+                feedback: "荒謬的民生謠言，因為太好笑而被瘋狂轉發。"
+            },
+            heavy: {
+                text: "碳費是為了圖利特定種樹的公司，都是權貴開的！",
+                image_url: "https://placehold.co/400x300/581818/FFF?text=Carbon+Scam",
+                base_stats: { traffic: 50, panic: 40, suspicion: 90 },
+                feedback: "質疑環保政策背後的利益輸送，打擊政策正當性。"
+            }
+        }
+    },
+    {
+        id: "70",
+        event_desc: "新聞：觀光逆差擴大，國旅昂貴引發民怨。",
+        options: {
+            light: {
+                text: "去墾丁玩比去沖繩貴，是因為墾丁大街要繳保護費給黑道！",
+                image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Kenting+Mafia",
+                base_stats: { traffic: 210, panic: 10, suspicion: 40 },
+                feedback: "將高物價歸咎於黑道，符合大眾對觀光區的負面想像。"
+            },
+            heavy: {
+                text: "政府故意放任國旅爛，是為了逼大家出國花光外匯存底！",
+                image_url: "https://placehold.co/400x300/581818/FFF?text=Destroy+Tourism",
+                base_stats: { traffic: 40, panic: 80, suspicion: 70 },
+                feedback: "奇怪的經濟陰謀論，但能吸引對政府不滿的人。"
+            }
+        }
+    },
+    {
+        id: "71",
+        event_desc: "新聞：11月爆發雞蛋芬普尼超標回收事件，食藥署啟動稽查。",
+        options: {
+            light: {
+                text: "蛋黃顏色太深就是有毒，這週早餐店的蛋都不能吃！",
+                image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Toxic+Egg",
+                base_stats: { traffic: 190, panic: 70, suspicion: 10 },
+                feedback: "簡單粗暴的食安恐嚇，讓早餐店生意大受影響。"
+            },
+            heavy: {
+                text: "毒蛋是政府故意放行的，為了消化過期的進口蛋庫存！",
+                image_url: "https://placehold.co/400x300/581818/FFF?text=Gov+Poison",
+                base_stats: { traffic: 60, panic: 150, suspicion: 85 },
+                feedback: "延續進口蛋爭議的陰謀論，政治殺傷力強。"
+            }
+        }
+    },
+    {
+        id: "72",
+        event_desc: "新聞：台中養豬場疑似非洲豬瘟，動保處預防性撲殺。",
+        options: {
+            light: {
+                text: "最近菜市場的豬肉都是病死豬做的，顏色發黑千萬別買！",
+                image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Sick+Pork",
+                base_stats: { traffic: 180, panic: 90, suspicion: 20 },
+                feedback: "引發對市場肉品的恐慌，婆婆媽媽們不敢買肉。"
+            },
+            heavy: {
+                text: "這是為了掩護美國萊豬進口，故意製造本土豬肉恐慌！",
+                image_url: "https://placehold.co/400x300/581818/FFF?text=US+Pork+Plot",
+                base_stats: { traffic: 50, panic: 120, suspicion: 80 },
+                feedback: "將豬瘟疫情政治化，連結到反美豬議題。"
+            }
+        }
+    },
+    {
+        id: "73",
+        event_desc: "新聞：開放福島五縣市食品進口限制解除，引發食安疑慮。",
+        options: {
+            light: {
+                text: "超商賣的日本零食都有輻射，吃了晚上會發光！",
+                image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Glowing+Snack",
+                base_stats: { traffic: 200, panic: 50, suspicion: 10 },
+                feedback: "誇張的輻射謠言，雖然不科學但傳播力強。"
+            },
+            heavy: {
+                text: "日本跟政府交換條件，我們吃核食，他們才幫我們講話！",
+                image_url: "https://placehold.co/400x300/581818/FFF?text=Dirty+Deal",
+                base_stats: { traffic: 60, panic: 140, suspicion: 90 },
+                feedback: "將外交關係解讀為拿國民健康做交易。"
+            }
+        }
+    },
+    {
+        id: "74",
+        event_desc: "新聞：登革熱疫情在南部升溫，病例數創新高。",
+        options: {
+            light: {
+                text: "噴防蚊液會導致皮膚癌，喝大蒜水才能防蚊！",
+                image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Garlic+Cure",
+                base_stats: { traffic: 160, panic: 30, suspicion: 20 },
+                feedback: "典型的長輩群組養生偏方，誤導防疫觀念。"
+            },
+            heavy: {
+                text: "登革熱病毒是實驗室洩漏的生物武器，用來測試南部人的抵抗力！",
+                image_url: "https://placehold.co/400x300/581818/FFF?text=Bio+Weapon+Test",
+                base_stats: { traffic: 30, panic: 220, suspicion: 80 },
+                feedback: "生化武器陰謀論，製造極度恐慌。"
+            }
+        }
+    },
+    {
+        id: "75",
+        event_desc: "新聞：流感與新冠雙重疫苗開打，呼籲民眾接種。",
+        options: {
+            light: {
+                text: "打這兩針不能同一天，不然會這輩子不舉！",
+                image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Impotence",
+                base_stats: { traffic: 210, panic: 60, suspicion: 10 },
+                feedback: "針對男性的健康恐嚇，效果拔群。"
+            },
+            heavy: {
+                text: "疫苗裡面有奈米晶片，打完就會被腦控！",
+                image_url: "https://placehold.co/400x300/581818/FFF?text=Microchip",
+                base_stats: { traffic: 40, panic: 200, suspicion: 90 },
+                feedback: "經典的反疫苗陰謀論，永遠有人信。"
+            }
+        }
+    },
+    {
+        id: "76",
+        event_desc: "新聞：健保點值調整爭議，醫界要求保障一點一元。",
+        options: {
+            light: {
+                text: "以後去大醫院看病要先包紅包，不然醫生不開刀！",
+                image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Red+Envelope",
+                base_stats: { traffic: 180, panic: 80, suspicion: 30 },
+                feedback: "喚起對醫療崩壞的恐懼，讓病患人人自危。"
+            },
+            heavy: {
+                text: "健保快破產了，政府準備要把老人家的藥都換成麵粉做的安慰劑！",
+                image_url: "https://placehold.co/400x300/581818/FFF?text=Fake+Meds",
+                base_stats: { traffic: 50, panic: 170, suspicion: 70 },
+                feedback: "針對老年人的惡意謠言，引發對政府的憤怒。"
+            }
+        }
+    },
+    {
+        id: "77",
+        event_desc: "新聞：手搖飲強制標示總糖量與熱量，新制上路。",
+        options: {
+            light: {
+                text: "喝無糖珍奶其實熱量最高，因為珍珠是用豬油炸的！",
+                image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Lard+Pearl",
+                base_stats: { traffic: 150, panic: 40, suspicion: 10 },
+                feedback: "噁心的食品謠言，讓愛喝珍奶的人產生罪惡感。"
+            },
+            heavy: {
+                text: "這是為了圖利代糖廠商，逼店家都改用化學代糖！",
+                image_url: "https://placehold.co/400x300/581818/FFF?text=Chemical+Sugar",
+                base_stats: { traffic: 60, panic: 30, suspicion: 80 },
+                feedback: "質疑政策背後的商業利益，引發對食品工業的不信任。"
+            }
+        }
+    },
+    {
+        id: "78",
+        event_desc: "新聞：缺藥問題頻傳，抗生素與軟便劑供貨不穩。",
+        options: {
+            light: {
+                text: "藥局說缺貨是騙人的，其實都囤起來要漲價賣去中國！",
+                image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Drug+Smuggling",
+                base_stats: { traffic: 190, panic: 50, suspicion: 40 },
+                feedback: "將缺藥歸咎於惡意囤積與外流，引發民眾搶購。"
+            },
+            heavy: {
+                text: "政府把好藥都捐給友邦了，台灣人只能吃次等藥！",
+                image_url: "https://placehold.co/400x300/581818/FFF?text=Second+Class",
+                base_stats: { traffic: 50, panic: 130, suspicion: 90 },
+                feedback: "利用相對剝奪感，煽動對外交政策的不滿。"
+            }
+        }
+    },
+    {
+        id: "79",
+        event_desc: "新聞：北市推動騎樓禁菸擴大，違者開罰。",
+        options: {
+            light: {
+                text: "走在騎樓連拿著沒點的菸都會被罰一萬塊！",
+                image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Smoking+Fine",
+                base_stats: { traffic: 200, panic: 20, suspicion: 10 },
+                feedback: "誇大執法標準，引發吸菸族群的恐慌與憤怒。"
+            },
+            heavy: {
+                text: "罰款都是進了檢舉達人的口袋，這是政府創造就業的方式！",
+                image_url: "https://placehold.co/400x300/581818/FFF?text=Snitch+Job",
+                base_stats: { traffic: 70, panic: 10, suspicion: 80 },
+                feedback: "挑起對檢舉達人的仇恨，轉移對違規行為的關注。"
+            }
+        }
+    },
+    {
+        id: "80",
+        event_desc: "新聞：Uber Eats 與 Foodpanda 併購案審查，公平會關注市場壟斷。",
+        options: {
+            light: {
+                text: "兩家合併後，外送費會變成300元起跳！",
+                image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Expensive+Delivery",
+                base_stats: { traffic: 220, panic: 40, suspicion: 5 },
+                feedback: "對壟斷漲價的恐懼，讓依賴外送的人崩潰。"
+            },
+            heavy: {
+                text: "這是為了讓中資透過外送平台掌握全台灣人的飲食大數據！",
+                image_url: "https://placehold.co/400x300/581818/FFF?text=Food+Data+Spy",
+                base_stats: { traffic: 40, panic: 160, suspicion: 90 },
+                feedback: "將商業併購上綱到國安層級，引發資安疑慮。"
+            }
+        }
+    },
+    {
+        id: "81",
+        event_desc: "新聞：AI 語音深偽 (Deepfake) 詐騙激增，民眾防不勝防。",
+        options: {
+            light: {
+                text: "接到不出聲的電話不要講話，一講話聲音就會被盜走去借錢！",
+                image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Voice+Theft",
+                base_stats: { traffic: 240, panic: 80, suspicion: 20 },
+                feedback: "簡單易懂的防詐（假）知識，長輩群組瘋傳。"
+            },
+            heavy: {
+                text: "這些AI詐騙集團的後台其實是某個政府部門，用來監控金流！",
+                image_url: "https://placehold.co/400x300/581818/FFF?text=Gov+Scam",
+                base_stats: { traffic: 50, panic: 150, suspicion: 90 },
+                feedback: "將詐騙歸咎於政府監守自盜，破壞社會信任。"
+            }
+        }
+    },
+    {
+        id: "82",
+        event_desc: "新聞：LINE 投資群組詐騙案破獲，受害者眾多。",
+        options: {
+            light: {
+                text: "只要被拉進群組，手機就會中毒，網銀密碼直接外洩！",
+                image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Virus+Group",
+                base_stats: { traffic: 200, panic: 90, suspicion: 30 },
+                feedback: "製造對通訊軟體的恐懼，讓人不敢加群組。"
+            },
+            heavy: {
+                text: "抓到的車手都是替死鬼，真正的幕後金主是立委養的！",
+                image_url: "https://placehold.co/400x300/581818/FFF?text=Politician+Boss",
+                base_stats: { traffic: 70, panic: 20, suspicion: 95 },
+                feedback: "對政治人物的嚴重指控，符合大眾對黑金政治的想像。"
+            }
+        }
+    },
+    {
+        id: "83",
+        event_desc: "新聞：交通新制：行人帝王條款執法加嚴，未禮讓重罰。",
+        options: {
+            light: {
+                text: "只要行人腳踏到斑馬線，車子就算在一百公尺外也要停下來！",
+                image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Traffic+Stop",
+                base_stats: { traffic: 210, panic: 30, suspicion: 10 },
+                feedback: "誇大執法嚴格程度，引發駕駛人的怒火。"
+            },
+            heavy: {
+                text: "罰單收入是用來發警察年終獎金，所以年底抓特別兇！",
+                image_url: "https://placehold.co/400x300/581818/FFF?text=Police+Bonus",
+                base_stats: { traffic: 80, panic: 10, suspicion: 80 },
+                feedback: "質疑執法動機，將警察描述成搶錢機器。"
+            }
+        }
+    },
+    {
+        id: "84",
+        event_desc: "新聞：區間測速擴大設置，引發隱私權爭議。",
+        options: {
+            light: {
+                text: "區間測速也會拍車內有沒有繫安全帶和挖鼻孔！",
+                image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Car+Spy",
+                base_stats: { traffic: 180, panic: 50, suspicion: 20 },
+                feedback: "侵犯隱私的謠言，讓駕駛人感覺被監視。"
+            },
+            heavy: {
+                text: "測速照相機都是中國製的，會把車牌資料傳回北京建立檔案！",
+                image_url: "https://placehold.co/400x300/581818/FFF?text=China+Cam",
+                base_stats: { traffic: 40, panic: 120, suspicion: 90 },
+                feedback: "將交通執法設備連結到國安問題。"
+            }
+        }
+    },
+    {
+        id: "85",
+        event_desc: "新聞：TPASS 通勤月票續辦與檢討，使用人次破億。",
+        options: {
+            light: {
+                text: "聽說下個月TPASS要漲到2000元，快點先囤十張！",
+                image_url: "https://placehold.co/400x300/2c3e50/FFF?text=TPASS+Hike",
+                base_stats: { traffic: 190, panic: 70, suspicion: 10 },
+                feedback: "製造漲價恐慌，引發搶購潮。"
+            },
+            heavy: {
+                text: "TPASS 晶片會紀錄你的移動軌跡，政府用大數據抓逃漏稅！",
+                image_url: "https://placehold.co/400x300/581818/FFF?text=Tracking+Chip",
+                base_stats: { traffic: 50, panic: 160, suspicion: 80 },
+                feedback: "政府監控陰謀論，讓通勤族心裡毛毛的。"
+            }
+        }
+    },
+    {
+        id: "86",
+        event_desc: "新聞：網紅代言虛擬貨幣涉詐，檢調介入調查。",
+        options: {
+            light: {
+                text: "買比特幣要課80%的稅，政府不准窮人翻身！",
+                image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Crypto+Tax",
+                base_stats: { traffic: 160, panic: 20, suspicion: 30 },
+                feedback: "造謠高額稅率，引發投資人的憤怒。"
+            },
+            heavy: {
+                text: "網紅只是白手套，洗的都是政黨的黑錢！",
+                image_url: "https://placehold.co/400x300/581818/FFF?text=Money+Laundering",
+                base_stats: { traffic: 70, panic: 10, suspicion: 90 },
+                feedback: "將詐騙案導向政治洗錢，加深對網紅與政客的厭惡。"
+            }
+        }
+    },
+    {
+        id: "87",
+        event_desc: "新聞：電動車專屬停車位被佔用開罰，油車車主不滿。",
+        options: {
+            light: {
+                text: "油車停電動車格會導致電池爆炸，因為磁場不合！",
+                image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Explosion",
+                base_stats: { traffic: 140, panic: 50, suspicion: 10 },
+                feedback: "偽科學謠言，用來嚇阻油車佔用車位。"
+            },
+            heavy: {
+                text: "電動車政策是為了幫特斯拉股價抬轎，官員都有買股票！",
+                image_url: "https://placehold.co/400x300/581818/FFF?text=Stock+Manipulation",
+                base_stats: { traffic: 60, panic: 20, suspicion: 85 },
+                feedback: "質疑政策背後的圖利行為。"
+            }
+        }
+    },
+    {
+        id: "88",
+        event_desc: "新聞：低軌衛星網路 (Starlink) 合作案，強化通訊韌性。",
+        options: {
+            light: {
+                text: "裝了星鏈網路，家裡的微波爐會壞掉！",
+                image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Broken+Microwave",
+                base_stats: { traffic: 130, panic: 30, suspicion: 20 },
+                feedback: "科技恐懼謠言，針對不了解新科技的長輩。"
+            },
+            heavy: {
+                text: "馬斯克是親中的，這個網路系統一旦開戰就會直接切斷！",
+                image_url: "https://placehold.co/400x300/581818/FFF?text=Cut+Off",
+                base_stats: { traffic: 50, panic: 180, suspicion: 70 },
+                feedback: "利用對特定人物的政治立場疑慮，製造國安恐慌。"
+            }
+        }
+    },
+    {
+        id: "89",
+        event_desc: "新聞：校園禁止使用抖音 (TikTok)，引發言論自由爭議。",
+        options: {
+            light: {
+                text: "學校會檢查手機，有裝抖音的直接記大過！",
+                image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Phone+Check",
+                base_stats: { traffic: 200, panic: 60, suspicion: 10 },
+                feedback: "誇大校規執行，引發學生的反彈。"
+            },
+            heavy: {
+                text: "抖音會發射特定頻率的音波，讓台灣小孩變笨！",
+                image_url: "https://placehold.co/400x300/581818/FFF?text=Dumb+Wave",
+                base_stats: { traffic: 40, panic: 150, suspicion: 80 },
+                feedback: "科幻洗腦陰謀論，家長們寧可信其有。"
+            }
+        }
+    },
+    {
+        id: "90",
+        event_desc: "新聞：5G 基地台建設抗爭，居民擔心電磁波影響健康。",
+        options: {
+            light: {
+                text: "5G 基地台發出的電波會讓附近的鳥集體死亡！",
+                image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Dead+Birds",
+                base_stats: { traffic: 170, panic: 40, suspicion: 30 },
+                feedback: "經典的電磁波恐懼，視覺畫面感強。"
+            },
+            heavy: {
+                text: "5G 其實是為了啟動疫苗裡的奈米機器人！",
+                image_url: "https://placehold.co/400x300/581818/FFF?text=5G+Activate",
+                base_stats: { traffic: 30, panic: 220, suspicion: 90 },
+                feedback: "結合5G與疫苗的終極陰謀論。"
+            }
+        }
+    },
+    {
+        id: "91",
+        event_desc: "新聞：私立大學退場與倒閉潮，數千名學生需轉學。",
+        options: {
+            light: {
+                text: "讀這幾間學校的畢業證書會自動失效，這幾年白讀了！",
+                image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Useless+Degree",
+                base_stats: { traffic: 190, panic: 80, suspicion: 10 },
+                feedback: "製造學歷失效的恐慌，學生們崩潰。"
+            },
+            heavy: {
+                text: "教育部故意讓私校倒閉，是為了圈地蓋社會住宅或賣給財團！",
+                image_url: "https://placehold.co/400x300/581818/FFF?text=Land+Grab",
+                base_stats: { traffic: 60, panic: 30, suspicion: 85 },
+                feedback: "質疑退場機制背後的土地利益。"
+            }
+        }
+    },
+    {
+        id: "92",
+        event_desc: "新聞：大巨蛋舉辦演唱會，門票秒殺引發黃牛亂象。",
+        options: {
+            light: {
+                text: "大巨蛋跳動會導致捷運出軌，所以禁止唱嗨歌！",
+                image_url: "https://placehold.co/400x300/2c3e50/FFF?text=MRT+Danger",
+                base_stats: { traffic: 160, panic: 50, suspicion: 20 },
+                feedback: "誇大震動影響，製造公共安全恐慌。"
+            },
+            heavy: {
+                text: "黃牛票都是主辦單位自己流出來賣的，政府也不敢抓！",
+                image_url: "https://placehold.co/400x300/581818/FFF?text=Scalper+Inside",
+                base_stats: { traffic: 230, panic: 10, suspicion: 60 },
+                feedback: "指控官商勾結，引發粉絲的憤怒。"
+            }
+        }
+    },
+    {
+        id: "93",
+        event_desc: "新聞：文化幣發放與使用亂象，出現收購與違規使用。",
+        options: {
+            light: {
+                text: "文化幣可以用來買遊戲點數，只要跟店員說通關密語！",
+                image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Game+Points",
+                base_stats: { traffic: 210, panic: 10, suspicion: 30 },
+                feedback: "誘導違規使用的謠言，年輕人瘋傳。"
+            },
+            heavy: {
+                text: "文化幣是為了洗腦年輕人，只能買政府指定的「愛國書籍」！",
+                image_url: "https://placehold.co/400x300/581818/FFF?text=Brainwash+Book",
+                base_stats: { traffic: 40, panic: 20, suspicion: 90 },
+                feedback: "將文化政策解讀為思想控制。"
+            }
+        }
+    },
+    {
+        id: "94",
+        event_desc: "新聞：代理教師權益與缺工問題，教育部承諾改善。",
+        options: {
+            light: {
+                text: "現在學校老師都不考試了，只要有手有腳就能去教書！",
+                image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Bad+Teacher",
+                base_stats: { traffic: 180, panic: 60, suspicion: 20 },
+                feedback: "貶低教師素質，引發家長恐慌。"
+            },
+            heavy: {
+                text: "這是為了讓特定意識形態的人滲透進校園，從國小開始洗腦！",
+                image_url: "https://placehold.co/400x300/581818/FFF?text=Ideology",
+                base_stats: { traffic: 50, panic: 150, suspicion: 80 },
+                feedback: "校園滲透陰謀論，觸動政治敏感神經。"
+            }
+        }
+    },
+    {
+        id: "95",
+        event_desc: "新聞：博愛座存廢爭議，衛福部研擬修法。",
+        options: {
+            light: {
+                text: "年輕人坐博愛座會被監視器拍下來，記點扣信用分數！",
+                image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Credit+Score",
+                base_stats: { traffic: 200, panic: 40, suspicion: 10 },
+                feedback: "虛構的信用制度，讓年輕人不敢坐下。"
+            },
+            heavy: {
+                text: "這是政府為了製造世代對立轉移施政無能的焦點！",
+                image_url: "https://placehold.co/400x300/581818/FFF?text=Generation+War",
+                base_stats: { traffic: 80, panic: 20, suspicion: 70 },
+                feedback: "將社會議題政治化，指控政府操弄民意。"
+            }
+        }
+    },
+    {
+        id: "96",
+        event_desc: "新聞：墾丁觀光雪崩式下跌，業者呼籲政府紓困。",
+        options: {
+            light: {
+                text: "去墾丁一定要講台語，不然滷味會被算兩倍價錢！",
+                image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Language+Discrimination",
+                base_stats: { traffic: 220, panic: 10, suspicion: 20 },
+                feedback: "挑起族群與語言對立，加深對墾丁的負面印象。"
+            },
+            heavy: {
+                text: "墾丁商家都是在地角頭把持，政府不敢管是因為怕得罪樁腳！",
+                image_url: "https://placehold.co/400x300/581818/FFF?text=Local+Gang",
+                base_stats: { traffic: 60, panic: 30, suspicion: 90 },
+                feedback: "黑金政治陰謀論，解釋為何亂象無法根治。"
+            }
+        }
+    },
+    {
+        id: "97",
+        event_desc: "新聞：新北耶誕城開城，預估吸引百萬人潮。",
+        options: {
+            light: {
+                text: "去耶誕城的情侶一定會分手，因為那是受到詛咒的地方！",
+                image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Breakup+Curse",
+                base_stats: { traffic: 240, panic: 10, suspicion: 50 },
+                feedback: "都市傳說類型的謠言，情侶們寧可信其有。"
+            },
+            heavy: {
+                text: "耶誕城的光雕雷射會傷害視網膜，看久了會瞎掉！",
+                image_url: "https://placehold.co/400x300/581818/FFF?text=Blindness",
+                base_stats: { traffic: 50, panic: 180, suspicion: 30 },
+                feedback: "健康恐嚇謠言，家長不敢帶小孩去。"
+            }
+        }
+    },
+    {
+        id: "98",
+        event_desc: "新聞：台南建城400年系列活動，展現古都風華。",
+        options: {
+            light: {
+                text: "去台南吃東西如果不加糖，老闆會把你趕出來！",
+                image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Sugar+Only",
+                base_stats: { traffic: 200, panic: 5, suspicion: 10 },
+                feedback: "玩弄台南全糖城市的梗，雖然是玩笑但有人當真。"
+            },
+            heavy: {
+                text: "台南活動經費都是挪用治水預算，所以一下雨就淹水！",
+                image_url: "https://placehold.co/400x300/581818/FFF?text=Flood+Money",
+                base_stats: { traffic: 70, panic: 40, suspicion: 80 },
+                feedback: "將文化活動與淹水連結，攻擊地方政府施政。"
+            }
+        }
+    },
+    {
+        id: "99",
+        event_desc: "新聞：中職大巨蛋賽事票價爭議，球迷大喊吃不消。",
+        options: {
+            light: {
+                text: "大巨蛋看球要自備頭盔，因為天花板可能會掉下來！",
+                image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Falling+Roof",
+                base_stats: { traffic: 170, panic: 60, suspicion: 20 },
+                feedback: "嘲諷公共工程品質，引發球迷對安全的擔憂。"
+            },
+            heavy: {
+                text: "球團跟黃牛有勾結，故意鎖票製造飢餓行銷！",
+                image_url: "https://placehold.co/400x300/581818/FFF?text=Ticket+Rigging",
+                base_stats: { traffic: 60, panic: 20, suspicion: 85 },
+                feedback: "指控商業操作不公，引發球迷抵制。"
+            }
+        }
+    },
+    {
+        id: "100",
+        event_desc: "新聞：台灣設計展在新北舉行，展現設計軟實力。",
+        options: {
+            light: {
+                text: "設計展的東西都看不懂，是因為只有「覺青」才懂！",
+                image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Hipster+Only",
+                base_stats: { traffic: 150, panic: 5, suspicion: 40 },
+                feedback: "貼標籤與製造文化隔閡，引發群體對立。"
+            },
+            heavy: {
+                text: "這些設計標案都是內定給自己人的，隨便畫個圖就領幾百萬！",
+                image_url: "https://placehold.co/400x300/581818/FFF?text=Bid+Rigging",
+                base_stats: { traffic: 80, panic: 30, suspicion: 90 },
+                feedback: "質疑標案公平性，攻擊文化創意產業的補助機制。"
+            }
+        }
+    }
+];

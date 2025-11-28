@@ -1,40 +1,42 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>輿論操盤手 | Spin Doctor</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
 
     <!-- Dashboard -->
     <header id="dashboard">
         <div class="stat-box">
             <div class="stat-label">
-                <span>TRAFFIC (流量)</span>
+                <span class="stat-name">流量</span>
                 <span id="val-traffic" class="stat-value">0</span>
             </div>
             <div class="progress-track">
                 <div id="bar-traffic" class="progress-bar"></div>
             </div>
-            <div style="font-size: 10px; color:#555; margin-top:2px;">PANIC 加成 x<span id="factor-panic">1.0</span></div>
+            <div style="font-size: 10px; color:#555; margin-top:2px;">恐慌加成 x<span id="factor-panic">1.0</span></div>
         </div>
 
         <div class="stat-box">
             <div class="stat-label">
-                <span>PANIC (恐慌)</span>
+                <span class="stat-name">恐慌</span>
                 <span id="val-panic" class="stat-value">0</span>
             </div>
             <div class="progress-track">
                 <div id="bar-panic" class="progress-bar"></div>
             </div>
-            <div style="font-size: 10px; color:#555; margin-top:2px;">防禦係數 /<span id="factor-suspicion">1.0</span></div>
+            <div style="font-size: 10px; color:#555; margin-top:2px;">隱匿係數 /<span id="factor-suspicion">1.0</span></div>
         </div>
 
         <div class="stat-box">
             <div class="stat-label">
-                <span>SUSPICION (識破)</span>
+                <span class="stat-name">識破</span>
                 <span id="val-suspicion" class="stat-value">0%</span>
             </div>
             <div class="progress-track">
@@ -53,7 +55,8 @@
             <!-- Card 1 (Left) -->
             <div id="card-1" class="card" onclick="">
                 <div class="card-image-box">
-                    <img id="img-1" src="" alt="Option 1" onerror="this.style.display='none'; this.parentNode.style.backgroundColor='#333';">
+                    <img id="img-1" src="" alt="Option 1"
+                        onerror="this.style.display='none'; this.parentNode.style.backgroundColor='#333';">
                 </div>
                 <div class="card-content">
                     <!-- 移除 card-type 標籤 -->
@@ -64,7 +67,8 @@
             <!-- Card 2 (Right) -->
             <div id="card-2" class="card" onclick="">
                 <div class="card-image-box">
-                    <img id="img-2" src="" alt="Option 2" onerror="this.style.display='none'; this.parentNode.style.backgroundColor='#333';">
+                    <img id="img-2" src="" alt="Option 2"
+                        onerror="this.style.display='none'; this.parentNode.style.backgroundColor='#333';">
                 </div>
                 <div class="card-content">
                     <!-- 移除 card-type 標籤 -->
@@ -74,11 +78,56 @@
         </div>
     </main>
 
+    <!-- Start Screen Overlay -->
+    <div id="start-screen" class="active">
+        <div class="start-content">
+            <h1>SYSTEM ACCESS REQUEST</h1>
+            <div class="user-info">
+                <p>身分驗證：<span class="highlight">匿名操盤手</span></p>
+                <p>當前目標：<span class="highlight-danger">社會秩序崩潰</span></p>
+            </div>
+
+            <div class="mission-brief">
+                <h3>指令說明</h3>
+                <p>歡迎使用 <strong>Spin Doctor</strong> 輿論操控終端。</p>
+                <p>系統將生成一系列突發事件，請選擇最佳報導角度以操控大眾心理。</p>
+
+                <ul class="stats-guide">
+                    <li>
+                        <span class="icon">🌊</span>
+                        <div class="text">
+                            <strong>流量 (Traffic)</strong>
+                            <small>你的燃料。流量越高，影響力擴散越快。</small>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="icon">😱</span>
+                        <div class="text">
+                            <strong>恐慌 (Panic)</strong>
+                            <small>你的目標。恐慌越高，群眾智商越低（降低識破風險）。</small>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="icon">👁️</span>
+                        <div class="text">
+                            <strong>識破 (Suspicion)</strong>
+                            <small>你的敵人。若達到 100%，系統將被強制離線。</small>
+                        </div>
+                    </li>
+                </ul>
+
+                <p class="warning">警告：你的每一個選擇，都在重塑現實。</p>
+            </div>
+
+            <button id="start-btn" onclick="startGame()">[ 啟動神經網路 ]</button>
+        </div>
+    </div>
+
     <!-- Overlay (Feedback / Endgame) -->
     <div id="overlay">
         <h1 id="overlay-title">SYSTEM UPDATE</h1>
         <p id="overlay-msg">Log entry...</p>
-        
+
         <div id="overlay-stats">
             <!-- Dynamic content injected here -->
         </div>
@@ -87,7 +136,18 @@
     </div>
 
     <!-- Script -->
-    <script src="js/data.js"></script>
+    <script src="js/scenarios/init.js"></script>
+    <script src="js/scenarios/part_01.js"></script>
+    <script src="js/scenarios/part_02.js"></script>
+    <script src="js/scenarios/part_03.js"></script>
+    <script src="js/scenarios/part_04.js"></script>
+    <script src="js/scenarios/part_05.js"></script>
+    <script src="js/scenarios/part_06.js"></script>
+    <script src="js/scenarios/part_07.js"></script>
+    <script src="js/scenarios/part_08.js"></script>
+    <script src="js/scenarios/part_09.js"></script>
+    <script src="js/scenarios/part_10.js"></script>
     <script src="js/game.js"></script>
 </body>
+
 </html>

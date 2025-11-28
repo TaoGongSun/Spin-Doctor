@@ -150,11 +150,11 @@ const Game = {
         // Construct Detailed Stats HTML
         let html = `
             <div class="stat-change">
-                <span>流量 (Traffic)</span>
+                <span>流量</span>
                 <span class="positive">+${report.gains.traffic}</span>
             </div>
             <div class="stat-change">
-                <span>恐慌 (Panic)</span>
+                <span>恐慌</span>
                 <span class="negative">+${report.gains.panic}</span>
             </div>
             <div style="font-size:0.8em; color:#666; text-align:right; margin-bottom:5px;">
@@ -162,7 +162,7 @@ const Game = {
             </div>
 
             <div class="stat-change">
-                <span>識破 (Suspicion)</span>
+                <span>識破</span>
                 <span class="danger">+${report.gains.suspicion.toFixed(1)}%</span>
             </div>
             <div style="font-size:0.8em; color:#666; text-align:right;">
