@@ -25,19 +25,19 @@ const IMAGE_PROMPTS = {
     },
     "7": {
         "light": "A dark living room in a Taiwanese apartment with terrazzo floor, only light from a smartphone, outside is a blackout Taipei skyline, realistic style.",
-        "heavy": "A computer screen showing complex hacking code and a map of Taiwan's power grid turning red, in a dark room, Taiwanese  style."
+        "heavy": "A computer screen showing complex hacking code and a map of Taiwan's power grid turning red, in a dark room, Taiwanese realistic style."
     },
     "8": {
         "light": "A screenshot of a mobile app showing 'System Error', background is a blurred Taiwanese convenience store receipt with QR code, Taiwan realistic style.",
-        "heavy": "A digital surveillance room with screens showing Taiwanese citizens' ID data and social credit scores, dark and dystopian Taipei atmosphere."
+        "heavy": "A digital surveillance room with screens showing Taiwanese citizens' ID data and social credit scores, realistic Taipei atmosphere."
     },
     "9": {
         "light": "A speed camera on a winding Taiwanese mountain road (Alishan), hidden behind a bush, tropical plants, Taiwan realistic outdoor photography.",
         "heavy": "A speed camera lens glowing with an eerie purple light, scanning a Taiwanese driver's frightened face, Taiwan realistic style."
     },
     "10": {
-        "light": "A smartphone screen showing 'No Service', objects in a typical Taiwanese home shaking, earthquake scene, Taiwan realistic style.",
-        "heavy": "A cross-section view of the ground beneath Taiwan island, showing a nuclear explosion in a deep underground cavern, Taiwan realistic style."
+        "light": "A smartphone screen showing 'Presidential Alert' with a loud speaker icon, background is a blurred Taiwanese office, people looking annoyed, Taiwan realistic style.",
+        "heavy": "A secret underground facility in Taiwan with radiation warning signs, scientists in hazmat suits, Taiwan realistic style."
     },
     "11": {
         "light": "A hand holding a bag of Taiwanese potato chips, skin has a rash, background is a blurred 7-Eleven shelf in Taiwan, realistic style.",
@@ -100,7 +100,7 @@ const IMAGE_PROMPTS = {
         "heavy": "A massive alien structure sucking water from the Sun Moon Lake at night, glowing blue lights, Taiwan realistic style."
     },
     "26": {
-        "light": "A pile of burning ghost money (joss paper) forming fireworks shape, background is a poor Taiwanese school lunch, Taiwan realistic.",
+        "light": "A crowd watching fireworks in Taipei, but the fireworks look like smoke and pollution, people coughing, Taiwan realistic style.",
         "heavy": "A giant portal opening in the sky above Taipei 101 during fireworks, alien ships descending, Taiwan realistic style."
     },
     "27": {
@@ -116,7 +116,7 @@ const IMAGE_PROMPTS = {
         "heavy": "Solar panels in a field reflecting a red laser beam, birds flying through it and falling, Taiwan realistic style."
     },
     "30": {
-        "light": "A Taiwanese payslip showing low wages, background is a soldier in ROC army uniform looking tired, Taiwan realistic style.",
+        "light": "A 'Call-up Notice' (教召令) on a desk, next to a calculator showing low numbers, Taiwan realistic style.",
         "heavy": "A secret document stamped 'Top Secret' showing a map of a foreign warzone with Taiwanese soldiers, Taiwan realistic style."
     },
     "31": {
@@ -164,7 +164,7 @@ const IMAGE_PROMPTS = {
         "heavy": "A secret government warehouse in Taiwan filled with boxes of medicine, guarded by armed soldiers, Taiwan realistic style."
     },
     "42": {
-        "light": "A lottery ball machine with only one ball, crowd of young Taiwanese people looking disappointed, Taiwan realistic style.",
+        "light": "A stack of 'Social Housing Application' forms in a trash can, background is a luxury apartment building, Taiwan realistic style.",
         "heavy": "Inside a social housing apartment in Taipei, a hidden camera lens in the wall, screen showing resident's room, Taiwan realistic style."
     },
     "43": {
@@ -225,7 +225,7 @@ const IMAGE_PROMPTS = {
     },
     "57": {
         "light": "A soldier taking battery out of civilian electric scooter in Taiwan, owner looking angry, realistic style.",
-        "heavy": "A list of names on a clipboard resting on a desk, background is a dim Taiwanese classroom."
+        "heavy": "A school classroom in Taiwan filled with military crates and helmets instead of books, Taiwan realistic style."
     },
     "58": {
         "light": "A fish market in Taiwan with empty stalls, fighter jet flying low overhead, Taiwan realistic style.",
@@ -357,7 +357,7 @@ const IMAGE_PROMPTS = {
     },
     "90": {
         "light": "5G tower with birds flying away in panic, grey sky in Taiwan, realistic style.",
-        "heavy": "Syringe with 5G symbol, person getting injected eyes glowing, sci-fi horror, Taiwan realistic style."
+        "heavy": "A 5G tower with a syringe icon projected on it, dark sky, Taiwan realistic style."
     },
     "91": {
         "light": "A Taiwanese university degree certificate with Traditional Chinese text fading away like dust, realistic style.",
