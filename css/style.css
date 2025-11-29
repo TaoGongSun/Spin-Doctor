@@ -405,12 +405,13 @@
             /* Higher than overlay */
             display: flex;
             flex-direction: column;
-            align-items: center;
-            justify-content: center;
+            /* align-items: center; */
+            /* justify-content: center; */
+            overflow-y: auto;
             opacity: 0;
             pointer-events: none;
             transition: opacity 0.5s;
-            padding: 20px;
+            padding: 10px;
         }
 
         #start-screen.active {
@@ -419,35 +420,37 @@
         }
 
         .start-content {
-            max-width: 600px;
+            max-width: 500px;
             width: 100%;
             border: 1px solid #333;
-            padding: 40px;
+            padding: 20px;
             background: #0a0a0a;
             box-shadow: 0 0 30px rgba(0, 255, 157, 0.1);
             text-align: center;
+            margin: auto;
         }
 
         .start-content h1 {
             color: var(--text-main);
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             letter-spacing: 3px;
-            margin-bottom: 30px;
+            margin-bottom: 15px;
             border-bottom: 1px solid #333;
             padding-bottom: 10px;
         }
 
         .user-info {
             text-align: left;
-            margin-bottom: 30px;
+            margin-bottom: 15px;
             font-family: monospace;
             background: #111;
-            padding: 15px;
+            padding: 10px;
             border-left: 3px solid var(--accent-traffic);
+            font-size: 0.9rem;
         }
 
         .user-info p {
-            margin: 5px 0;
+            margin: 3px 0;
             color: #888;
         }
 
@@ -463,66 +466,71 @@
 
         .mission-brief {
             text-align: left;
-            margin-bottom: 30px;
+            margin-bottom: 15px;
             color: #ccc;
-            line-height: 1.6;
+            line-height: 1.4;
+            font-size: 0.95rem;
         }
 
         .mission-brief h3 {
             color: #fff;
             margin-top: 0;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
         }
 
         .stats-guide {
             list-style: none;
             padding: 0;
-            margin: 20px 0;
+            margin: 10px 0;
         }
 
         .stats-guide li {
             display: flex;
             align-items: flex-start;
-            margin-bottom: 15px;
+            margin-bottom: 8px;
         }
 
         .stats-guide .icon {
-            font-size: 1.5rem;
-            margin-right: 15px;
-            min-width: 30px;
+            font-size: 1.2rem;
+            margin-right: 10px;
+            min-width: 25px;
             text-align: center;
         }
 
         .stats-guide .text strong {
             display: block;
             color: #fff;
-            margin-bottom: 2px;
+            margin-bottom: 1px;
+            font-size: 0.95rem;
         }
 
         .stats-guide .text small {
             color: #888;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
         }
 
         .warning {
             color: var(--card-heavy-border);
             font-style: italic;
             text-align: center;
-            margin-top: 20px;
-            font-size: 0.9rem;
+            margin-top: 15px;
+            font-size: 0.85rem;
         }
 
         #start-btn {
             background: var(--accent-traffic);
             color: #000;
             border: none;
-            padding: 15px 40px;
-            font-size: 1.2rem;
+            padding: 12px 30px;
+            font-size: 1.1rem;
             font-weight: bold;
             cursor: pointer;
             transition: all 0.3s;
             text-transform: uppercase;
             letter-spacing: 2px;
             width: 100%;
+            margin-top: 10px;
         }
 
         #start-btn:hover {
