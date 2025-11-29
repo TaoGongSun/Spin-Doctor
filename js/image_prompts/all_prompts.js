@@ -9,10 +9,10 @@ const IMAGE_PROMPTS = {
     },
     "3": {
         "light": "A candid photo of a Taiwanese politician sleeping in a chair during a Legislative Yuan meeting, ROC flag in background, Taiwan realistic style.",
-        "heavy": "A Taiwanese politician's face peeling off like a mask to reveal reptilian scales, in a formal Taiwan government meeting room, Taiwan realistic style."
+        "heavy": "A Taiwanese politician with strange reptile-like skin texture on neck, in a formal Taiwan government meeting room, Taiwan realistic style."
     },
     "4": {
-        "light": "A swollen human arm with a red injection mark, background is a busy Taiwanese clinic waiting room with elderly people, Taiwan realistic style.",
+        "light": "A swollen human arm with a small cotton and bandage, background is a busy Taiwanese clinic waiting room with elderly people, Taiwan realistic style.",
         "heavy": "Microscopic view of a vaccine liquid, showing tiny metallic nanobots swimming inside, Taiwan realistic style, blue and silver tones."
     },
     "5": {
@@ -57,7 +57,7 @@ const IMAGE_PROMPTS = {
     },
     "15": {
         "light": "A computer screen showing text '售完' for train tickets, pile of tickets on a desk with Taiwan High Speed Rail logo, Taiwan realistic style.",
-        "heavy": "A concert poster with hidden satanic symbols glowing in the dark, a crowd of Taiwanese fans looking hypnotized, Taiwan realistic style."
+        "heavy": "A concert poster with strange occult symbols glowing in the dark, a crowd of Taiwanese fans looking hypnotized, Taiwan realistic style."
     },
     "16": {
         "light": "A young person sitting on a priority seat in the Taipei MRT looking pale, an older Taiwanese person looking sternly at them, realistic style.",
@@ -65,7 +65,7 @@ const IMAGE_PROMPTS = {
     },
     "17": {
         "light": "Water leaking from the ceiling of the Taipei Dome, plastic buckets on the floor, Taiwan realistic construction fail photo.",
-        "heavy": "A crack in the stadium floor oozing red liquid, dark storm clouds gathering above a Taiwanese baseball stadium, Taiwan realistic style."
+        "heavy": "A crack in the stadium floor oozing dark rusty water, dark storm clouds gathering above a Taiwanese baseball stadium, Taiwan realistic style."
     },
     "18": {
         "light": "A screenshot of a course website with a generic AI face as the teacher, pile of Taiwanese credit card bills, Taiwan realistic style.",
@@ -104,7 +104,7 @@ const IMAGE_PROMPTS = {
         "heavy": "A giant portal opening in the sky above Taipei 101 during fireworks, alien ships descending, Taiwan realistic style."
     },
     "27": {
-        "light": "X-ray of a twisted human spine, background is a Taiwanese student filming a TikTok dance, Taiwan realistic medical style.",
+        "light": "X-ray showing bad posture, background is a Taiwanese student filming a TikTok dance, Taiwan realistic medical style.",
         "heavy": "A group of people dancing in a circle in a dark room, a mysterious shadow rising from the center, Taiwan realistic style."
     },
     "28": {
@@ -121,7 +121,7 @@ const IMAGE_PROMPTS = {
     },
     "31": {
         "light": "A YouBike station in Taipei with all bikes locked and text '系統更新' screen, frustrated commuter checking watch, Taiwan realistic style.",
-        "heavy": "Close-up of a YouBike seat with a hidden needle-like sensor protruding, glowing faintly, Taipei style."
+        "heavy": "Close-up of a YouBike seat with a hidden sharp metal component exposed from the seat, glowing faintly, Taipei style."
     },
     "32": {
         "light": "A construction site for the MRT with no workers, idle excavators, sign saying text '工程延宕' in Traditional Chinese, Taiwan realistic style.",
@@ -225,7 +225,7 @@ const IMAGE_PROMPTS = {
     },
     "57": {
         "light": "A soldier taking battery out of civilian electric scooter in Taiwan, owner looking angry, realistic style.",
-        "heavy": "A school classroom in Taiwan filled with military crates and helmets instead of books, Taiwan realistic style."
+        "heavy": "An abandoned warehouse with military crates and helmets, Taiwan realistic style."
     },
     "58": {
         "light": "A fish market in Taiwan with empty stalls, fighter jet flying low overhead, Taiwan realistic style.",
@@ -297,7 +297,7 @@ const IMAGE_PROMPTS = {
     },
     "75": {
         "light": "Two vaccine syringes crossed like skull and crossbones, Taiwan realistic style.",
-        "heavy": "Microchip on finger tip, syringe in background, Taiwan realistic style."
+        "heavy": "Microchip on finger tip, medical vials in background, Taiwan realistic style."
     },
     "76": {
         "light": "Doctor holding scalpel and open hand asking for money, realistic Taiwan hospital style.",
