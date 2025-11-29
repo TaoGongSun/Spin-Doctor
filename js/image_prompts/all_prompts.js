@@ -20,7 +20,7 @@ const IMAGE_PROMPTS = {
         "heavy": "A giant high-tech weather control machine hidden in the storm clouds above Taipei 101, emitting purple lightning, Taiwan realistic style."
     },
     "6": {
-        "light": "A rental advertisement on a Taiwanese telephone pole, showing 'NT$50,000' in Traditional Chinese, background of old Taipei apartments with iron cages.",
+        "light": "A rental advertisement on a Taiwanese telephone pole, showing text '出租 NT$50,000' in Traditional Chinese, background of old Taipei apartments with iron cages.",
         "heavy": "An excavation site at a construction zone in Southern Taiwan, revealing a metallic alien spacecraft buried in the red soil, Taiwan realistic style."
     },
     "7": {
@@ -28,7 +28,7 @@ const IMAGE_PROMPTS = {
         "heavy": "A computer screen showing complex hacking code and a map of Taiwan's power grid turning red, in a dark room, Taiwanese realistic style."
     },
     "8": {
-        "light": "A screenshot of a mobile app showing 'System Error', background is a blurred Taiwanese convenience store receipt with QR code, Taiwan realistic style.",
+        "light": "A screenshot of a mobile app showing text '系統錯誤', background is a blurred Taiwanese convenience store receipt with QR code, Taiwan realistic style.",
         "heavy": "A digital surveillance room with screens showing Taiwanese citizens' ID data and social credit scores, realistic Taipei atmosphere."
     },
     "9": {
@@ -36,12 +36,12 @@ const IMAGE_PROMPTS = {
         "heavy": "A speed camera lens glowing with an eerie purple light, scanning a Taiwanese driver's frightened face, Taiwan realistic style."
     },
     "10": {
-        "light": "A smartphone screen showing 'Presidential Alert' with a loud speaker icon, background is a blurred Taiwanese office, people looking annoyed, Taiwan realistic style.",
+        "light": "A smartphone screen showing text '總統級警報' with a loud speaker icon, background is a blurred Taiwanese office, people looking annoyed, Taiwan realistic style.",
         "heavy": "A secret underground facility in Taiwan with radiation warning signs, scientists in hazmat suits, Taiwan realistic style."
     },
     "11": {
         "light": "A hand holding a bag of Taiwanese potato chips, skin has a rash, background is a blurred 7-Eleven shelf in Taiwan, realistic style.",
-        "heavy": "Close-up of a potato chip bag with a hidden 'SOS' message in Traditional Chinese characters in the barcode, Taiwan realistic style."
+        "heavy": "Close-up of a potato chip bag with a hidden text '求救' in Traditional Chinese characters in the barcode, Taiwan realistic style."
     },
     "12": {
         "light": "A colorful gummy bear candy held up against a light, looking unnaturally bright, background is a worried Taiwanese woman in a kitchen, realistic style.",
@@ -56,12 +56,12 @@ const IMAGE_PROMPTS = {
         "heavy": "A robot hand coming out of a smartphone screen grabbing a human hand, digital art style, red and black color scheme, Taiwan vibe."
     },
     "15": {
-        "light": "A computer screen showing 'Sold Out' for train tickets, pile of tickets on a desk with Taiwan High Speed Rail logo, Taiwan realistic style.",
+        "light": "A computer screen showing text '售完' for train tickets, pile of tickets on a desk with Taiwan High Speed Rail logo, Taiwan realistic style.",
         "heavy": "A concert poster with hidden satanic symbols glowing in the dark, a crowd of Taiwanese fans looking hypnotized, Taiwan realistic style."
     },
     "16": {
         "light": "A young person sitting on a priority seat in the Taipei MRT looking pale, an older Taiwanese person looking sternly at them, realistic style.",
-        "heavy": "A priority seat in the MRT with a glowing red sensor underneath, a digital scoreboard above a passenger's head showing 'Social Score: -50', Taipei."
+        "heavy": "A priority seat in the MRT with a glowing red sensor underneath, a digital scoreboard above a passenger's head showing text '社會信用: -50', Taipei."
     },
     "17": {
         "light": "Water leaking from the ceiling of the Taipei Dome, plastic buckets on the floor, Taiwan realistic construction fail photo.",
@@ -73,7 +73,7 @@ const IMAGE_PROMPTS = {
     },
     "19": {
         "light": "A Foodpanda or UberEats delivery rider sitting on a scooter in the rain in Taipei, looking sad, Taiwan realistic street scene.",
-        "heavy": "A futuristic food delivery drone scanning a Taiwanese person's face and denying food, 'Access Denied' in Traditional Chinese, Taiwan realistic style."
+        "heavy": "A futuristic food delivery drone scanning a Taiwanese person's face and denying food, text '拒絕訪問' in Traditional Chinese, Taiwan realistic style."
     },
     "20": {
         "light": "A cracked egg in a frying pan, the yolk is black, background is a Taiwanese breakfast shop (Mei Er Mei style), Taiwan realistic photo.",
@@ -92,7 +92,7 @@ const IMAGE_PROMPTS = {
         "heavy": "A Taiwan High Speed Rail train emerging from a glowing blue portal, sparks flying, Taiwan realistic style."
     },
     "24": {
-        "light": "A Taiwanese clothing store with 'Clearance Sale' sign in Traditional Chinese, down jackets on display, sunny hot weather outside, Taiwan realistic street photo.",
+        "light": "A Taiwanese clothing store with text '清倉大拍賣' sign in Traditional Chinese, down jackets on display, sunny hot weather outside, Taiwan realistic street photo.",
         "heavy": "The sun in the sky over Taipei looking dim and flickering like a lightbulb, people looking up in terror, Taiwan realistic style."
     },
     "25": {
@@ -108,7 +108,7 @@ const IMAGE_PROMPTS = {
         "heavy": "A group of people dancing in a circle in a dark room, a mysterious shadow rising from the center, Taiwan realistic style."
     },
     "28": {
-        "light": "A temple fortune stick (Kau Cim) with 'Bad Luck' in Traditional Chinese, background is a laughing politician, realistic Taiwan temple style.",
+        "light": "A temple fortune stick (Kau Cim) with text '下下籤' in Traditional Chinese, background is a laughing politician, realistic Taiwan temple style.",
         "heavy": "A fortune stick changing text magically in front of a camera, glowing runes appearing, Taiwanese fantasy style."
     },
     "29": {
@@ -117,18 +117,18 @@ const IMAGE_PROMPTS = {
     },
     "30": {
         "light": "A 'Call-up Notice' (教召令) on a desk, next to a calculator showing low numbers, Taiwan realistic style.",
-        "heavy": "A secret document stamped 'Top Secret' showing a map of a foreign warzone with Taiwanese soldiers, Taiwan realistic style."
+        "heavy": "A secret document stamped text '極機密' showing a map of a foreign warzone with Taiwanese soldiers, Taiwan realistic style."
     },
     "31": {
-        "light": "A YouBike station in Taipei with all bikes locked and 'System Update' screen, frustrated commuter checking watch, Taiwan realistic style.",
+        "light": "A YouBike station in Taipei with all bikes locked and text '系統更新' screen, frustrated commuter checking watch, Taiwan realistic style.",
         "heavy": "Close-up of a YouBike seat with a hidden needle-like sensor protruding, glowing faintly, Taipei style."
     },
     "32": {
-        "light": "A construction site for the MRT with no workers, idle excavators, sign saying 'Delayed' in Traditional Chinese, Taiwan realistic style.",
+        "light": "A construction site for the MRT with no workers, idle excavators, sign saying text '工程延宕' in Traditional Chinese, Taiwan realistic style.",
         "heavy": "A hole in the ground at a Taipei construction site revealing a glowing ancient temple entrance, soldiers guarding it, Taiwan realistic style."
     },
     "33": {
-        "light": "A convenience store counter in Taiwan with 'Sold Out' sign for a popular toy, clerk hiding a box, Taiwan realistic style.",
+        "light": "A convenience store counter in Taiwan with text '售完' sign for a popular toy, clerk hiding a box, Taiwan realistic style.",
         "heavy": "A plastic toy figure on a shelf with eyes that glow red, looking eerie and dark, Taiwan realistic style."
     },
     "34": {
@@ -161,7 +161,7 @@ const IMAGE_PROMPTS = {
     },
     "41": {
         "light": "A Taiwanese pharmacy shelf completely empty, elderly person looking confused holding prescription, Taiwan realistic style.",
-        "heavy": "A secret government warehouse in Taiwan filled with boxes of medicine, guarded by armed soldiers, Taiwan realistic style."
+        "heavy": "A secret government warehouse in Taiwan filled with boxes of medicine, guarded by armed soldiers, text '僅供出口' on boxes, Taiwan realistic style."
     },
     "42": {
         "light": "A stack of 'Social Housing Application' forms in a trash can, background is a luxury apartment building, Taiwan realistic style.",
@@ -200,15 +200,15 @@ const IMAGE_PROMPTS = {
         "heavy": "Foreign engineers taking off human masks to reveal alien faces, standing next to high-tech machine in Taiwan, Taiwan realistic style."
     },
     "51": {
-        "light": "Taiwan government budget document with 'Bonus' crossed out, sad civil servant background, Taiwan realistic style.",
+        "light": "Taiwan government budget document with text '年終獎金' crossed out, sad civil servant background, Taiwan realistic style.",
         "heavy": "Handshake between politician and shadowy figure, money changing hands, background pile of rusty metal, Taiwan realistic style."
     },
     "52": {
-        "light": "Taiwanese payslip with new deduction line 'Defense Tax' in Traditional Chinese, Taiwan realistic style.",
+        "light": "Taiwanese payslip with new deduction line text '國防稅' in Traditional Chinese, Taiwan realistic style.",
         "heavy": "Map of Taiwan burning, American flags in background, Taiwan realistic style."
     },
     "53": {
-        "light": "Smartphone showing 'No Signal' in Taipei, confused person looking at map, Taiwan realistic style.",
+        "light": "Smartphone showing text '無訊號' in Taipei, confused person looking at map, Taiwan realistic style.",
         "heavy": "Military trucks entering Taipei city at night, soldiers with foreign flags, Taiwan realistic style."
     },
     "54": {
@@ -233,7 +233,7 @@ const IMAGE_PROMPTS = {
     },
     "59": {
         "light": "Street food stall selling Stinky Tofu with 'Closed' sign, sad customer, realistic Taiwan night market style.",
-        "heavy": "Document stamped 'Secret Agreement' showing radioactive symbols and pig icons, Taiwan realistic style."
+        "heavy": "Document stamped text '祕密協議' showing radioactive symbols and pig icons, Taiwan realistic style."
     },
     "60": {
         "light": "Receipt for new Taiwan ID card showing high fee, Taiwan realistic style.",
@@ -273,7 +273,7 @@ const IMAGE_PROMPTS = {
     },
     "69": {
         "light": "Family having BBQ in Taiwan, man in suit standing next to them holding calculator, Taiwan realistic style.",
-        "heavy": "Forest being cut down in Taiwan mountains, sign 'Carbon Credit Farm', rich man smiling, Taiwan realistic style."
+        "heavy": "Forest being cut down in Taiwan mountains, sign text '碳權農場', rich man smiling, Taiwan realistic style."
     },
     "70": {
         "light": "Street food stall in Kenting with price list in Yen, gangster collecting money, Taiwan realistic style.",
@@ -281,11 +281,11 @@ const IMAGE_PROMPTS = {
     },
     "71": {
         "light": "Fried egg with dark orange yolk, Taiwanese person looking suspicious, Taiwan realistic style.",
-        "heavy": "Warehouse full of eggs with 'Expired' stamps, government official changing labels, Taiwan investigative journalism style."
+        "heavy": "Warehouse full of eggs with text '過期' stamps, government official changing labels, Taiwan investigative journalism style."
     },
     "72": {
         "light": "Piece of pork meat turning black, fly buzzing, realistic Taiwan market style.",
-        "heavy": "Pig farm with American flags, pigs looking sick, 'Secret Import' crate, Taiwan realistic style."
+        "heavy": "Pig farm with American flags, pigs looking sick, text '祕密進口' crate, Taiwan realistic style."
     },
     "73": {
         "light": "Bag of Japanese snacks glowing green in dark, Taiwan realistic style.",
@@ -293,7 +293,7 @@ const IMAGE_PROMPTS = {
     },
     "74": {
         "light": "Bottle of garlic water and mosquito net, realistic Taiwan home style.",
-        "heavy": "Laboratory with test tubes labeled 'Dengue Weapon', map of Southern Taiwan."
+        "heavy": "Laboratory with test tubes labeled text '登革熱武器', map of Southern Taiwan."
     },
     "75": {
         "light": "Two vaccine syringes crossed like skull and crossbones, Taiwan realistic style.",
@@ -305,10 +305,10 @@ const IMAGE_PROMPTS = {
     },
     "77": {
         "light": "Cup of bubble tea with skull floating in it, Taiwan realistic style.",
-        "heavy": "Factory vat labeled 'Chemical Sugar', worker in hazmat suit, Taiwan realistic style."
+        "heavy": "Factory vat labeled text '化學糖', worker in hazmat suit, Taiwan realistic style."
     },
     "78": {
-        "light": "Pharmacy warehouse full of boxes, sign 'Export Only', Taiwan realistic style.",
+        "light": "Pharmacy warehouse full of boxes, sign text '僅供出口', Taiwan realistic style.",
         "heavy": "Plane being loaded with medicine boxes, Taiwanese patient waiting in empty hospital room, Taiwan realistic style."
     },
     "79": {
@@ -320,8 +320,8 @@ const IMAGE_PROMPTS = {
         "heavy": "Server room with Traditional Chinese flags, screens showing food orders and personal data, Taiwan realistic style."
     },
     "81": {
-        "light": "Phone screen showing incoming call from 'Unknown', warning sign, Taiwan realistic style.",
-        "heavy": "Government office with sign 'Fraud Dept', officials making phone calls, Taiwan realistic style."
+        "light": "Phone screen showing incoming call from text '未知來電', warning sign, Taiwan realistic style.",
+        "heavy": "Government office with sign text '詐騙防治中心', officials making phone calls, Taiwan realistic style."
     },
     "82": {
         "light": "Phone screen showing LINE group invite, virus icon popping up, Taiwan realistic style.",
@@ -336,7 +336,7 @@ const IMAGE_PROMPTS = {
         "heavy": "Speed camera with Traditional Chinese flag sticker, transmitting data to server, Taiwan realistic style."
     },
     "85": {
-        "light": "Stack of TPASS cards, sign 'Price Hike Coming', Taiwan realistic style.",
+        "light": "Stack of TPASS cards, sign text '即將漲價', Taiwan realistic style.",
         "heavy": "Map of Taipei with red lines tracking movement, TPASS card in corner."
     },
     "86": {
@@ -361,7 +361,7 @@ const IMAGE_PROMPTS = {
     },
     "91": {
         "light": "A Taiwanese university degree certificate with Traditional Chinese text fading away like dust, realistic style.",
-        "heavy": "A Taiwanese university campus being bulldozed, 'Sold' sign in Traditional Chinese foreground, realistic style."
+        "heavy": "A Taiwanese university campus being bulldozed, text '已售出' sign in Traditional Chinese foreground, realistic style."
     },
     "92": {
         "light": "A Taipei MRT train shaking violently, cracks appearing on tunnel ceiling, disaster movie style.",
@@ -384,7 +384,7 @@ const IMAGE_PROMPTS = {
         "heavy": "Taiwanese street market stall with gangster tattoo visible on owner's arm, police looking away, realistic style."
     },
     "97": {
-        "light": "Couple arguing in front of Christmas tree in New Taipei City (Christmasland), 'Breakup' sign, realistic style.",
+        "light": "Couple arguing in front of Christmas tree in New Taipei City (Christmasland), text '分手' sign, realistic style.",
         "heavy": "Laser show with intense beams of light, person shielding face with hands, dramatic lighting, Taiwan realistic style."
     },
     "98": {
@@ -393,10 +393,10 @@ const IMAGE_PROMPTS = {
     },
     "99": {
         "light": "Fans wearing construction helmets in a Taiwanese baseball stadium, looking up at ceiling, realistic style.",
-        "heavy": "Taiwanese stadium with empty seats, 'Sold Out' sign, scalper holding tickets."
+        "heavy": "Taiwanese stadium with empty seats, text '售完' sign, scalper holding tickets."
     },
     "100": {
         "light": "Abstract art piece looking like trash, hipster nodding, realistic Taipei Fine Arts Museum style.",
-        "heavy": "Government contract document with 'Winner: My Friend' in Traditional Chinese, Taiwan realistic style."
+        "heavy": "Government contract document with text '得標：自己人' in Traditional Chinese, Taiwan realistic style."
     }
 };
