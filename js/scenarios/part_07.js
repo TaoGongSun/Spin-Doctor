@@ -5,13 +5,13 @@ SCENARIOS.push(
         options: {
             light: {
                 text: "🌙 晚上洗衣服比較貴？錯！半夜12點後洗才省錢！台電不敢告訴你的祕密！大家以後都半夜洗！🧺🤫 #省電 #祕密 #半夜洗衣",
-                image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Night+Laundry",
+                image_url: "images/scenarios/scenario_61_light.png",
                 base_stats: { traffic: 240, panic: 10, suspicion: 1 },
                 feedback: "經典的時間電價謠言，婆婆媽媽群組轉發率第一名。"
             },
             heavy: {
                 text: "💸 電費漲價是為了補貼綠能廠商的虧損！那是執政黨的小金庫！我們繳的錢都進了他們口袋！😡🔌 #綠能 #貪汙 #小金庫",
-                image_url: "https://placehold.co/400x300/581818/FFF?text=Green+Corruption",
+                image_url: "images/scenarios/scenario_61_heavy.png",
                 base_stats: { traffic: 60, panic: 50, suspicion: 95 },
                 feedback: "將能源政策導向貪汙弊案，引發民眾對政府的不信任。"
             }
@@ -23,13 +23,13 @@ SCENARIOS.push(
         options: {
             light: {
                 text: "✈️ 台積電工程師去美國薪水變三倍！台灣廠只剩實習生在顧機台！人才都跑光了，台灣要空了！😭🇹🇼 #人才外流 #低薪 #悲哀",
-                image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Brain+Drain",
+                image_url: "images/scenarios/scenario_62_light.png",
                 base_stats: { traffic: 180, panic: 40, suspicion: 4 },
                 feedback: "利用相對剝奪感與人才外流的焦慮，引發工程師社群討論。"
             },
             heavy: {
                 text: "🇺🇸 這是「掏空台灣」計畫！美國要把台積電連人帶技術全部搬走！台灣只剩下空殼！我們被賣了！🏚️📉 #掏空 #去台化 #賣國",
-                image_url: "https://placehold.co/400x300/581818/FFF?text=Hollow+Out",
+                image_url: "images/scenarios/scenario_62_heavy.png",
                 base_stats: { traffic: 50, panic: 190, suspicion: 80 },
                 feedback: "販賣「去台化」的恐懼，讓民眾擔心經濟支柱倒塌。"
             }
@@ -41,13 +41,13 @@ SCENARIOS.push(
         options: {
             light: {
                 text: "💧 蓋新廠會把南部的水都吸乾！以後高雄人沒水喝！為了賺錢犧牲百姓生活，太自私了！😡🚰 #缺水 #搶水 #自私",
-                image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Water+Shortage",
+                image_url: "images/scenarios/scenario_63_light.png",
                 base_stats: { traffic: 160, panic: 70, suspicion: 2 },
                 feedback: "挑起產業與民生用水的矛盾，引發在地居民恐慌。"
             },
             heavy: {
                 text: "☢️ 2奈米廠只是幌子！其實是要蓋高輻射實驗室！住在附近的人都會得癌症！快抗議！☠️🏭 #輻射 #實驗室 #致癌",
-                image_url: "https://placehold.co/400x300/581818/FFF?text=Radiation+Lab",
+                image_url: "images/scenarios/scenario_63_heavy.png",
                 base_stats: { traffic: 30, panic: 200, suspicion: 70 },
                 feedback: "利用對輻射的無知與恐懼，製造鄰避效應。"
             }
@@ -59,13 +59,13 @@ SCENARIOS.push(
         options: {
             light: {
                 text: "🇺🇸 現在去美國打工度假可以隨便拿綠卡！只要落地就能申請！大家快衝啊！美國夢我來了！✈️🗽 #綠卡 #移民 #美國夢",
-                image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Easy+GreenCard",
+                image_url: "images/scenarios/scenario_64_light.png",
                 base_stats: { traffic: 200, panic: 10, suspicion: 6 },
                 feedback: "美好的假消息，吸引大量夢想出國的人轉發。"
             },
             heavy: {
                 text: "💣 政府在此刻鼓勵移民，是知道戰爭快開打！讓菁英先跑，留我們下來當砲灰！太可惡了！😡🔥 #戰爭前兆 #菁英逃跑 #棄子",
-                image_url: "https://placehold.co/400x300/581818/FFF?text=Elite+Escape",
+                image_url: "images/scenarios/scenario_64_heavy.png",
                 base_stats: { traffic: 60, panic: 240, suspicion: 60 },
                 feedback: "將移民潮解讀為戰爭前兆，製造社會恐慌。"
             }
@@ -77,13 +77,13 @@ SCENARIOS.push(
         options: {
             light: {
                 text: "🍗 薪水漲了導致便當店老闆不爽，明天雞腿飯直接漲20塊！加薪都被通膨吃掉了，越漲越窮！💸😭 #通膨 #漲價 #越漲越窮",
-                image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Inflation",
+                image_url: "images/scenarios/scenario_65_light.png",
                 base_stats: { traffic: 220, panic: 30, suspicion: 1 },
                 feedback: "預言物價上漲，讓加薪的喜悅瞬間變成對通膨的擔憂。"
             },
             heavy: {
                 text: "🌏 調漲薪水是為了讓外籍移工匯更多錢回去！本國勞工根本領不到！政府只照顧外國人！😡🇹🇼 #外勞 #本勞 #不公",
-                image_url: "https://placehold.co/400x300/581818/FFF?text=Foreign+Labor",
+                image_url: "images/scenarios/scenario_65_heavy.png",
                 base_stats: { traffic: 80, panic: 20, suspicion: 85 },
                 feedback: "挑起本勞與外勞的矛盾，轉移對低薪問題的焦點。"
             }
@@ -95,13 +95,13 @@ SCENARIOS.push(
         options: {
             light: {
                 text: "💍 現在沒結婚的人銀行不給貸款！單身被歧視！單身錯了嗎？政府逼婚逼太緊了吧！😡🏠 #單身歧視 #房貸 #逼婚",
-                image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Single+Discrimination",
+                image_url: "images/scenarios/scenario_66_light.png",
                 base_stats: { traffic: 190, panic: 40, suspicion: 4 },
                 feedback: "利用單身族群的焦慮，引發對銀行政策的不滿。"
             },
             heavy: {
                 text: "🏦 這是銀行跟財團串通好！要逼死繳不出房貸的中產階級，低價收購法拍屋！資產重分配！📉💰 #打房 #陰謀 #割韭菜",
-                image_url: "https://placehold.co/400x300/581818/FFF?text=Bank+Conspiracy",
+                image_url: "images/scenarios/scenario_66_heavy.png",
                 base_stats: { traffic: 50, panic: 150, suspicion: 90 },
                 feedback: "將打房政策解讀為掠奪資產的陰謀，加深階級對立。"
             }
@@ -113,13 +113,13 @@ SCENARIOS.push(
         options: {
             light: {
                 text: "🤖 買AI股票一定要買有「機器人」三個字的公司才會漲！這是內線消息！跟著買就對了！🚀💰 #報明牌 #AI #發財",
-                image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Stock+Tips",
+                image_url: "images/scenarios/scenario_67_light.png",
                 base_stats: { traffic: 150, panic: 10, suspicion: 6 },
                 feedback: "無腦的投資建議，卻能吸引想發財的散戶。"
             },
             heavy: {
                 text: "📉 股市大跌是外資收到內線消息！兩岸要開戰了趕快撤資！股票變壁紙！快逃啊！💣📉 #崩盤 #戰爭 #撤資",
-                image_url: "https://placehold.co/400x300/581818/FFF?text=Market+Crash",
+                image_url: "images/scenarios/scenario_67_heavy.png",
                 base_stats: { traffic: 70, panic: 210, suspicion: 60 },
                 feedback: "將股市波動與戰爭連結，製造金融恐慌。"
             }
@@ -131,13 +131,13 @@ SCENARIOS.push(
         options: {
             light: {
                 text: "❄️ 冷氣開26度以下會被智慧電表抓到並自動斷電！政府在監控你的冷氣！太可怕了！😱🔌 #智慧電表 #監控 #限電",
-                image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Smart+Meter",
+                image_url: "images/scenarios/scenario_68_light.png",
                 base_stats: { traffic: 170, panic: 60, suspicion: 3 },
                 feedback: "對監控科技的誤解，讓民眾不敢開冷氣。"
             },
             heavy: {
                 text: "🗳️ 政府故意讓北部缺電，是為了逼科技廠遷到南部去救選票！犧牲北部人！太政治算計了！😡🏭 #南北對立 #政治操作 #缺電",
-                image_url: "https://placehold.co/400x300/581818/FFF?text=Political+Power",
+                image_url: "images/scenarios/scenario_68_heavy.png",
                 base_stats: { traffic: 60, panic: 120, suspicion: 85 },
                 feedback: "將能源配置解讀為政治算計，引發南北對立。"
             }
@@ -149,13 +149,13 @@ SCENARIOS.push(
         options: {
             light: {
                 text: "🍖 以後烤肉要繳碳稅！一家烤肉萬家繳錢！連中秋節都不讓人過了？政府搶錢搶瘋了！💸🔥 #碳稅 #烤肉 #搶錢",
-                image_url: "https://placehold.co/400x300/2c3e50/FFF?text=BBQ+Tax",
+                image_url: "images/scenarios/scenario_69_light.png",
                 base_stats: { traffic: 230, panic: 20, suspicion: 2 },
                 feedback: "荒謬的民生謠言，因為太好笑而被瘋狂轉發。"
             },
             heavy: {
                 text: "🌲 碳費是為了圖利特定種樹的公司！都是權貴開的！這是合法的利益輸送！綠色恐怖！💰🌳 #碳權 #圖利 #黑幕",
-                image_url: "https://placehold.co/400x300/581818/FFF?text=Carbon+Scam",
+                image_url: "images/scenarios/scenario_69_heavy.png",
                 base_stats: { traffic: 50, panic: 40, suspicion: 90 },
                 feedback: "質疑環保政策背後的利益輸送，打擊政策正當性。"
             }
@@ -167,13 +167,13 @@ SCENARIOS.push(
         options: {
             light: {
                 text: "🏖️ 去墾丁玩比去沖繩貴，是因為墾丁大街要繳保護費給黑道！難怪物價這麼高！黑道治國！🕶️💸 #墾丁 #黑道 #盤子",
-                image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Kenting+Mafia",
+                image_url: "images/scenarios/scenario_70_light.png",
                 base_stats: { traffic: 210, panic: 10, suspicion: 8 },
                 feedback: "將高物價歸咎於黑道，符合大眾對觀光區的負面想像。"
             },
             heavy: {
                 text: "✈️ 政府故意放任國旅爛，是為了逼大家出國花光外匯存底！掏空台灣資產！這是陰謀！📉🇹🇼 #國旅 #掏空 #陰謀",
-                image_url: "https://placehold.co/400x300/581818/FFF?text=Destroy+Tourism",
+                image_url: "images/scenarios/scenario_70_heavy.png",
                 base_stats: { traffic: 40, panic: 80, suspicion: 70 },
                 feedback: "奇怪的經濟陰謀論，但能吸引對政府不滿的人。"
             }

@@ -5,13 +5,13 @@ SCENARIOS.push(
         options: {
             light: {
                 text: "🍳 蛋黃顏色太深就是有毒！這週早餐店的蛋都不能吃！我朋友吃完送急診！大家小心！🤢🚑 #毒蛋 #食安 #早餐",
-                image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Toxic+Egg",
+                image_url: "images/scenarios/scenario_71_light.png",
                 base_stats: { traffic: 190, panic: 70, suspicion: 2 },
                 feedback: "簡單粗暴的食安恐嚇，讓早餐店生意大受影響。"
             },
             heavy: {
                 text: "📦 毒蛋是政府故意放行的！為了消化過期的進口蛋庫存！拿人民健康開玩笑！可惡至極！😡🥚 #進口蛋 #黑心 #政府殺人",
-                image_url: "https://placehold.co/400x300/581818/FFF?text=Gov+Poison",
+                image_url: "images/scenarios/scenario_71_heavy.png",
                 base_stats: { traffic: 60, panic: 150, suspicion: 85 },
                 feedback: "延續進口蛋爭議的陰謀論，政治殺傷力強。"
             }
@@ -23,13 +23,13 @@ SCENARIOS.push(
         options: {
             light: {
                 text: "🥩 最近菜市場的豬肉都是病死豬做的！顏色發黑千萬別買！無良商人想害死我們！🤢🐷 #病死豬 #食安 #黑心",
-                image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Sick+Pork",
+                image_url: "images/scenarios/scenario_72_light.png",
                 base_stats: { traffic: 180, panic: 90, suspicion: 4 },
                 feedback: "引發對市場肉品的恐慌，婆婆媽媽們不敢買肉。"
             },
             heavy: {
                 text: "🇺🇸 這是為了掩護美國萊豬進口，故意製造本土豬肉恐慌！消滅台灣養豬業！美國人的陰謀！😡🍖 #萊豬 #陰謀 #滅農",
-                image_url: "https://placehold.co/400x300/581818/FFF?text=US+Pork+Plot",
+                image_url: "images/scenarios/scenario_72_heavy.png",
                 base_stats: { traffic: 50, panic: 120, suspicion: 80 },
                 feedback: "將豬瘟疫情政治化，連結到反美豬議題。"
             }
@@ -41,13 +41,13 @@ SCENARIOS.push(
         options: {
             light: {
                 text: "☢️ 超商賣的日本零食都有輻射！吃了晚上會發光！我朋友的小孩吃了變笨！千萬別買！🚫🍘 #核食 #輻射 #致癌",
-                image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Glowing+Snack",
+                image_url: "images/scenarios/scenario_73_light.png",
                 base_stats: { traffic: 200, panic: 50, suspicion: 2 },
                 feedback: "誇張的輻射謠言，雖然不科學但傳播力強。"
             },
             heavy: {
                 text: "🤝 日本跟政府交換條件，我們吃核食，他們才幫我們講話！拿國民健康做外交籌碼！無恥！😡🇯🇵 #賣國 #核食 #外交交易",
-                image_url: "https://placehold.co/400x300/581818/FFF?text=Dirty+Deal",
+                image_url: "images/scenarios/scenario_73_heavy.png",
                 base_stats: { traffic: 60, panic: 140, suspicion: 90 },
                 feedback: "將外交關係解讀為拿國民健康做交易。"
             }
@@ -59,13 +59,13 @@ SCENARIOS.push(
         options: {
             light: {
                 text: "🧄 噴防蚊液會導致皮膚癌！喝大蒜水才能防蚊！這是老祖宗的智慧！別信化學毒藥！🚫🧴 #偏方 #大蒜水 #防蚊",
-                image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Garlic+Cure",
+                image_url: "images/scenarios/scenario_74_light.png",
                 base_stats: { traffic: 160, panic: 30, suspicion: 4 },
                 feedback: "典型的長輩群組養生偏方，誤導防疫觀念。"
             },
             heavy: {
                 text: "🧪 登革熱病毒是實驗室洩漏的生物武器！用來測試南部人的抵抗力！我們是白老鼠！🐭⚠️ #生化武器 #人體實驗 #南部",
-                image_url: "https://placehold.co/400x300/581818/FFF?text=Bio+Weapon+Test",
+                image_url: "images/scenarios/scenario_74_heavy.png",
                 base_stats: { traffic: 30, panic: 220, suspicion: 80 },
                 feedback: "生化武器陰謀論，製造極度恐慌。"
             }
@@ -77,13 +77,13 @@ SCENARIOS.push(
         options: {
             light: {
                 text: "💉 打這兩針不能同一天！不然會這輩子不舉！醫生都不敢說的祕密！男人要注意！🚫🍆 #疫苗副作用 #不舉 #男人必看",
-                image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Impotence",
+                image_url: "images/scenarios/scenario_75_light.png",
                 base_stats: { traffic: 210, panic: 60, suspicion: 2 },
                 feedback: "針對男性的健康恐嚇，效果拔群。"
             },
             heavy: {
                 text: "🤖 疫苗裡面有奈米晶片！打完就會被腦控！變成政府的魁儡！千萬別打！🚫🧠 #晶片 #腦控 #反疫苗",
-                image_url: "https://placehold.co/400x300/581818/FFF?text=Microchip",
+                image_url: "images/scenarios/scenario_75_heavy.png",
                 base_stats: { traffic: 40, panic: 200, suspicion: 90 },
                 feedback: "經典的反疫苗陰謀論，永遠有人信。"
             }
@@ -95,13 +95,13 @@ SCENARIOS.push(
         options: {
             light: {
                 text: "🧧 以後去大醫院看病要先包紅包！不然醫生不開刀！健保倒了，沒錢判死刑！😱🏥 #紅包 #健保倒閉 #醫療崩壞",
-                image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Red+Envelope",
+                image_url: "images/scenarios/scenario_76_light.png",
                 base_stats: { traffic: 180, panic: 80, suspicion: 6 },
                 feedback: "喚起對醫療崩壞的恐懼，讓病患人人自危。"
             },
             heavy: {
                 text: "💊 健保快破產了！政府準備要把老人家的藥都換成麵粉做的安慰劑！讓老人自然淘汰！👵💀 #安樂死 #假藥 #拋棄老人",
-                image_url: "https://placehold.co/400x300/581818/FFF?text=Fake+Meds",
+                image_url: "images/scenarios/scenario_76_heavy.png",
                 base_stats: { traffic: 50, panic: 170, suspicion: 70 },
                 feedback: "針對老年人的惡意謠言，引發對政府的憤怒。"
             }
@@ -113,13 +113,13 @@ SCENARIOS.push(
         options: {
             light: {
                 text: "🥤 喝無糖珍奶其實熱量最高！因為珍珠是用豬油炸的！喝一杯等於喝油！噁心死了！🤢🐖 #豬油珍珠 #熱量炸彈 #減肥",
-                image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Lard+Pearl",
+                image_url: "images/scenarios/scenario_77_light.png",
                 base_stats: { traffic: 150, panic: 40, suspicion: 2 },
                 feedback: "噁心的食品謠言，讓愛喝珍奶的人產生罪惡感。"
             },
             heavy: {
                 text: "🧪 這是為了圖利代糖廠商！逼店家都改用化學代糖！那種糖會致癌！政府跟廠商勾結！😡🍬 #代糖 #致癌 #圖利",
-                image_url: "https://placehold.co/400x300/581818/FFF?text=Chemical+Sugar",
+                image_url: "images/scenarios/scenario_77_heavy.png",
                 base_stats: { traffic: 60, panic: 30, suspicion: 80 },
                 feedback: "質疑政策背後的商業利益，引發對食品工業的不信任。"
             }
@@ -131,13 +131,13 @@ SCENARIOS.push(
         options: {
             light: {
                 text: "💊 藥局說缺貨是騙人的！其實都囤起來要漲價賣去中國！台灣人沒藥吃！太過分了！😡🇨🇳 #囤藥 #漲價 #賣國",
-                image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Drug+Smuggling",
+                image_url: "images/scenarios/scenario_78_light.png",
                 base_stats: { traffic: 190, panic: 50, suspicion: 8 },
                 feedback: "將缺藥歸咎於惡意囤積與外流，引發民眾搶購。"
             },
             heavy: {
                 text: "🌍 政府把好藥都捐給友邦了！台灣人只能吃次等藥！我們是二等公民！😡💊 #凱子外交 #次等公民 #不公",
-                image_url: "https://placehold.co/400x300/581818/FFF?text=Second+Class",
+                image_url: "images/scenarios/scenario_78_heavy.png",
                 base_stats: { traffic: 50, panic: 130, suspicion: 90 },
                 feedback: "利用相對剝奪感，煽動對外交政策的不滿。"
             }
@@ -149,13 +149,13 @@ SCENARIOS.push(
         options: {
             light: {
                 text: "🚬 走在騎樓連拿著沒點的菸都會被罰一萬塊！警察搶錢搶瘋了！吸菸族沒人權！😡👮‍♂️ #禁菸 #搶錢 #沒人權",
-                image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Smoking+Fine",
+                image_url: "images/scenarios/scenario_79_light.png",
                 base_stats: { traffic: 200, panic: 20, suspicion: 2 },
                 feedback: "誇大執法標準，引發吸菸族群的恐慌與憤怒。"
             },
             heavy: {
                 text: "📸 罰款都是進了檢舉達人的口袋！這是政府創造就業的方式！全民互相監視！文革重演！👁️🇨🇳 #檢舉達人 #文革 #監視",
-                image_url: "https://placehold.co/400x300/581818/FFF?text=Snitch+Job",
+                image_url: "images/scenarios/scenario_79_heavy.png",
                 base_stats: { traffic: 70, panic: 10, suspicion: 80 },
                 feedback: "挑起對檢舉達人的仇恨，轉移對違規行為的關注。"
             }
@@ -167,13 +167,13 @@ SCENARIOS.push(
         options: {
             light: {
                 text: "🛵 兩家合併後，外送費會變成300元起跳！以後吃不起飯了！大家快抵制！😡🍔 #外送 #漲價 #壟斷",
-                image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Expensive+Delivery",
+                image_url: "images/scenarios/scenario_80_light.png",
                 base_stats: { traffic: 220, panic: 40, suspicion: 1 },
                 feedback: "對壟斷漲價的恐懼，讓依賴外送的人崩潰。"
             },
             heavy: {
                 text: "🇨🇳 這是為了讓中資透過外送平台掌握全台灣人的飲食大數據！知道你吃什麼就能控制你！😱🥡 #中資 #大數據 #統戰",
-                image_url: "https://placehold.co/400x300/581818/FFF?text=Food+Data+Spy",
+                image_url: "images/scenarios/scenario_80_heavy.png",
                 base_stats: { traffic: 40, panic: 160, suspicion: 90 },
                 feedback: "將商業併購上綱到國安層級，引發資安疑慮。"
             }

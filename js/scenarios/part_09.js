@@ -5,13 +5,13 @@ SCENARIOS.push(
         options: {
             light: {
                 text: "📞 接到不出聲的電話不要講話！一講話聲音就會被盜走去借錢！現在AI太恐怖了！大家轉發！🚫🗣️ #AI詐騙 #深偽 #盜聲",
-                image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Voice+Theft",
+                image_url: "images/scenarios/scenario_81_light.png",
                 base_stats: { traffic: 240, panic: 80, suspicion: 4 },
                 feedback: "簡單易懂的防詐（假）知識，長輩群組瘋傳。"
             },
             heavy: {
                 text: "🏛️ 這些AI詐騙集團的後台其實是某個政府部門！用來監控金流！政府帶頭詐騙！太黑了！😡💰 #政府詐騙 #黑幕 #監守自盜",
-                image_url: "https://placehold.co/400x300/581818/FFF?text=Gov+Scam",
+                image_url: "images/scenarios/scenario_81_heavy.png",
                 base_stats: { traffic: 50, panic: 150, suspicion: 90 },
                 feedback: "將詐騙歸咎於政府監守自盜，破壞社會信任。"
             }
@@ -23,13 +23,13 @@ SCENARIOS.push(
         options: {
             light: {
                 text: "📱 只要被拉進群組，手機就會中毒！網銀密碼直接外洩！錢被轉光光！看到群組邀請千萬別點！🚫🦠 #LINE詐騙 #中毒 #盜刷",
-                image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Virus+Group",
+                image_url: "images/scenarios/scenario_82_light.png",
                 base_stats: { traffic: 200, panic: 90, suspicion: 6 },
                 feedback: "製造對通訊軟體的恐懼，讓人不敢加群組。"
             },
             heavy: {
                 text: "🕴️ 抓到的車手都是替死鬼！真正的幕後金主是立委養的！選舉經費都靠詐騙！黑金政治！😡🗳️ #黑金 #立委 #詐騙",
-                image_url: "https://placehold.co/400x300/581818/FFF?text=Politician+Boss",
+                image_url: "images/scenarios/scenario_82_heavy.png",
                 base_stats: { traffic: 70, panic: 20, suspicion: 95 },
                 feedback: "對政治人物的嚴重指控，符合大眾對黑金政治的想像。"
             }
@@ -41,13 +41,13 @@ SCENARIOS.push(
         options: {
             light: {
                 text: "🛑 只要行人腳踏到斑馬線，車子就算在一百公尺外也要停下來！不然罰六千！根本是陷阱！🚗💸 #行人帝王 #罰單 #搶錢",
-                image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Traffic+Stop",
+                image_url: "images/scenarios/scenario_83_light.png",
                 base_stats: { traffic: 210, panic: 30, suspicion: 2 },
                 feedback: "誇大執法嚴格程度，引發駕駛人的怒火。"
             },
             heavy: {
                 text: "👮‍♂️ 罰單收入是用來發警察年終獎金！所以年底抓特別兇！警察都是為了獎金在開單！貪婪！💰🚓 #警察 #獎金 #貪汙",
-                image_url: "https://placehold.co/400x300/581818/FFF?text=Police+Bonus",
+                image_url: "images/scenarios/scenario_83_heavy.png",
                 base_stats: { traffic: 80, panic: 10, suspicion: 80 },
                 feedback: "質疑執法動機，將警察描述成搶錢機器。"
             }
@@ -59,13 +59,13 @@ SCENARIOS.push(
         options: {
             light: {
                 text: "📸 區間測速也會拍車內有沒有繫安全帶和挖鼻孔！連在車裡都沒隱私！變態政府！😡👃 #偷拍 #隱私 #變態",
-                image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Car+Spy",
+                image_url: "images/scenarios/scenario_84_light.png",
                 base_stats: { traffic: 180, panic: 50, suspicion: 4 },
                 feedback: "侵犯隱私的謠言，讓駕駛人感覺被監視。"
             },
             heavy: {
                 text: "🇨🇳 測速照相機都是中國製的！會把車牌資料傳回北京建立檔案！我們被中共監控了！😱📡 #中國製 #監控 #國安",
-                image_url: "https://placehold.co/400x300/581818/FFF?text=China+Cam",
+                image_url: "images/scenarios/scenario_84_heavy.png",
                 base_stats: { traffic: 40, panic: 120, suspicion: 90 },
                 feedback: "將交通執法設備連結到國安問題。"
             }
@@ -77,13 +77,13 @@ SCENARIOS.push(
         options: {
             light: {
                 text: "🎫 聽說下個月TPASS要漲到2000元！快點先囤十張！不然以後買不起了！通勤族快衝！🏃‍♂️💨 #TPASS #漲價 #囤貨",
-                image_url: "https://placehold.co/400x300/2c3e50/FFF?text=TPASS+Hike",
+                image_url: "images/scenarios/scenario_85_light.png",
                 base_stats: { traffic: 190, panic: 70, suspicion: 2 },
                 feedback: "製造漲價恐慌，引發搶購潮。"
             },
             heavy: {
                 text: "🛰️ TPASS 晶片會紀錄你的移動軌跡！政府用大數據抓逃漏稅！你去哪裡他們都知道！恐怖！👁️🗺️ #大數據 #查稅 #監控",
-                image_url: "https://placehold.co/400x300/581818/FFF?text=Tracking+Chip",
+                image_url: "images/scenarios/scenario_85_heavy.png",
                 base_stats: { traffic: 50, panic: 160, suspicion: 80 },
                 feedback: "政府監控陰謀論，讓通勤族心裡毛毛的。"
             }
@@ -95,13 +95,13 @@ SCENARIOS.push(
         options: {
             light: {
                 text: "🪙 買比特幣要課80%的稅！政府不准窮人翻身！賺的錢都要充公！太黑心了！😡💸 #加密貨幣 #重稅 #搶錢",
-                image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Crypto+Tax",
+                image_url: "images/scenarios/scenario_86_light.png",
                 base_stats: { traffic: 160, panic: 20, suspicion: 6 },
                 feedback: "造謠高額稅率，引發投資人的憤怒。"
             },
             heavy: {
                 text: "🧤 網紅只是白手套！洗的都是政黨的黑錢！這背後水很深！動搖國本！🏛️💰 #洗錢 #白手套 #政治獻金",
-                image_url: "https://placehold.co/400x300/581818/FFF?text=Money+Laundering",
+                image_url: "images/scenarios/scenario_86_heavy.png",
                 base_stats: { traffic: 70, panic: 10, suspicion: 90 },
                 feedback: "將詐騙案導向政治洗錢，加深對網紅與政客的厭惡。"
             }
@@ -113,13 +113,13 @@ SCENARIOS.push(
         options: {
             light: {
                 text: "💥 油車停電動車格會導致電池爆炸！因為磁場不合！千萬別停！會燒起來！🔥🚗 #爆炸 #磁場 #危險",
-                image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Explosion",
+                image_url: "images/scenarios/scenario_87_light.png",
                 base_stats: { traffic: 140, panic: 50, suspicion: 2 },
                 feedback: "偽科學謠言，用來嚇阻油車佔用車位。"
             },
             heavy: {
                 text: "📈 電動車政策是為了幫特斯拉股價抬轎！官員都有買股票！圖利外國廠商！賣國賊！😡🇺🇸 #特斯拉 #圖利 #炒股",
-                image_url: "https://placehold.co/400x300/581818/FFF?text=Stock+Manipulation",
+                image_url: "images/scenarios/scenario_87_heavy.png",
                 base_stats: { traffic: 60, panic: 20, suspicion: 85 },
                 feedback: "質疑政策背後的圖利行為。"
             }
@@ -131,13 +131,13 @@ SCENARIOS.push(
         options: {
             light: {
                 text: "📡 裝了星鏈網路，家裡的微波爐會壞掉！因為頻率衝突！電器都會燒壞！千萬別裝！🚫📺 #星鏈 #微波爐 #電器殺手",
-                image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Broken+Microwave",
+                image_url: "images/scenarios/scenario_88_light.png",
                 base_stats: { traffic: 130, panic: 30, suspicion: 4 },
                 feedback: "科技恐懼謠言，針對不了解新科技的長輩。"
             },
             heavy: {
                 text: "🇨🇳 馬斯克是親中的！這個網路系統一旦開戰就會直接切斷！我們通訊會全滅！這是木馬屠城！🐴⚠️ #馬斯克 #親中 #木馬",
-                image_url: "https://placehold.co/400x300/581818/FFF?text=Cut+Off",
+                image_url: "images/scenarios/scenario_88_heavy.png",
                 base_stats: { traffic: 50, panic: 180, suspicion: 70 },
                 feedback: "利用對特定人物的政治立場疑慮，製造國安恐慌。"
             }
@@ -149,13 +149,13 @@ SCENARIOS.push(
         options: {
             light: {
                 text: "📱 學校會檢查手機！有裝抖音的直接記大過！還會通知家長！這是戒嚴嗎？學生沒人權！😡🏫 #抖音 #記過 #戒嚴",
-                image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Phone+Check",
+                image_url: "images/scenarios/scenario_89_light.png",
                 base_stats: { traffic: 200, panic: 60, suspicion: 2 },
                 feedback: "誇大校規執行，引發學生的反彈。"
             },
             heavy: {
                 text: "🧠 抖音會發射特定頻率的音波！讓台灣小孩變笨！這是中共的「降智打擊」！救救孩子！🇨🇳📉 #洗腦 #降智 #統戰",
-                image_url: "https://placehold.co/400x300/581818/FFF?text=Dumb+Wave",
+                image_url: "images/scenarios/scenario_89_heavy.png",
                 base_stats: { traffic: 40, panic: 150, suspicion: 80 },
                 feedback: "科幻洗腦陰謀論，家長們寧可信其有。"
             }
@@ -167,13 +167,13 @@ SCENARIOS.push(
         options: {
             light: {
                 text: "🐦 5G 基地台發出的電波會讓附近的鳥集體死亡！我親眼看到的！住在旁邊的人也會得腦瘤！快搬家！☢️🏠 #5G #電磁波 #致癌",
-                image_url: "https://placehold.co/400x300/2c3e50/FFF?text=Dead+Birds",
+                image_url: "images/scenarios/scenario_90_light.png",
                 base_stats: { traffic: 170, panic: 40, suspicion: 6 },
                 feedback: "經典的電磁波恐懼，視覺畫面感強。"
             },
             heavy: {
                 text: "💉 5G 其實是為了啟動疫苗裡的奈米機器人！開關一按，打過疫苗的人都會死！這是人口清除計畫！💀📡 #疫苗 #5G #滅絕",
-                image_url: "https://placehold.co/400x300/581818/FFF?text=5G+Activate",
+                image_url: "images/scenarios/scenario_90_heavy.png",
                 base_stats: { traffic: 30, panic: 220, suspicion: 90 },
                 feedback: "結合5G與疫苗的終極陰謀論。"
             }
